@@ -13,7 +13,7 @@ export function generateGrid(element, size) {
     }
 }
 
-export function renderArrayOnGrid(element, array, position = [0, 0]) {
+export function renderOnGrid(element, array, position = [0, 0]) {
     console.log(element);
 }
 

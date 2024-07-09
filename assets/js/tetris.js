@@ -1,5 +1,5 @@
 import { globals, constants } from "./globals.js";
-import { generateGrid, renderIndicator, renderArrayOnGrid } from "./display.js";
+import { generateGrid, renderIndicator, renderOnGrid } from "./display.js";
 
 export function buildGame() {
     console.log("build game");
