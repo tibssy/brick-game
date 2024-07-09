@@ -123,3 +123,35 @@ main {
     box-shadow: var(--box-shadow-small);
     transform: scale(0.98);
 }
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 40px;
+    width: 100%;
+    height: calc(100% - 40px);
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: 0.5s ease-in-out;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85%;
+    height: 94%;
+    padding: 10px;
+    background-color: var(--primary-container);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--box-shadow-large);
+}
+
+#settings button {
+    width: 100%;
+    font-size: 1.5rem;
+    box-shadow: var(--box-shadow-normal);
+}
