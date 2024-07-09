@@ -101,6 +101,14 @@ main {
     box-shadow: var(--box-shadow-large) inset;
 }
 
+#indicator-container {
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    box-shadow: var(--box-shadow-large) inset;
+    border-radius: var(--border-radius-large);
+}
+
 #game-controls {
     display: grid;
     grid-template-columns: repeat(3, auto);
