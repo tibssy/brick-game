@@ -1,7 +1,6 @@
-import { globals } from "./globals.js";
 import { buildGame } from "./tetris.js";
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const startButton = document.getElementById("start-button");
     startButton.addEventListener("click", () => {
         closeModal();
@@ -21,5 +20,5 @@ function closeModal() {
         modal.removeEventListener("transitionend", onTransitionEnd);
     }
 
-    document.getElementsByTagName("main")[0].style.transform = "scale(1)";
+    document.querySelector("main").style.transform = "scale(1)";
 }
