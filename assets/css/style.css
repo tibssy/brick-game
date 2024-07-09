@@ -53,6 +53,12 @@ body {
     background-color: var(--secondary-container);
 }
 
+button {
+    border: none;
+    font-weight: bold;
+    border-radius: var(--border-radius-large);
+}
+
 header {
     display: flex;
     justify-content: space-between;
@@ -62,4 +68,11 @@ header {
     height: 40px;
     box-shadow: var(--box-shadow-large);
     z-index: 99;
+}
+
+header > button {
+    background-color: var(--primary-container);
+    font-size: 20px;
+    border: none;
+    margin: 5px;
 }
