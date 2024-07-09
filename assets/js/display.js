@@ -1,7 +1,6 @@
 import { globals, constants } from "./globals.js";
 
 export function generateGrid(element, size) {
-    console.log(size);
     const [cols, rows] = size;
 
     element.style.gridTemplateColumns = `repeat(${cols}, auto)`;
@@ -13,8 +12,18 @@ export function generateGrid(element, size) {
     }
 }
 
-export function renderOnGrid(element, array, position = [0, 0]) {
-    console.log(element);
+export function renderOnGrid(element, array) {
+    array.flat().forEach((value, index) => {
+        if (value) {
+            element.children[index].style.boxShadow = "0 0 6px #333333";
+            element.children[index].style.backgroundColor = "#b9f46c";
+            element.children[index].style.transform = "scale(1)";
+        } else {
+            element.children[index].style.boxShadow = "none";
+            element.children[index].style.backgroundColor = element.style.backgroundColor;
+            element.children[index].style.transform = "scale(0.5)";
+        }
+    });
 }
 
 export function renderIndicator(brick) {
@@ -25,11 +34,5 @@ export function renderIndicator(brick) {
     indicatorGrid.replaceChildren();
     indicatorGrid.style.aspectRatio = `${cols}/${rows}`;
     generateGrid(indicatorGrid, [cols, rows]);
-
-    brick.flat().forEach((element, index) => {
-        if (element) {
-            indicatorGrid.children[index].style.boxShadow = "0 0 3px #333333";
-            indicatorGrid.children[index].style.backgroundColor = "#b9f46c";
-        }
-    });
+    renderOnGrid(indicatorGrid, brick);
 }
