@@ -9,7 +9,6 @@ export function buildGame() {
     generateGrid(globals.gameGrid, globals.gridSize);
 
     globals.nextBrick = getRandomBrick();
-    console.log(globals.nextBrick);
     renderIndicator(globals.nextBrick);
 }
 
@@ -17,14 +16,7 @@ function getRandomBrick() {
     const bricks = constants.bricks;
     const brickIndex = Math.floor(Math.random() * bricks.length);
     let brick = bricks[brickIndex];
-    let maxRotation = 0;
-
-    if (brickIndex >= 4) {
-        maxRotation = 3;
-    } else if (brickIndex >= 1) {
-        maxRotation = 1;
-    }
-
+    let maxRotation = brickIndex >= 4 ? 3 : brickIndex >= 1 ? 1 : 0;
     const rotationCount = Math.floor(Math.random() * maxRotation);
 
     for (let i = 0; i < rotationCount; i++) {
