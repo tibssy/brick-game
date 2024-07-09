@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
     startButton.addEventListener("click", () => {
         closeModal();
         buildGame();
-        console.log(globals);
     });
 });
 
