@@ -1,7 +1,12 @@
+import { globals } from "./globals.js";
+import { buildGame } from "./tetris.js";
+
 document.addEventListener("DOMContentLoaded", function () {
     const startButton = document.getElementById("start-button");
     startButton.addEventListener("click", () => {
         closeModal();
+        buildGame();
+        console.log(globals);
     });
 });
 
