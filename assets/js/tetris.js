@@ -28,6 +28,19 @@ export function playTetris() {
 
     setInterval(() => {
         globals.brickPosition[1]++;
+
+        if (globals.gridSize[1] - globals.currentBrick.length < globals.brickPosition[1]) {
+            console.log("next brick");
+            globals.currentBrick = globals.nextBrick;
+            globals.brickPosition = [
+                Math.floor((globals.gridSize[0] - globals.currentBrick[0].length) / 2),
+                0,
+            ];
+            globals.nextBrick = getRandomBrick();
+            renderIndicator(globals.nextBrick);
+            globals.zeroMatrix = gameMatrix;
+        }
+
         gameMatrix = toPosition(globals.currentBrick, globals.brickPosition);
         renderOnGrid(globals.gameGrid, gameMatrix);
     }, globals.interval);
