@@ -27,10 +27,15 @@ function getRandomBrick() {
 }
 
 function rotateBrick(brick, direction) {
+    const rotateClockwise = (matrix) =>
+        matrix[0].map((val, index) => matrix.map((row) => row[index]).reverse());
+    const rotateCounterclockwise = (matrix) =>
+        matrix[0].map((val, index) => matrix.map((row) => row[row.length - 1 - index]));
+
     if (direction === "clockwise") {
-        return brick[0].map((val, index) => brick.map((row) => row[index]).reverse());
+        return rotateClockwise(brick);
     } else if (direction === "counterclockwise") {
-        return brick[0].map((val, index) => brick.map((row) => row[row.length - 1 - index]));
+        return rotateCounterclockwise(brick);
     } else {
         throw new Error('Invalid rotation direction. Use "clockwise" or "counterclockwise".');
     }
