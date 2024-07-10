@@ -61,7 +61,6 @@ export const globals = {
     zeroMatrix: null,
     gameGrid: null,
     gameMatrix: null,
-    indicatorGrid: null,
     nextBrick: null,
     currentBrick: null,
 };

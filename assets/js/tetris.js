@@ -1,5 +1,5 @@
 import { globals, constants } from "./globals.js";
-import { generateGrid, renderIndicator, toPosition, renderOnGrid } from "./display.js";
+import { toPosition, renderIndicator, renderOnGrid } from "./display.js";
 
 export function buildTetris() {
     globals.nextBrick = getRandomBrick();
@@ -8,7 +8,6 @@ export function buildTetris() {
 
 export function playTetris() {
     console.log("play...");
-
     initializeGame();
     setupControlButtons();
     startGameLoop();

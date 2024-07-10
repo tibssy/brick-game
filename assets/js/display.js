@@ -1,4 +1,4 @@
-import { globals, constants } from "./globals.js";
+import { globals } from "./globals.js";
 
 export function generateGrid(element, size) {
     const [cols, rows] = size;
