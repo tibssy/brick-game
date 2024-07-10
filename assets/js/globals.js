@@ -55,4 +55,8 @@ export const constants = {
 
 export const globals = {
     gridSize: [10, 20],
+    zeroMatrix: null,
+    gameGrid: null,
+    indicatorGrid: null,
+    nextBrick: null,
 };

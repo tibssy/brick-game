@@ -7,7 +7,6 @@ export function buildGame() {
     globals.indicatorGrid = document.getElementById("next-brick-indicator");
 
     generateGrid(globals.gameGrid, globals.gridSize);
-
     globals.nextBrick = getRandomBrick();
     renderIndicator(globals.nextBrick);
 }

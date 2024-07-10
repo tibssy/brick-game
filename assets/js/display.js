@@ -36,3 +36,13 @@ export function renderIndicator(brick) {
     generateGrid(indicatorGrid, [cols, rows]);
     renderOnGrid(indicatorGrid, brick);
 }
+
+export function toPosition(arr, position) {
+    let grid = globals.zeroMatrix.map((innerArray) => [...innerArray]);
+
+    arr.forEach((row, rowIndex) => {
+        grid[position[1] + rowIndex].splice(position[0], row.length, ...row);
+    });
+
+    return grid;
+}
