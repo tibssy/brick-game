@@ -2,27 +2,33 @@ import { globals, constants } from "./globals.js";
 import { generateGrid, renderIndicator, toPosition, renderOnGrid } from "./display.js";
 
 export function buildTetris() {
-    console.log("build game");
-
     globals.indicatorGrid = document.getElementById("next-brick-indicator");
-
     globals.nextBrick = getRandomBrick();
     renderIndicator(globals.nextBrick);
 }
 
 export function playTetris() {
     console.log("play...");
-    let currentBrick = globals.nextBrick;
-    let nextBrick = getRandomBrick();
-    let brickPosition = [Math.floor((globals.gridSize[0] - currentBrick[0].length) / 2), 0];
-    let gameMatrix = toPosition(currentBrick, brickPosition);
+    const controlButtons = document.getElementsByClassName("control-button");
+    globals.currentBrick = globals.nextBrick;
+    globals.brickPosition = [
+        Math.floor((globals.gridSize[0] - globals.currentBrick[0].length) / 2),
+        0,
+    ];
+    globals.nextBrick = getRandomBrick();
+    let gameMatrix = toPosition(globals.currentBrick, globals.brickPosition);
 
     renderOnGrid(globals.gameGrid, gameMatrix);
-    renderIndicator(nextBrick);
+    renderIndicator(globals.nextBrick);
+
+    for (let button of controlButtons) {
+        console.log(button);
+        button.addEventListener("click", handleControlButtonClick);
+    }
 
     setInterval(() => {
-        brickPosition[1]++;
-        gameMatrix = toPosition(currentBrick, brickPosition);
+        globals.brickPosition[1]++;
+        gameMatrix = toPosition(globals.currentBrick, globals.brickPosition);
         renderOnGrid(globals.gameGrid, gameMatrix);
     }, globals.interval);
 }
@@ -56,4 +62,31 @@ function rotateBrick(brick, direction) {
     } else {
         throw new Error('Invalid rotation direction. Use "clockwise" or "counterclockwise".');
     }
+}
+
+function handleControlButtonClick(event) {
+    const buttonId = event.currentTarget.id;
+
+    switch (buttonId) {
+        case "rotate-left-button":
+            globals.currentBrick = rotateBrick(globals.currentBrick, "counterclockwise");
+            break;
+        case "rotate-right-button":
+            globals.currentBrick = rotateBrick(globals.currentBrick, "clockwise");
+            break;
+        case "left-button":
+            globals.brickPosition[0]--;
+            break;
+        case "right-button":
+            globals.brickPosition[0]++;
+            break;
+        case "down-button":
+            globals.brickPosition[1]++;
+            break;
+        default:
+            throw new Error(`Invalid button id: ${buttonId}`);
+    }
+
+    globals.gameMatrix = toPosition(globals.currentBrick, globals.brickPosition);
+    renderOnGrid(globals.gameGrid, globals.gameMatrix);
 }
