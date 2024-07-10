@@ -1,5 +1,5 @@
 import { globals, constants } from "./globals.js";
-import { generateGrid, renderIndicator } from "./display.js";
+import { generateGrid, renderIndicator, toPosition, renderOnGrid } from "./display.js";
 
 export function buildTetris() {
     console.log("build game");
@@ -12,6 +12,19 @@ export function buildTetris() {
 
 export function playTetris() {
     console.log("play...");
+    let currentBrick = globals.nextBrick;
+    let nextBrick = getRandomBrick();
+    let brickPosition = [Math.floor((globals.gridSize[0] - currentBrick[0].length) / 2), 0];
+    let gameMatrix = toPosition(currentBrick, brickPosition);
+
+    renderOnGrid(globals.gameGrid, gameMatrix);
+    renderIndicator(nextBrick);
+
+    setInterval(() => {
+        brickPosition[1]++;
+        gameMatrix = toPosition(currentBrick, brickPosition);
+        renderOnGrid(globals.gameGrid, gameMatrix);
+    }, globals.interval);
 }
 
 function getRandomBrick() {

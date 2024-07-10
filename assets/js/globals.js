@@ -55,9 +55,12 @@ export const constants = {
 
 export const globals = {
     gridSize: [10, 20],
+    interval: 1000,
     game: "tetris",
     zeroMatrix: null,
     gameGrid: null,
+    gameMatrix: null,
     indicatorGrid: null,
     nextBrick: null,
+    currentBrick: null,
 };
