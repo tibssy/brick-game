@@ -2,7 +2,6 @@ import { globals, constants } from "./globals.js";
 import { generateGrid, renderIndicator, toPosition, renderOnGrid } from "./display.js";
 
 export function buildTetris() {
-    globals.indicatorGrid = document.getElementById("next-brick-indicator");
     globals.nextBrick = getRandomBrick();
     renderIndicator(globals.nextBrick);
 }

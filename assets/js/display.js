@@ -27,7 +27,7 @@ export function renderOnGrid(element, array) {
 }
 
 export function renderIndicator(brick) {
-    const indicatorGrid = globals.indicatorGrid;
+    const indicatorGrid = document.getElementById("next-brick-indicator");
     const cols = brick[0].length;
     const rows = brick.length;
 
