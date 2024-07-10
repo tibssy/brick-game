@@ -38,11 +38,18 @@ export function renderIndicator(brick) {
 }
 
 export function toPosition(arr, position) {
-    let grid = globals.zeroMatrix.map((innerArray) => [...innerArray]);
+    let matrix = globals.zeroMatrix.map((innerArray) => [...innerArray]);
+    const [posX, posY] = position;
+    const [gridWidth, gridHeight] = [globals.gridSize[0], globals.gridSize[1]];
+    const [brickWidth, brickHeight] = [arr[0].length, arr.length];
+
+    let adjustedPosX = Math.max(0, Math.min(posX, gridWidth - brickWidth));
+    let adjustedPosY = Math.max(0, Math.min(posY, gridHeight - brickHeight));
 
     arr.forEach((row, rowIndex) => {
-        grid[position[1] + rowIndex].splice(position[0], row.length, ...row);
+        matrix[adjustedPosY + rowIndex].splice(adjustedPosX, row.length, ...row);
     });
 
-    return grid;
+    globals.brickPosition = [adjustedPosX, adjustedPosY];
+    return matrix;
 }
