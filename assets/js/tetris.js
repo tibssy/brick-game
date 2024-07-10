@@ -11,32 +11,8 @@ export function playTetris() {
     console.log("play...");
 
     initializeGame();
-
-    const controlButtons = document.getElementsByClassName("control-button");
-
-    for (let button of controlButtons) {
-        console.log(button);
-        button.addEventListener("click", handleControlButtonClick);
-    }
-
-    setInterval(() => {
-        // globals.brickPosition[1]++;
-
-        if (isBrickAtBottom()) {
-            console.log("next brick");
-            globals.currentBrick = globals.nextBrick;
-            globals.brickPosition = [
-                Math.floor((globals.gridSize[0] - globals.currentBrick[0].length) / 2),
-                0,
-            ];
-            globals.nextBrick = getRandomBrick();
-            renderIndicator(globals.nextBrick);
-            globals.zeroMatrix = globals.gameMatrix;
-        }
-
-        gameMatrix = toPosition(globals.currentBrick, globals.brickPosition);
-        renderOnGrid(globals.gameGrid, gameMatrix);
-    }, globals.interval);
+    setupControlButtons();
+    startGameLoop();
 }
 
 function initializeGame() {
@@ -52,8 +28,42 @@ function initializeGame() {
     renderIndicator(globals.nextBrick);
 }
 
+function setupControlButtons() {
+    const controlButtons = document.getElementsByClassName("control-button");
+
+    for (let button of controlButtons) {
+        console.log(button);
+        button.addEventListener("click", handleControlButtonClick);
+    }
+}
+
+function startGameLoop() {
+    setInterval(() => {
+        globals.brickPosition[1]++;
+
+        if (isBrickAtBottom()) {
+            moveToNextBrick();
+        }
+
+        updateGameMatrix();
+        renderOnGrid(globals.gameGrid, globals.gameMatrix);
+    }, globals.interval);
+}
+
 function isBrickAtBottom() {
     return globals.gridSize[1] - globals.currentBrick.length < globals.brickPosition[1];
+}
+
+function moveToNextBrick() {
+    console.log("next brick");
+    globals.currentBrick = globals.nextBrick;
+    globals.brickPosition = [
+        Math.floor((globals.gridSize[0] - globals.currentBrick[0].length) / 2),
+        0,
+    ];
+    globals.nextBrick = getRandomBrick();
+    renderIndicator(globals.nextBrick);
+    globals.zeroMatrix = globals.gameMatrix;
 }
 
 function updateGameMatrix() {
