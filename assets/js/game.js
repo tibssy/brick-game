@@ -1,16 +1,28 @@
-import { buildGame } from "./tetris.js";
+import { buildTetris, playTetris } from "./tetris.js";
 import { globals, constants } from "./globals.js";
-import { renderOnGrid, toPosition } from "./display.js";
+import { generateGrid, renderOnGrid, toPosition } from "./display.js";
 
-export function initializeGame() {
+export function startGame() {
     globals.zeroMatrix = Array.from(Array(globals.gridSize[1]), () =>
         Array(globals.gridSize[0]).fill(0)
     );
-    buildGame();
-    countDown(() => {
-        console.log("start game");
-        // tetrisGame();
-    });
+    globals.gameGrid = document.getElementById("game-display");
+    generateGrid(globals.gameGrid, globals.gridSize);
+
+    switch (globals.game) {
+        case "tetris":
+            buildTetris();
+            countDown(() => {
+                playTetris();
+            });
+            break;
+        case "snake":
+            console.log("Buils Snake");
+            break;
+        default:
+            console.log("No game selected");
+            break;
+    }
 }
 
 function countDown(callback) {

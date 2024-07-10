@@ -55,6 +55,7 @@ export const constants = {
 
 export const globals = {
     gridSize: [10, 20],
+    game: "tetris",
     zeroMatrix: null,
     gameGrid: null,
     indicatorGrid: null,

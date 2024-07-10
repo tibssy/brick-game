@@ -1,14 +1,17 @@
 import { globals, constants } from "./globals.js";
-import { generateGrid, renderIndicator, renderOnGrid } from "./display.js";
+import { generateGrid, renderIndicator } from "./display.js";
 
-export function buildGame() {
+export function buildTetris() {
     console.log("build game");
-    globals.gameGrid = document.getElementById("game-display");
+
     globals.indicatorGrid = document.getElementById("next-brick-indicator");
 
-    generateGrid(globals.gameGrid, globals.gridSize);
     globals.nextBrick = getRandomBrick();
     renderIndicator(globals.nextBrick);
+}
+
+export function playTetris() {
+    console.log("play...");
 }
 
 function getRandomBrick() {
@@ -16,6 +19,7 @@ function getRandomBrick() {
     const brickIndex = Math.floor(Math.random() * bricks.length);
     let brick = bricks[brickIndex];
     let maxRotation = brickIndex >= 4 ? 3 : brickIndex >= 1 ? 1 : 0;
+
     const rotationCount = Math.floor(Math.random() * maxRotation);
 
     for (let i = 0; i < rotationCount; i++) {
@@ -28,6 +32,7 @@ function getRandomBrick() {
 function rotateBrick(brick, direction) {
     const rotateClockwise = (matrix) =>
         matrix[0].map((val, index) => matrix.map((row) => row[index]).reverse());
+
     const rotateCounterclockwise = (matrix) =>
         matrix[0].map((val, index) => matrix.map((row) => row[row.length - 1 - index]));
 

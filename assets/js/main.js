@@ -1,10 +1,10 @@
-import { initializeGame } from "./game.js";
+import { startGame } from "./game.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const startButton = document.getElementById("start-button");
     startButton.addEventListener("click", () => {
         closeModal();
-        initializeGame();
+        startGame();
     });
 });
 
