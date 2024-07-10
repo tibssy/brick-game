@@ -9,17 +9,10 @@ export function buildTetris() {
 
 export function playTetris() {
     console.log("play...");
-    const controlButtons = document.getElementsByClassName("control-button");
-    globals.currentBrick = globals.nextBrick;
-    globals.brickPosition = [
-        Math.floor((globals.gridSize[0] - globals.currentBrick[0].length) / 2),
-        0,
-    ];
-    globals.nextBrick = getRandomBrick();
-    let gameMatrix = toPosition(globals.currentBrick, globals.brickPosition);
 
-    renderOnGrid(globals.gameGrid, gameMatrix);
-    renderIndicator(globals.nextBrick);
+    initializeGame();
+
+    const controlButtons = document.getElementsByClassName("control-button");
 
     for (let button of controlButtons) {
         console.log(button);
@@ -27,9 +20,9 @@ export function playTetris() {
     }
 
     setInterval(() => {
-        globals.brickPosition[1]++;
+        // globals.brickPosition[1]++;
 
-        if (globals.gridSize[1] - globals.currentBrick.length < globals.brickPosition[1]) {
+        if (isBrickAtBottom()) {
             console.log("next brick");
             globals.currentBrick = globals.nextBrick;
             globals.brickPosition = [
@@ -38,12 +31,33 @@ export function playTetris() {
             ];
             globals.nextBrick = getRandomBrick();
             renderIndicator(globals.nextBrick);
-            globals.zeroMatrix = gameMatrix;
+            globals.zeroMatrix = globals.gameMatrix;
         }
 
         gameMatrix = toPosition(globals.currentBrick, globals.brickPosition);
         renderOnGrid(globals.gameGrid, gameMatrix);
     }, globals.interval);
+}
+
+function initializeGame() {
+    globals.currentBrick = globals.nextBrick;
+    globals.brickPosition = [
+        Math.floor((globals.gridSize[0] - globals.currentBrick[0].length) / 2),
+        0,
+    ];
+    globals.nextBrick = getRandomBrick();
+
+    updateGameMatrix();
+    renderOnGrid(globals.gameGrid, globals.gameMatrix);
+    renderIndicator(globals.nextBrick);
+}
+
+function isBrickAtBottom() {
+    return globals.gridSize[1] - globals.currentBrick.length < globals.brickPosition[1];
+}
+
+function updateGameMatrix() {
+    globals.gameMatrix = toPosition(globals.currentBrick, globals.brickPosition);
 }
 
 function getRandomBrick() {
@@ -100,6 +114,6 @@ function handleControlButtonClick(event) {
             throw new Error(`Invalid button id: ${buttonId}`);
     }
 
-    globals.gameMatrix = toPosition(globals.currentBrick, globals.brickPosition);
+    updateGameMatrix();
     renderOnGrid(globals.gameGrid, globals.gameMatrix);
 }
