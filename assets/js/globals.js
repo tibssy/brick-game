@@ -58,9 +58,9 @@ export const globals = {
     brickPosition: [0, 0],
     interval: 1000,
     game: "tetris",
-    zeroMatrix: null,
-    gameGrid: null,
     gameMatrix: null,
+    gameGrid: null,
+    brickMatrix: null,
     nextBrick: null,
     currentBrick: null,
 };

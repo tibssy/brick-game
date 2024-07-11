@@ -1,3 +1,4 @@
+import { generateZeroMatrix } from "./game.js";
 import { globals, constants } from "./globals.js";
 import { toPosition, renderIndicator, renderOnGrid } from "./display.js";
 
@@ -21,8 +22,8 @@ function initializeGame() {
     ];
     globals.nextBrick = getRandomBrick();
 
-    updateGameMatrix();
-    renderOnGrid(globals.gameGrid, globals.gameMatrix);
+    updateBrickMatrix();
+    renderOnGrid(globals.gameGrid, globals.brickMatrix);
     renderIndicator(globals.nextBrick);
 }
 
@@ -43,8 +44,8 @@ function startGameLoop() {
             moveToNextBrick();
         }
 
-        updateGameMatrix();
-        renderOnGrid(globals.gameGrid, globals.gameMatrix);
+        updateBrickMatrix();
+        renderOnGrid(globals.gameGrid, globals.brickMatrix);
     }, globals.interval);
 }
 
@@ -61,11 +62,11 @@ function moveToNextBrick() {
     ];
     globals.nextBrick = getRandomBrick();
     renderIndicator(globals.nextBrick);
-    globals.zeroMatrix = globals.gameMatrix;
+    globals.gameMatrix = globals.brickMatrix;
 }
 
-function updateGameMatrix() {
-    globals.gameMatrix = toPosition(globals.currentBrick, globals.brickPosition);
+function updateBrickMatrix() {
+    globals.brickMatrix = toPosition(globals.currentBrick, globals.brickPosition);
 }
 
 function getRandomBrick() {
@@ -122,6 +123,6 @@ function handleControlButtonClick(event) {
             throw new Error(`Invalid button id: ${buttonId}`);
     }
 
-    updateGameMatrix();
-    renderOnGrid(globals.gameGrid, globals.gameMatrix);
+    updateBrickMatrix();
+    renderOnGrid(globals.gameGrid, globals.brickMatrix);
 }

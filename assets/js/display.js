@@ -38,7 +38,7 @@ export function renderIndicator(brick) {
 }
 
 export function toPosition(arr, position) {
-    let matrix = globals.zeroMatrix.map((innerArray) => [...innerArray]);
+    let matrix = globals.gameMatrix.map((innerArray) => [...innerArray]);
     const [posX, posY] = position;
     const [gridWidth, gridHeight] = [globals.gridSize[0], globals.gridSize[1]];
     const [brickWidth, brickHeight] = [arr[0].length, arr.length];
