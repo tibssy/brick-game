@@ -1,6 +1,6 @@
 import { buildTetris, playTetris } from "./tetris.js";
 import { globals, constants } from "./globals.js";
-import { generateGrid, renderOnGrid, toPosition } from "./display.js";
+import { generateGrid, renderOnGrid, insertToMatrix } from "./display.js";
 
 export function startGame() {
     globals.gameMatrix = generateZeroMatrix();
@@ -37,8 +37,10 @@ function countDown(callback) {
                 callback();
             }
         } else {
-            const numberArray = toPosition(
+            const matrix = globals.gameMatrix.map((innerArray) => [...innerArray]);
+            const numberArray = insertToMatrix(
                 constants.countdownNumbers[countDownValue - 1],
+                matrix,
                 position
             );
             renderOnGrid(globals.gameGrid, numberArray);

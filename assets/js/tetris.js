@@ -1,6 +1,6 @@
 import { generateZeroMatrix } from "./game.js";
 import { globals, constants } from "./globals.js";
-import { toPosition, renderIndicator, renderOnGrid } from "./display.js";
+import { insertToMatrix, renderIndicator, renderOnGrid } from "./display.js";
 
 export function buildTetris() {
     globals.nextBrick = getRandomBrick();
@@ -66,7 +66,8 @@ function moveToNextBrick() {
 }
 
 function updateBrickMatrix() {
-    globals.brickMatrix = toPosition(globals.currentBrick, globals.brickPosition);
+    const matrix = globals.gameMatrix.map((innerArray) => [...innerArray]);
+    globals.brickMatrix = insertToMatrix(globals.currentBrick, matrix, globals.brickPosition);
 }
 
 function getRandomBrick() {
