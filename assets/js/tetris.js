@@ -63,6 +63,15 @@ function isBrickAtBottom() {
     return globals.gridSize[1] - globals.currentBrick.length < globals.brickPosition[1];
 }
 
+function cleanFullRows() {
+    globals.gameMatrix.forEach((row, rowIndex) => {
+        if (row.every(Boolean)) {
+            globals.gameMatrix.splice(rowIndex, 1);
+            globals.gameMatrix.splice(0, 0, Array(row.length).fill(0));
+        }
+    });
+}
+
 function moveToNextBrick() {
     console.log("next brick");
     globals.currentBrick = globals.nextBrick;
@@ -73,6 +82,7 @@ function moveToNextBrick() {
     globals.nextBrick = getRandomBrick();
     renderIndicator(globals.nextBrick);
     globals.gameMatrix = globals.brickMatrix;
+    cleanFullRows();
 }
 
 function updateBrickMatrix() {
