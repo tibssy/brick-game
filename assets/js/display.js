@@ -37,7 +37,8 @@ export function renderIndicator(brick) {
     renderOnGrid(indicatorGrid, brick);
 }
 
-export function insertToMatrix(arr, matrix, position) {
+export function insertToMatrix(arr, position) {
+    const matrix = globals.gameMatrix.map((innerArray) => [...innerArray]);
     const [posX, posY] = position;
     const [gridWidth, gridHeight] = [globals.gridSize[0], globals.gridSize[1]];
     const [brickWidth, brickHeight] = [arr[0].length, arr.length];
@@ -46,7 +47,10 @@ export function insertToMatrix(arr, matrix, position) {
     let adjustedPosY = Math.max(0, Math.min(posY, gridHeight - brickHeight));
 
     arr.forEach((row, rowIndex) => {
-        matrix[adjustedPosY + rowIndex].splice(adjustedPosX, row.length, ...row);
+        row.forEach((value, index) => {
+            matrix[adjustedPosY + rowIndex][adjustedPosX + index] =
+                value + matrix[adjustedPosY + rowIndex][adjustedPosX + index];
+        });
     });
 
     globals.brickPosition = [adjustedPosX, adjustedPosY];

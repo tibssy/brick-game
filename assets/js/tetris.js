@@ -65,8 +65,7 @@ function moveToNextBrick() {
 }
 
 function updateBrickMatrix() {
-    const matrix = globals.gameMatrix.map((innerArray) => [...innerArray]);
-    globals.brickMatrix = insertToMatrix(globals.currentBrick, matrix, globals.brickPosition);
+    globals.brickMatrix = insertToMatrix(globals.currentBrick, globals.brickPosition);
 }
 
 function getRandomBrick() {

@@ -39,10 +39,8 @@ function countDown(callback) {
                 callback();
             }
         } else {
-            const matrix = globals.gameMatrix.map((innerArray) => [...innerArray]);
             const numberArray = insertToMatrix(
                 constants.countdownNumbers[countDownValue - 1],
-                matrix,
                 position
             );
             renderOnGrid(globals.gameGrid, numberArray);
