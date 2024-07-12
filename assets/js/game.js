@@ -3,7 +3,9 @@ import { globals, constants } from "./globals.js";
 import { generateGrid, renderOnGrid, insertToMatrix } from "./display.js";
 
 export function startGame() {
-    globals.gameMatrix = generateZeroMatrix();
+    globals.gameMatrix = Array.from(Array(globals.gridSize[1]), () =>
+        Array(globals.gridSize[0]).fill(0)
+    );
     globals.gameGrid = document.getElementById("game-display");
     generateGrid(globals.gameGrid, globals.gridSize);
 
@@ -48,8 +50,4 @@ function countDown(callback) {
 
         countDownValue--;
     }, 1000);
-}
-
-export function generateZeroMatrix() {
-    return Array.from(Array(globals.gridSize[1]), () => Array(globals.gridSize[0]).fill(0));
 }

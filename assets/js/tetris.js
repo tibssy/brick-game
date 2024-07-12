@@ -1,4 +1,3 @@
-import { generateZeroMatrix } from "./game.js";
 import { globals, constants } from "./globals.js";
 import { insertToMatrix, renderIndicator, renderOnGrid } from "./display.js";
 
