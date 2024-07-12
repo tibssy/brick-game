@@ -38,14 +38,25 @@ function setupControlButtons() {
 function startGameLoop() {
     setInterval(() => {
         globals.brickPosition[1]++;
-
         if (isBrickAtBottom()) {
             moveToNextBrick();
         }
 
-        updateBrickMatrix();
+        let matrix = insertToMatrix(globals.currentBrick, globals.brickPosition);
+
+        if (isCollision(matrix)) {
+            moveToNextBrick();
+            updateBrickMatrix();
+        } else {
+            globals.brickMatrix = matrix;
+        }
+
         renderOnGrid(globals.gameGrid, globals.brickMatrix);
     }, globals.interval);
+}
+
+function isCollision(matrix) {
+    return matrix.flat().includes(2);
 }
 
 function isBrickAtBottom() {
@@ -101,6 +112,8 @@ function rotateBrick(brick, direction) {
 
 function handleControlButtonClick(event) {
     const buttonId = event.currentTarget.id;
+    const previousBrickPosition = [...globals.brickPosition];
+    const previousBrickState = globals.currentBrick.map((innerArray) => [...innerArray]);
 
     switch (buttonId) {
         case "rotate-left-button":
@@ -122,6 +135,13 @@ function handleControlButtonClick(event) {
             throw new Error(`Invalid button id: ${buttonId}`);
     }
 
-    updateBrickMatrix();
+    let matrix = insertToMatrix(globals.currentBrick, globals.brickPosition);
+    if (isCollision(matrix)) {
+        globals.brickPosition = previousBrickPosition;
+        globals.currentBrick = previousBrickState;
+        matrix = insertToMatrix(globals.currentBrick, globals.brickPosition);
+    }
+
+    globals.brickMatrix = matrix;
     renderOnGrid(globals.gameGrid, globals.brickMatrix);
 }
