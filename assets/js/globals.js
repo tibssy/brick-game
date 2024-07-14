@@ -69,7 +69,8 @@ export const globals = {
     nextBrick: null,
     currentBrick: null,
     brickIndex: null,
-    snakeDirection: "up",
+    snakeDirection: "left",
     snakeHeadPosition: null,
+    snakeTailPosition: null,
     snakeMatrix: null,
 };
