@@ -26,7 +26,6 @@ export const constants = {
             [1, 1, 1],
         ],
     ],
-    snake: [[1], [1], [1], [1]],
     countdownNumbers: [
         [
             [0, 0, 1, 0],
@@ -70,7 +69,9 @@ export const globals = {
     currentBrick: null,
     brickIndex: null,
     snakeDirection: "left",
+    snakeLength: 4,
     snakeHeadPosition: null,
     snakeTailPosition: null,
     snakeMatrix: null,
+    snake: null,
 };

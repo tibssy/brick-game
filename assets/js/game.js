@@ -1,5 +1,5 @@
 import { buildTetris, playTetris } from "./tetris.js";
-import { playSnake } from "./snake.js";
+import { buildSnake, playSnake } from "./snake.js";
 import { globals, constants } from "./globals.js";
 import { generateGrid, renderOnGrid, insertToMatrix } from "./display.js";
 
@@ -18,6 +18,7 @@ export function startGame() {
             });
             break;
         case "snake":
+            buildSnake();
             countDown(() => {
                 playSnake();
             });
@@ -33,6 +34,7 @@ function countDown(callback) {
         Math.floor((globals.gridSize[0] - constants.countdownNumbers[0][0].length) / 2),
         Math.floor((globals.gridSize[1] - constants.countdownNumbers[0].length) / 2),
     ];
+
     let countDownValue = 3;
 
     const countdownInterval = setInterval(() => {
@@ -51,4 +53,8 @@ function countDown(callback) {
 
         countDownValue--;
     }, 1000);
+}
+
+function gameOver() {
+    console.log("Game Over");
 }
