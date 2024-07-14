@@ -67,4 +67,5 @@ export const globals = {
     brickMatrix: null,
     nextBrick: null,
     currentBrick: null,
+    brickIndex: null,
 };

@@ -91,7 +91,14 @@ function updateBrickMatrix() {
 
 function getRandomBrick() {
     const bricks = constants.bricks;
-    const brickIndex = Math.floor(Math.random() * bricks.length);
+    let brickIndex;
+
+    do {
+        console.log("generate random brick index");
+        brickIndex = Math.floor(Math.random() * bricks.length);
+    } while (brickIndex === globals.brickIndex);
+    globals.brickIndex = brickIndex;
+
     let brick = bricks[brickIndex];
     let maxRotation = brickIndex >= 4 ? 3 : brickIndex >= 1 ? 1 : 0;
 
