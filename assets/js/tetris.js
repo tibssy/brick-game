@@ -143,6 +143,7 @@ function handleControlButtonClick(event) {
             break;
         case "break-button":
             globals.isPlaying = !globals.isPlaying;
+            invertBrickMatrix();
             break;
         case "up-button":
             globals.currentBrick = rotateBrick(globals.currentBrick, "clockwise");
@@ -160,13 +161,26 @@ function handleControlButtonClick(event) {
             throw new Error(`Invalid button id: ${buttonId}`);
     }
 
+    updateGameState(previousPosition, previousBrickState);
+    renderOnGrid(globals.gameGrid, globals.brickMatrix);
+}
+
+function invertBrickMatrix() {
+    globals.brickMatrix = globals.brickMatrix.map((row) =>
+        row.map((element) => (element === 0 ? 1 : 0))
+    );
+}
+
+function updateGameState(previousPosition, previousBrickState) {
     let matrix = insertToMatrix(globals.currentBrick, globals.position);
+
     if (isCollision(matrix) || !globals.isPlaying) {
         globals.position = previousPosition;
         globals.currentBrick = previousBrickState;
         matrix = insertToMatrix(globals.currentBrick, globals.position);
     }
 
-    globals.brickMatrix = matrix;
-    renderOnGrid(globals.gameGrid, globals.brickMatrix);
+    if (globals.isPlaying) {
+        globals.brickMatrix = matrix;
+    }
 }
