@@ -2,6 +2,7 @@ import { globals, constants } from "./globals.js";
 import { insertToMatrix, renderIndicator, renderOnGrid } from "./display.js";
 
 export function buildTetris() {
+    document.getElementById("indicator-container").style.visibility = "visible";
     globals.nextBrick = getRandomBrick();
     renderIndicator(globals.nextBrick);
 }
@@ -32,26 +33,30 @@ function setupControlButtons() {
 }
 
 function startGameLoop() {
+    globals.isPlaying = true;
+
     const gameLoop = setInterval(() => {
-        globals.position[1]++;
-        if (isBrickAtBottom()) {
-            moveToNextBrick();
-        }
-
-        let matrix = insertToMatrix(globals.currentBrick, globals.position);
-
-        if (isCollision(matrix)) {
-            if (globals.position[1] <= 1) {
-                console.log("Stop Game Loop...");
-                clearInterval(gameLoop);
+        if (globals.isPlaying) {
+            globals.position[1]++;
+            if (isBrickAtBottom()) {
+                moveToNextBrick();
             }
-            moveToNextBrick();
-            updateBrickMatrix();
-        } else {
-            globals.brickMatrix = matrix;
-        }
 
-        renderOnGrid(globals.gameGrid, globals.brickMatrix);
+            let matrix = insertToMatrix(globals.currentBrick, globals.position);
+
+            if (isCollision(matrix)) {
+                if (globals.position[1] <= 1) {
+                    console.log("Stop Game Loop...");
+                    clearInterval(gameLoop);
+                }
+                moveToNextBrick();
+                updateBrickMatrix();
+            } else {
+                globals.brickMatrix = matrix;
+            }
+
+            renderOnGrid(globals.gameGrid, globals.brickMatrix);
+        }
     }, globals.interval);
 }
 
@@ -133,10 +138,13 @@ function handleControlButtonClick(event) {
     const previousBrickState = globals.currentBrick.map((innerArray) => [...innerArray]);
 
     switch (buttonId) {
-        case "rotate-left-button":
-            globals.currentBrick = rotateBrick(globals.currentBrick, "counterclockwise");
+        case "exit-button":
+            console.log("exit...");
             break;
-        case "rotate-right-button":
+        case "break-button":
+            globals.isPlaying = !globals.isPlaying;
+            break;
+        case "up-button":
             globals.currentBrick = rotateBrick(globals.currentBrick, "clockwise");
             break;
         case "left-button":
@@ -153,7 +161,7 @@ function handleControlButtonClick(event) {
     }
 
     let matrix = insertToMatrix(globals.currentBrick, globals.position);
-    if (isCollision(matrix)) {
+    if (isCollision(matrix) || !globals.isPlaying) {
         globals.position = previousPosition;
         globals.currentBrick = previousBrickState;
         matrix = insertToMatrix(globals.currentBrick, globals.position);
