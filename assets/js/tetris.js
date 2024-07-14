@@ -16,7 +16,7 @@ export function playTetris() {
 function initializeGame() {
     globals.currentBrick = globals.nextBrick;
     globals.brickPosition = [
-        Math.floor((globals.gridSize[0] - globals.currentBrick[0].length) / 2),
+        Math.ceil((globals.gridSize[0] - globals.currentBrick[0].length) / 2),
         0,
     ];
     globals.nextBrick = getRandomBrick();
@@ -76,7 +76,7 @@ function moveToNextBrick() {
     console.log("next brick");
     globals.currentBrick = globals.nextBrick;
     globals.brickPosition = [
-        Math.floor((globals.gridSize[0] - globals.currentBrick[0].length) / 2),
+        Math.ceil((globals.gridSize[0] - globals.currentBrick[0].length) / 2),
         0,
     ];
     globals.nextBrick = getRandomBrick();
@@ -105,6 +105,11 @@ function getRandomBrick() {
 }
 
 function rotateBrick(brick, direction) {
+    const dimensionDifference = brick[0].length - brick.length;
+
+    globals.brickPosition[0] += Math.trunc(dimensionDifference / 2);
+    globals.brickPosition[1] -= dimensionDifference;
+
     const rotateClockwise = (matrix) =>
         matrix[0].map((val, index) => matrix.map((row) => row[index]).reverse());
 
