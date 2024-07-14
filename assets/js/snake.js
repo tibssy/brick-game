@@ -9,11 +9,12 @@ export function playSnake() {
 }
 
 function initializeGame() {
-    globals.snakePosition = {
-        head: [Math.ceil(globals.gridSize[0] / 2), globals.gridSize[1] - constants.snake.length],
-        tail: [Math.ceil(globals.gridSize[0] / 2), globals.gridSize[1]],
-    };
-    globals.snakeMatrix = insertToMatrix(constants.snake, globals.snakePosition.head);
+    globals.snakeHeadPosition = [
+        Math.ceil(globals.gridSize[0] / 2),
+        globals.gridSize[1] - constants.snake.length,
+    ];
+    globals.snakeTailPosition = [Math.ceil(globals.gridSize[0] / 2), globals.gridSize[1]];
+    globals.snakeMatrix = insertToMatrix(constants.snake, globals.snakeHeadPosition);
     renderOnGrid(globals.gameGrid, globals.snakeMatrix);
 }
 
@@ -23,4 +24,22 @@ function startGameLoop() {
     }, globals.interval);
 }
 
-function moveSnake() {}
+function moveSnake() {
+    switch (globals.snakeDirection) {
+        case "up":
+            globals.snakeHeadPosition[1]--;
+            break;
+        case "down":
+            globals.snakeHeadPosition[1]++;
+            break;
+        case "left":
+            globals.snakeHeadPosition[0]--;
+            break;
+        case "right":
+            globals.snakeHeadPosition[0]++;
+            break;
+    }
+
+    globals.snakeMatrix[globals.snakeHeadPosition[1]][globals.snakeHeadPosition[0]] = 1;
+    renderOnGrid(globals.gameGrid, globals.snakeMatrix);
+}
