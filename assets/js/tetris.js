@@ -36,7 +36,7 @@ function setupControlButtons() {
 }
 
 function startGameLoop() {
-    setInterval(() => {
+    const gameLoop = setInterval(() => {
         globals.brickPosition[1]++;
         if (isBrickAtBottom()) {
             moveToNextBrick();
@@ -45,6 +45,10 @@ function startGameLoop() {
         let matrix = insertToMatrix(globals.currentBrick, globals.brickPosition);
 
         if (isCollision(matrix)) {
+            if (globals.brickPosition[1] <= 1) {
+                console.log("Stop Game Loop...");
+                clearInterval(gameLoop);
+            }
             moveToNextBrick();
             updateBrickMatrix();
         } else {
@@ -94,7 +98,6 @@ function getRandomBrick() {
     let brickIndex;
 
     do {
-        console.log("generate random brick index");
         brickIndex = Math.floor(Math.random() * bricks.length);
     } while (brickIndex === globals.brickIndex);
     globals.brickIndex = brickIndex;
