@@ -53,6 +53,6 @@ export function insertToMatrix(arr, position) {
         });
     });
 
-    globals.brickPosition = [adjustedPosX, adjustedPosY];
+    globals.position = [adjustedPosX, adjustedPosY];
     return matrix;
 }

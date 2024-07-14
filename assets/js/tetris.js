@@ -15,10 +15,7 @@ export function playTetris() {
 
 function initializeGame() {
     globals.currentBrick = globals.nextBrick;
-    globals.brickPosition = [
-        Math.ceil((globals.gridSize[0] - globals.currentBrick[0].length) / 2),
-        0,
-    ];
+    globals.position = [Math.ceil((globals.gridSize[0] - globals.currentBrick[0].length) / 2), 0];
     globals.nextBrick = getRandomBrick();
 
     updateBrickMatrix();
@@ -30,22 +27,21 @@ function setupControlButtons() {
     const controlButtons = document.getElementsByClassName("control-button");
 
     for (let button of controlButtons) {
-        console.log(button);
         button.addEventListener("click", handleControlButtonClick);
     }
 }
 
 function startGameLoop() {
     const gameLoop = setInterval(() => {
-        globals.brickPosition[1]++;
+        globals.position[1]++;
         if (isBrickAtBottom()) {
             moveToNextBrick();
         }
 
-        let matrix = insertToMatrix(globals.currentBrick, globals.brickPosition);
+        let matrix = insertToMatrix(globals.currentBrick, globals.position);
 
         if (isCollision(matrix)) {
-            if (globals.brickPosition[1] <= 1) {
+            if (globals.position[1] <= 1) {
                 console.log("Stop Game Loop...");
                 clearInterval(gameLoop);
             }
@@ -64,7 +60,7 @@ function isCollision(matrix) {
 }
 
 function isBrickAtBottom() {
-    return globals.gridSize[1] - globals.currentBrick.length < globals.brickPosition[1];
+    return globals.gridSize[1] - globals.currentBrick.length < globals.position[1];
 }
 
 function cleanFullRows() {
@@ -77,12 +73,8 @@ function cleanFullRows() {
 }
 
 function moveToNextBrick() {
-    console.log("next brick");
     globals.currentBrick = globals.nextBrick;
-    globals.brickPosition = [
-        Math.ceil((globals.gridSize[0] - globals.currentBrick[0].length) / 2),
-        0,
-    ];
+    globals.position = [Math.ceil((globals.gridSize[0] - globals.currentBrick[0].length) / 2), 0];
     globals.nextBrick = getRandomBrick();
     renderIndicator(globals.nextBrick);
     globals.gameMatrix = globals.brickMatrix;
@@ -90,7 +82,7 @@ function moveToNextBrick() {
 }
 
 function updateBrickMatrix() {
-    globals.brickMatrix = insertToMatrix(globals.currentBrick, globals.brickPosition);
+    globals.brickMatrix = insertToMatrix(globals.currentBrick, globals.position);
 }
 
 function getRandomBrick() {
@@ -117,8 +109,8 @@ function getRandomBrick() {
 function rotateBrick(brick, direction) {
     const dimensionDifference = brick[0].length - brick.length;
 
-    globals.brickPosition[0] += Math.trunc(dimensionDifference / 2);
-    globals.brickPosition[1] -= dimensionDifference;
+    globals.position[0] += Math.trunc(dimensionDifference / 2);
+    globals.position[1] -= dimensionDifference;
 
     const rotateClockwise = (matrix) =>
         matrix[0].map((val, index) => matrix.map((row) => row[index]).reverse());
@@ -137,7 +129,7 @@ function rotateBrick(brick, direction) {
 
 function handleControlButtonClick(event) {
     const buttonId = event.currentTarget.id;
-    const previousBrickPosition = [...globals.brickPosition];
+    const previousPosition = [...globals.position];
     const previousBrickState = globals.currentBrick.map((innerArray) => [...innerArray]);
 
     switch (buttonId) {
@@ -148,23 +140,23 @@ function handleControlButtonClick(event) {
             globals.currentBrick = rotateBrick(globals.currentBrick, "clockwise");
             break;
         case "left-button":
-            globals.brickPosition[0]--;
+            globals.position[0]--;
             break;
         case "right-button":
-            globals.brickPosition[0]++;
+            globals.position[0]++;
             break;
         case "down-button":
-            globals.brickPosition[1]++;
+            globals.position[1]++;
             break;
         default:
             throw new Error(`Invalid button id: ${buttonId}`);
     }
 
-    let matrix = insertToMatrix(globals.currentBrick, globals.brickPosition);
+    let matrix = insertToMatrix(globals.currentBrick, globals.position);
     if (isCollision(matrix)) {
-        globals.brickPosition = previousBrickPosition;
+        globals.position = previousPosition;
         globals.currentBrick = previousBrickState;
-        matrix = insertToMatrix(globals.currentBrick, globals.brickPosition);
+        matrix = insertToMatrix(globals.currentBrick, globals.position);
     }
 
     globals.brickMatrix = matrix;

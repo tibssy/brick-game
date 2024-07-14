@@ -59,7 +59,7 @@ export const constants = {
 
 export const globals = {
     gridSize: [10, 20],
-    brickPosition: [0, 0],
+    position: [0, 0],
     interval: 1000,
     game: "snake",
     gameMatrix: null,
@@ -70,8 +70,5 @@ export const globals = {
     brickIndex: null,
     snakeDirection: "left",
     snakeLength: 4,
-    snakeHeadPosition: null,
-    snakeTailPosition: null,
-    snakeMatrix: null,
     snake: null,
 };
