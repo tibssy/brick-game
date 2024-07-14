@@ -108,6 +108,7 @@ main {
 
 #indicator-container {
     display: flex;
+    visibility: hidden;
     justify-content: center;
     padding: 8px;
     box-shadow: var(--box-shadow-large) inset;
@@ -127,7 +128,7 @@ main {
 #game-controls {
     display: grid;
     grid-template-columns: repeat(3, auto);
-    grid-template-rows: repeat(2, auto);
+    grid-template-rows: repeat(3, auto);
     width: 90%;
     gap: 15px 30px;
 }
@@ -135,7 +136,7 @@ main {
 .control-button {
     background-color: var(--primary-container);
     padding: 5px;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bold;
     box-shadow: var(--box-shadow-large);
     border-radius: var(--border-radius-large);
@@ -145,6 +146,10 @@ main {
 .control-button:active {
     box-shadow: var(--box-shadow-small);
     transform: scale(0.98);
+}
+
+#exit-button {
+    background-color: var(--error);
 }
 
 .modal {
