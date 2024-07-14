@@ -1,4 +1,5 @@
 import { buildTetris, playTetris } from "./tetris.js";
+import { playSnake } from "./snake.js";
 import { globals, constants } from "./globals.js";
 import { generateGrid, renderOnGrid, insertToMatrix } from "./display.js";
 
@@ -17,7 +18,9 @@ export function startGame() {
             });
             break;
         case "snake":
-            console.log("Buils Snake");
+            countDown(() => {
+                playSnake();
+            });
             break;
         default:
             console.log("No game selected");
