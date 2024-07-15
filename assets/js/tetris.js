@@ -3,6 +3,10 @@ import { insertToMatrix, renderIndicator, renderOnGrid } from "./display.js";
 
 export function buildTetris() {
     document.getElementById("indicator-container").style.visibility = "visible";
+    document.getElementById("up-button").innerHTML =
+        globals.rotation === "clockwise"
+            ? `<i class="fa-solid fa-rotate-right"></i>`
+            : `<i class="fa-solid fa-rotate-left"></i>`;
     globals.nextBrick = getRandomBrick();
     renderIndicator(globals.nextBrick);
 }
@@ -105,13 +109,13 @@ function getRandomBrick() {
     const rotationCount = Math.floor(Math.random() * maxRotation);
 
     for (let i = 0; i < rotationCount; i++) {
-        brick = rotateBrick(brick, "clockwise");
+        brick = rotateBrick(brick);
     }
 
     return brick;
 }
 
-function rotateBrick(brick, direction) {
+function rotateBrick(brick) {
     const dimensionDifference = brick[0].length - brick.length;
 
     globals.position[0] += Math.trunc(dimensionDifference / 2);
@@ -123,9 +127,9 @@ function rotateBrick(brick, direction) {
     const rotateCounterclockwise = (matrix) =>
         matrix[0].map((val, index) => matrix.map((row) => row[row.length - 1 - index]));
 
-    if (direction === "clockwise") {
+    if (globals.rotation === "clockwise") {
         return rotateClockwise(brick);
-    } else if (direction === "counterclockwise") {
+    } else if (globals.rotation === "counterclockwise") {
         return rotateCounterclockwise(brick);
     } else {
         throw new Error('Invalid rotation direction. Use "clockwise" or "counterclockwise".');
@@ -146,7 +150,7 @@ function handleControlButtonClick(event) {
             invertBrickMatrix();
             break;
         case "up-button":
-            globals.currentBrick = rotateBrick(globals.currentBrick, "clockwise");
+            globals.currentBrick = rotateBrick(globals.currentBrick);
             break;
         case "left-button":
             globals.position[0]--;

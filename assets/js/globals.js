@@ -61,6 +61,7 @@ export const globals = {
     gridSize: [10, 20],
     position: [0, 0],
     interval: 1000,
+    rotation: "counterclockwise",
     game: "tetris",
     isPlaying: false,
     gameMatrix: null,
