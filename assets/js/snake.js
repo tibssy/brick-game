@@ -22,6 +22,7 @@ function initializeGame() {
         globals.position[1] + i,
     ]);
     globals.gameMatrix = insertToMatrix(globals.snake, globals.position);
+    getRandomSnakeFood();
     renderOnGrid(globals.gameGrid, globals.gameMatrix);
 }
 
@@ -125,4 +126,16 @@ function moveSnake() {
     snakeTail = globals.snakeBody.pop();
     globals.gameMatrix[snakeTail[1]][snakeTail[0]] = 0;
     globals.gameMatrix[globals.position[1]][globals.position[0]] = 1;
+}
+
+function getRandomSnakeFood() {
+    const [gridWidth, gridHeight] = globals.gridSize;
+    let snakeFood;
+
+    do {
+        snakeFood = [Math.floor(Math.random() * gridWidth), Math.floor(Math.random() * gridHeight)];
+    } while (isCollision(snakeFood));
+
+    globals.gameMatrix[snakeFood[1]][snakeFood[0]] = 1;
+    globals.snakeFood = snakeFood;
 }
