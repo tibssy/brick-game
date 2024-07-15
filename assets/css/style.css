@@ -103,7 +103,7 @@ main {
 
 #game-display > div {
     border-radius: 4px;
-    transition: 0.2s ease-in-out;
+    transition: 500ms ease-in-out;
 }
 
 #indicator-container {
@@ -148,8 +148,12 @@ main {
     transform: scale(0.98);
 }
 
-#exit-button {
-    background-color: var(--error);
+.power-button {
+    font-size: 16px;
+    margin: 8px;
+    background-color: var(--tertiary);
+    color: var(--secondary-container);
+    border-radius: var(--border-radius-normal);
 }
 
 .modal {
