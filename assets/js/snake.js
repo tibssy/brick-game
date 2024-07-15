@@ -76,7 +76,13 @@ function startGameLoop() {
         if (globals.isPlaying) {
             updatePosition();
             if (isPositionInMatrix() && !isCollision(globals.position)) {
-                moveSnake();
+                if (isCollision(globals.snakeFood)) {
+                    growSnake();
+                    getRandomSnakeFood();
+                } else {
+                    moveSnake();
+                }
+
                 renderOnGrid(globals.gameGrid, globals.gameMatrix);
             } else {
                 console.log("Game Over");
@@ -119,13 +125,17 @@ function isCollision(position) {
     return snakeBody.some((pos) => pos[0] === position[0] && pos[1] === position[1]);
 }
 
+function growSnake() {
+    globals.snakeBody.splice(0, 0, [...globals.position]);
+    globals.gameMatrix[globals.position[1]][globals.position[0]] = 1;
+}
+
 function moveSnake() {
     let snakeTail;
 
-    globals.snakeBody.splice(0, 0, [...globals.position]);
+    growSnake();
     snakeTail = globals.snakeBody.pop();
     globals.gameMatrix[snakeTail[1]][snakeTail[0]] = 0;
-    globals.gameMatrix[globals.position[1]][globals.position[0]] = 1;
 }
 
 function getRandomSnakeFood() {
