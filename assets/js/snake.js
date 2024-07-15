@@ -73,13 +73,19 @@ function startGameLoop() {
 
     const gameLoop = setInterval(() => {
         if (globals.isPlaying) {
-            moveSnake();
+            updatePosition();
+            if (isPositionInMatrix()) {
+                moveSnake();
+                renderOnGrid(globals.gameGrid, globals.gameMatrix);
+            } else {
+                console.log("Game Over");
+                clearInterval(gameLoop);
+            }
         }
     }, globals.interval);
 }
 
-function moveSnake() {
-    let snakeTail;
+function updatePosition() {
     let position = [...globals.position];
 
     switch (globals.snakeDirection) {
@@ -98,9 +104,20 @@ function moveSnake() {
     }
 
     globals.position = position;
+}
+
+function isPositionInMatrix() {
+    const [positionX, positionY] = globals.position;
+    const [gridWidth, gridHeight] = globals.gridSize;
+
+    return positionX >= 0 && positionX < gridWidth && positionY >= 0 && positionY < gridHeight;
+}
+
+function moveSnake() {
+    let snakeTail;
+
     globals.snakeBody.splice(0, 0, [...globals.position]);
     snakeTail = globals.snakeBody.pop();
     globals.gameMatrix[snakeTail[1]][snakeTail[0]] = 0;
     globals.gameMatrix[globals.position[1]][globals.position[0]] = 1;
-    renderOnGrid(globals.gameGrid, globals.gameMatrix);
 }
