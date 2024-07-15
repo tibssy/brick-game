@@ -74,7 +74,7 @@ function startGameLoop() {
     const gameLoop = setInterval(() => {
         if (globals.isPlaying) {
             updatePosition();
-            if (isPositionInMatrix()) {
+            if (isPositionInMatrix() && !isCollision(globals.position)) {
                 moveSnake();
                 renderOnGrid(globals.gameGrid, globals.gameMatrix);
             } else {
@@ -111,6 +111,11 @@ function isPositionInMatrix() {
     const [gridWidth, gridHeight] = globals.gridSize;
 
     return positionX >= 0 && positionX < gridWidth && positionY >= 0 && positionY < gridHeight;
+}
+
+function isCollision(position) {
+    const snakeBody = [...globals.snakeBody];
+    return snakeBody.some((pos) => pos[0] === position[0] && pos[1] === position[1]);
 }
 
 function moveSnake() {
