@@ -18,10 +18,11 @@ export function renderOnGrid(element, array) {
             element.children[index].style.boxShadow = "0 0 6px #333333";
             element.children[index].style.backgroundColor = "#b9f46c";
             element.children[index].style.transform = "scale(1)";
+            element.children[index].style.transition = `${globals.interval / 4}ms ease-in-out`;
         } else {
             element.children[index].style.boxShadow = "none";
             element.children[index].style.backgroundColor = element.style.backgroundColor;
-            element.children[index].style.transform = "scale(0.5)";
+            element.children[index].style.transform = "scale(0.3)";
         }
     });
 }

@@ -70,7 +70,7 @@ export const globals = {
     nextBrick: null,
     currentBrick: null,
     brickIndex: null,
-    snakeDirection: "left",
+    snakeDirection: "up",
     snakeLength: 4,
     snake: null,
 };
