@@ -9,6 +9,9 @@ export function playSnake() {
     console.log("play...");
     initializeGame();
     setupControlButtons();
+    if (globals.paltform === "desktop") {
+        setupKeyboardControls();
+    }
     startGameLoop();
 }
 
@@ -32,6 +35,10 @@ function setupControlButtons() {
     for (let button of controlButtons) {
         button.addEventListener("click", handleControlButtonClick);
     }
+}
+
+function setupKeyboardControls() {
+    document.addEventListener("keydown", handleKeyDown);
 }
 
 function handleControlButtonClick(event) {
@@ -62,6 +69,23 @@ function handleControlButtonClick(event) {
     }
 }
 
+function handleKeyDown(event) {
+    switch (event.key) {
+        case "ArrowUp":
+            globals.snakeDirection = "up";
+            break;
+        case "ArrowLeft":
+            globals.snakeDirection = "left";
+            break;
+        case "ArrowRight":
+            globals.snakeDirection = "right";
+            break;
+        case "ArrowDown":
+            globals.snakeDirection = "down";
+            break;
+    }
+}
+
 function invertGameMatrix() {
     globals.gameMatrix = globals.gameMatrix.map((row) =>
         row.map((element) => (element === 0 ? 1 : 0))
@@ -89,7 +113,7 @@ function startGameLoop() {
                 clearInterval(gameLoop);
             }
         }
-    }, globals.interval);
+    }, globals.interval / 2);
 }
 
 function updatePosition() {

@@ -58,6 +58,7 @@ export const constants = {
 };
 
 export const globals = {
+    paltform: null,
     gridSize: [10, 20],
     position: [0, 0],
     interval: 1000,

@@ -4,6 +4,8 @@ import { globals, constants } from "./globals.js";
 import { generateGrid, renderOnGrid, insertToMatrix } from "./display.js";
 
 export function startGame() {
+    globals.paltform =
+        "ontouchstart" in window || navigator.maxTouchPoints > 0 ? "mobile" : "desktop";
     globals.gameMatrix = Array.from(Array(globals.gridSize[1]), () =>
         Array(globals.gridSize[0]).fill(0)
     );
