@@ -167,8 +167,10 @@ function handleControlButtonClick(event) {
             throw new Error(`Invalid button id: ${buttonId}`);
     }
 
-    updateGameState(previousPosition, previousBrickState);
-    renderOnGrid(globals.gameGrid, globals.brickMatrix);
+    if (globals.isPlaying) {
+        updateGameState(previousPosition, previousBrickState);
+        renderOnGrid(globals.gameGrid, globals.brickMatrix);
+    }
 }
 
 function invertBrickMatrix() {
