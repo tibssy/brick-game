@@ -27,3 +27,53 @@ function handlePowerButtonClick(event) {
             throw new Error(`Invalid button id: ${buttonId}`);
     }
 }
+
+export function setupSnakeControls(platform) {
+    const controlButtons = document.getElementsByClassName("control-button");
+
+    for (let button of controlButtons) {
+        button.addEventListener("click", handleSnakeControlButtonClick);
+    }
+
+    if (platform === "desktop") {
+        document.addEventListener("keydown", handleSnakeKeyDown);
+    }
+}
+
+function handleSnakeControlButtonClick(event) {
+    const buttonId = event.currentTarget.id;
+
+    switch (buttonId) {
+        case "up-button":
+            globals.snakeDirection = "up";
+            break;
+        case "left-button":
+            globals.snakeDirection = "left";
+            break;
+        case "right-button":
+            globals.snakeDirection = "right";
+            break;
+        case "down-button":
+            globals.snakeDirection = "down";
+            break;
+        default:
+            throw new Error(`Invalid button id: ${buttonId}`);
+    }
+}
+
+function handleSnakeKeyDown(event) {
+    switch (event.key) {
+        case "ArrowUp":
+            globals.snakeDirection = "up";
+            break;
+        case "ArrowLeft":
+            globals.snakeDirection = "left";
+            break;
+        case "ArrowRight":
+            globals.snakeDirection = "right";
+            break;
+        case "ArrowDown":
+            globals.snakeDirection = "down";
+            break;
+    }
+}

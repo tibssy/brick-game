@@ -9,10 +9,6 @@ export function buildSnake() {
 export function playSnake() {
     console.log("play...");
     initializeGame();
-    setupControlButtons();
-    if (globals.paltform === "desktop") {
-        setupKeyboardControls();
-    }
     startGameLoop();
 }
 
@@ -28,56 +24,6 @@ function initializeGame() {
     globals.gameMatrix = insertToMatrix(globals.snake, globals.position);
     getRandomSnakeFood();
     renderOnGrid(globals.gameGrid, globals.gameMatrix);
-}
-
-function setupControlButtons() {
-    const controlButtons = document.getElementsByClassName("control-button");
-
-    for (let button of controlButtons) {
-        button.addEventListener("click", handleControlButtonClick);
-    }
-}
-
-function setupKeyboardControls() {
-    document.addEventListener("keydown", handleKeyDown);
-}
-
-function handleControlButtonClick(event) {
-    const buttonId = event.currentTarget.id;
-
-    switch (buttonId) {
-        case "up-button":
-            globals.snakeDirection = "up";
-            break;
-        case "left-button":
-            globals.snakeDirection = "left";
-            break;
-        case "right-button":
-            globals.snakeDirection = "right";
-            break;
-        case "down-button":
-            globals.snakeDirection = "down";
-            break;
-        default:
-            throw new Error(`Invalid button id: ${buttonId}`);
-    }
-}
-
-function handleKeyDown(event) {
-    switch (event.key) {
-        case "ArrowUp":
-            globals.snakeDirection = "up";
-            break;
-        case "ArrowLeft":
-            globals.snakeDirection = "left";
-            break;
-        case "ArrowRight":
-            globals.snakeDirection = "right";
-            break;
-        case "ArrowDown":
-            globals.snakeDirection = "down";
-            break;
-    }
 }
 
 function startGameLoop() {

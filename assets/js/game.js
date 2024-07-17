@@ -1,12 +1,12 @@
 import { buildTetris, playTetris } from "./tetris.js";
 import { buildSnake, playSnake } from "./snake.js";
 import { globals, constants } from "./globals.js";
-import { setupPowerButtons } from "./controls.js";
+import { setupPowerButtons, setupSnakeControls } from "./controls.js";
 import { generateGrid, renderOnGrid, insertToMatrix } from "./display.js";
 import { openModal } from "./main.js";
 
 export function startGame() {
-    globals.paltform =
+    const platform =
         "ontouchstart" in window || navigator.maxTouchPoints > 0 ? "mobile" : "desktop";
     globals.gameMatrix = Array.from(Array(globals.gridSize[1]), () =>
         Array(globals.gridSize[0]).fill(0)
@@ -26,6 +26,7 @@ export function startGame() {
             buildSnake();
             countDown(() => {
                 setupPowerButtons();
+                setupSnakeControls(platform);
                 playSnake();
             });
             break;
