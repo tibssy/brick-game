@@ -57,3 +57,11 @@ export function insertToMatrix(arr, position) {
     globals.position = [adjustedPosX, adjustedPosY];
     return matrix;
 }
+
+export function invertBrickMatrix() {
+    globals.brickMatrix = globals.brickMatrix.map((row) =>
+        row.map((element) => (element === 0 ? 1 : 0))
+    );
+
+    renderOnGrid(globals.gameGrid, globals.brickMatrix);
+}

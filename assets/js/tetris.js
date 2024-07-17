@@ -143,14 +143,6 @@ function handleControlButtonClick(event) {
     const previousBrickState = globals.currentBrick.map((innerArray) => [...innerArray]);
 
     switch (buttonId) {
-        case "exit-button":
-            console.log("exit...");
-            resetGame();
-            break;
-        case "break-button":
-            globals.isPlaying = !globals.isPlaying;
-            invertBrickMatrix();
-            break;
         case "up-button":
             globals.currentBrick = rotateBrick(globals.currentBrick);
             break;
@@ -167,16 +159,8 @@ function handleControlButtonClick(event) {
             throw new Error(`Invalid button id: ${buttonId}`);
     }
 
-    if (globals.isPlaying) {
-        updateGameState(previousPosition, previousBrickState);
-        renderOnGrid(globals.gameGrid, globals.brickMatrix);
-    }
-}
-
-function invertBrickMatrix() {
-    globals.brickMatrix = globals.brickMatrix.map((row) =>
-        row.map((element) => (element === 0 ? 1 : 0))
-    );
+    updateGameState(previousPosition, previousBrickState);
+    renderOnGrid(globals.gameGrid, globals.brickMatrix);
 }
 
 function updateGameState(previousPosition, previousBrickState) {

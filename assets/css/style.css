@@ -133,6 +133,7 @@ main {
     gap: 15px 30px;
 }
 
+.power-button,
 .control-button {
     background-color: var(--primary-container);
     padding: 5px;
@@ -143,6 +144,7 @@ main {
     transition: 0.05s ease-in-out;
 }
 
+.power-button:active,
 .control-button:active {
     box-shadow: var(--box-shadow-small);
     transform: scale(0.98);

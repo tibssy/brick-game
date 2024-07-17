@@ -1,6 +1,7 @@
 import { buildTetris, playTetris } from "./tetris.js";
 import { buildSnake, playSnake } from "./snake.js";
 import { globals, constants } from "./globals.js";
+import { setupPowerButtons } from "./controls.js";
 import { generateGrid, renderOnGrid, insertToMatrix } from "./display.js";
 import { openModal } from "./main.js";
 
@@ -17,12 +18,14 @@ export function startGame() {
         case "tetris":
             buildTetris();
             countDown(() => {
+                setupPowerButtons();
                 playTetris();
             });
             break;
         case "snake":
             buildSnake();
             countDown(() => {
+                setupPowerButtons();
                 playSnake();
             });
             break;
