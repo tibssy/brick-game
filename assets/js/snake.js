@@ -46,14 +46,6 @@ function handleControlButtonClick(event) {
     const buttonId = event.currentTarget.id;
 
     switch (buttonId) {
-        case "exit-button":
-            console.log("exit...");
-            resetGame();
-            break;
-        case "break-button":
-            globals.isPlaying = !globals.isPlaying;
-            invertGameMatrix();
-            break;
         case "up-button":
             globals.snakeDirection = "up";
             break;
@@ -86,13 +78,6 @@ function handleKeyDown(event) {
             globals.snakeDirection = "down";
             break;
     }
-}
-
-function invertGameMatrix() {
-    globals.gameMatrix = globals.gameMatrix.map((row) =>
-        row.map((element) => (element === 0 ? 1 : 0))
-    );
-    renderOnGrid(globals.gameGrid, globals.gameMatrix);
 }
 
 function startGameLoop() {

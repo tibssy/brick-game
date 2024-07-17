@@ -1,5 +1,5 @@
 import { globals } from "./globals.js";
-import { invertBrickMatrix } from "./display.js";
+import { invertBrickMatrix, invertGameMatrix } from "./display.js";
 import { resetGame } from "./game.js";
 
 export function setupPowerButtons() {
@@ -12,6 +12,7 @@ export function setupPowerButtons() {
 
 function handlePowerButtonClick(event) {
     const buttonId = event.currentTarget.id;
+    const invertMatrix = globals.game === "tetris" ? invertBrickMatrix : invertGameMatrix;
 
     switch (buttonId) {
         case "exit-button":
@@ -20,7 +21,7 @@ function handlePowerButtonClick(event) {
             break;
         case "break-button":
             globals.isPlaying = !globals.isPlaying;
-            invertBrickMatrix();
+            invertMatrix();
             break;
         default:
             throw new Error(`Invalid button id: ${buttonId}`);

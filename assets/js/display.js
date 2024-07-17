@@ -65,3 +65,10 @@ export function invertBrickMatrix() {
 
     renderOnGrid(globals.gameGrid, globals.brickMatrix);
 }
+
+export function invertGameMatrix() {
+    globals.gameMatrix = globals.gameMatrix.map((row) =>
+        row.map((element) => (element === 0 ? 1 : 0))
+    );
+    renderOnGrid(globals.gameGrid, globals.gameMatrix);
+}
