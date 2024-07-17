@@ -55,10 +55,23 @@ export const constants = {
             [0, 1, 1, 0],
         ],
     ],
+    keyActions: {
+        ArrowUp: "up",
+        ArrowLeft: "left",
+        ArrowRight: "right",
+        ArrowDown: "down",
+    },
+    buttonActions: {
+        "up-button": "up",
+        "left-button": "left",
+        "right-button": "right",
+        "down-button": "down",
+    },
 };
 
 export const globals = {
     gameLoop: null,
+    paltform: null,
     gridSize: [10, 20],
     position: [0, 0],
     interval: 1000,

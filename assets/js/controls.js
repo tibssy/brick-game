@@ -1,4 +1,4 @@
-import { globals } from "./globals.js";
+import { constants, globals } from "./globals.js";
 import { invertBrickMatrix, invertGameMatrix } from "./display.js";
 import { resetGame } from "./game.js";
 
@@ -42,38 +42,19 @@ export function setupSnakeControls(platform) {
 
 function handleSnakeControlButtonClick(event) {
     const buttonId = event.currentTarget.id;
+    const direction = constants.buttonActions[buttonId];
 
-    switch (buttonId) {
-        case "up-button":
-            globals.snakeDirection = "up";
-            break;
-        case "left-button":
-            globals.snakeDirection = "left";
-            break;
-        case "right-button":
-            globals.snakeDirection = "right";
-            break;
-        case "down-button":
-            globals.snakeDirection = "down";
-            break;
-        default:
-            throw new Error(`Invalid button id: ${buttonId}`);
+    if (direction) {
+        globals.snakeDirection = direction;
+    } else {
+        throw new Error(`Invalid button id: ${buttonId}`);
     }
 }
 
 function handleSnakeKeyDown(event) {
-    switch (event.key) {
-        case "ArrowUp":
-            globals.snakeDirection = "up";
-            break;
-        case "ArrowLeft":
-            globals.snakeDirection = "left";
-            break;
-        case "ArrowRight":
-            globals.snakeDirection = "right";
-            break;
-        case "ArrowDown":
-            globals.snakeDirection = "down";
-            break;
+    const direction = constants.keyActions[event.key];
+
+    if (direction) {
+        globals.snakeDirection = direction;
     }
 }
