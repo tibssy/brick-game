@@ -58,12 +58,13 @@ export const constants = {
 };
 
 export const globals = {
+    gameLoop: null,
     paltform: null,
     gridSize: [10, 20],
     position: [0, 0],
     interval: 1000,
     rotation: "counterclockwise",
-    game: "snake",
+    game: "tetris",
     isPlaying: false,
     gameMatrix: null,
     gameGrid: null,

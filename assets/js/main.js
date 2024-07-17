@@ -22,3 +22,13 @@ function closeModal() {
 
     document.querySelector("main").style.transform = "scale(1)";
 }
+
+export function openModal() {
+    const modal = document.getElementById("settings");
+    modal.style.display = "flex";
+    modal.offsetHeight;
+    modal.style.transform = "scale(1)";
+    modal.style.filter = "opacity(1)";
+
+    document.querySelector("main").style.transform = "scale(0.8)";
+}

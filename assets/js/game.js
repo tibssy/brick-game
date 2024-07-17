@@ -2,6 +2,7 @@ import { buildTetris, playTetris } from "./tetris.js";
 import { buildSnake, playSnake } from "./snake.js";
 import { globals, constants } from "./globals.js";
 import { generateGrid, renderOnGrid, insertToMatrix } from "./display.js";
+import { openModal } from "./main.js";
 
 export function startGame() {
     globals.paltform =
@@ -57,6 +58,11 @@ function countDown(callback) {
     }, 1000);
 }
 
-function gameOver() {
+export function resetGame() {
     console.log("Game Over");
+    globals.isPlaying = false;
+    clearInterval(globals.gameLoop);
+    globals.gameGrid.innerHTML = "";
+
+    openModal();
 }

@@ -1,5 +1,6 @@
 import { globals } from "./globals.js";
 import { insertToMatrix, renderOnGrid } from "./display.js";
+import { resetGame } from "./game.js";
 
 export function buildSnake() {
     globals.snake = Array.from({ length: globals.snakeLength }, () => [1]);
@@ -47,6 +48,7 @@ function handleControlButtonClick(event) {
     switch (buttonId) {
         case "exit-button":
             console.log("exit...");
+            resetGame();
             break;
         case "break-button":
             globals.isPlaying = !globals.isPlaying;
@@ -96,7 +98,7 @@ function invertGameMatrix() {
 function startGameLoop() {
     globals.isPlaying = true;
 
-    const gameLoop = setInterval(() => {
+    globals.gameLoop = setInterval(() => {
         if (globals.isPlaying) {
             updatePosition();
             if (isPositionInMatrix() && !isCollision(globals.position)) {
@@ -110,7 +112,7 @@ function startGameLoop() {
                 renderOnGrid(globals.gameGrid, globals.gameMatrix);
             } else {
                 console.log("Game Over");
-                clearInterval(gameLoop);
+                resetGame();
             }
         }
     }, globals.interval / 2);

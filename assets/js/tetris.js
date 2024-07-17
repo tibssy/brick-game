@@ -1,5 +1,6 @@
 import { globals, constants } from "./globals.js";
 import { insertToMatrix, renderIndicator, renderOnGrid } from "./display.js";
+import { resetGame } from "./game.js";
 
 export function buildTetris() {
     document.getElementById("indicator-container").style.visibility = "visible";
@@ -39,7 +40,7 @@ function setupControlButtons() {
 function startGameLoop() {
     globals.isPlaying = true;
 
-    const gameLoop = setInterval(() => {
+    globals.gameLoop = setInterval(() => {
         if (globals.isPlaying) {
             globals.position[1]++;
             if (isBrickAtBottom()) {
@@ -51,7 +52,7 @@ function startGameLoop() {
             if (isCollision(matrix)) {
                 if (globals.position[1] <= 1) {
                     console.log("Stop Game Loop...");
-                    clearInterval(gameLoop);
+                    resetGame();
                 }
                 moveToNextBrick();
                 updateBrickMatrix();
@@ -144,6 +145,7 @@ function handleControlButtonClick(event) {
     switch (buttonId) {
         case "exit-button":
             console.log("exit...");
+            resetGame();
             break;
         case "break-button":
             globals.isPlaying = !globals.isPlaying;
