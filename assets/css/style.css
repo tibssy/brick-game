@@ -175,7 +175,9 @@ main {
 .modal-content {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    gap: 10px;
     width: 85%;
     height: 94%;
     padding: 10px;
@@ -188,4 +190,43 @@ main {
     width: 100%;
     font-size: 1.5rem;
     box-shadow: var(--box-shadow-normal);
+}
+
+#game-selector {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#carousel-container {
+    overflow: hidden;
+    border: 3px solid var(--primary);
+    border-radius: var(--border-radius-normal);
+}
+
+#game-selector-images {
+    display: flex;
+    width: 200%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-image {
+    width: 50%;
+    object-fit: cover;
+}
+
+#game-selector-controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+#game-selector-controls button {
+    width: 60px;
+}
+
+#game-selector-controls p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: auto 0;
 }

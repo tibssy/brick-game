@@ -1,7 +1,9 @@
 import { startGame } from "./game.js";
+import { settings } from "./settings.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const startButton = document.getElementById("start-button");
+    settings();
     startButton.addEventListener("click", () => {
         closeModal();
         startGame();
