@@ -13,7 +13,7 @@ export function setupPowerButtons() {
 
 function handlePowerButtonClick(event) {
     const buttonId = event.currentTarget.id;
-    const invertMatrix = globals.game === "tetris" ? invertBrickMatrix : invertGameMatrix;
+    const invertMatrix = globals.game === "snake" ? invertGameMatrix : invertBrickMatrix;
 
     switch (buttonId) {
         case "exit-button":

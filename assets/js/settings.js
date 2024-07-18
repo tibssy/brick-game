@@ -16,7 +16,7 @@ function gameSelector() {
     const images = document.querySelector("#game-selector-images");
     const buttons = document.querySelectorAll("#game-selector-controls button");
     const caption = document.querySelector("#game-selector-controls p");
-    const captions = ["Tetris", "Snake"];
+    const captions = ["Tetris", "Snake", "TetrisMod"];
     const buttonActions = {
         "previous-game": -1,
         "next-game": 1,

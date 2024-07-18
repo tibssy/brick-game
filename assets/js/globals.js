@@ -26,6 +26,41 @@ export const constants = {
             [1, 1, 1],
         ],
     ],
+    bricksMod: [
+        [
+            [0, 1, 0],
+            [1, 1, 1],
+            [0, 1, 0],
+        ],
+        [[1, 1]],
+        [
+            [0, 0, 1],
+            [1, 1, 1],
+            [1, 0, 0],
+        ],
+        [
+            [1, 0, 0],
+            [1, 1, 1],
+            [0, 0, 1],
+        ],
+        [
+            [1, 0, 1],
+            [1, 1, 1],
+        ],
+        [
+            [0, 1],
+            [1, 1],
+        ],
+        [
+            [1, 0],
+            [1, 1],
+        ],
+        [
+            [1, 1, 1],
+            [0, 1, 0],
+            [0, 1, 0],
+        ],
+    ],
     countdownNumbers: [
         [
             [0, 0, 1, 0],
@@ -73,7 +108,7 @@ export const globals = {
     position: [0, 0],
     interval: 1000,
     rotation: "counterclockwise",
-    game: "tetris",
+    game: "snake",
     isPlaying: false,
     gameMatrix: null,
     gameGrid: null,

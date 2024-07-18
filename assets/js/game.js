@@ -21,6 +21,7 @@ export function startGame() {
 
     switch (globals.game) {
         case "tetris":
+        case "tetrismod":
             buildTetris();
             countDown(() => {
                 setupPowerButtons();

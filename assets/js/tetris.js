@@ -87,8 +87,12 @@ function updateBrickMatrix() {
 }
 
 function getRandomBrick() {
-    const bricks = constants.bricks;
+    let bricks = constants.bricks;
     let brickIndex;
+
+    if (globals.game === "tetrismod" && Math.floor(Math.random() * 2)) {
+        bricks = constants.bricksMod;
+    }
 
     do {
         brickIndex = Math.floor(Math.random() * bricks.length);
