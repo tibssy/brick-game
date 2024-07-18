@@ -76,7 +76,7 @@ export const globals = {
     position: [0, 0],
     interval: 1000,
     rotation: "counterclockwise",
-    game: "snake",
+    game: "tetris",
     isPlaying: false,
     gameMatrix: null,
     gameGrid: null,
