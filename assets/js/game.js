@@ -39,6 +39,7 @@ export function startGame() {
             break;
         default:
             console.log("No game selected");
+            alert("No game selected");
             break;
     }
 }
