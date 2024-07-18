@@ -4,6 +4,7 @@ import { resetGame } from "./game.js";
 
 export function buildSnake() {
     globals.snake = Array.from({ length: globals.snakeLength }, () => [1]);
+    document.getElementById("up-button").innerHTML = `<i class="fa-solid fa-angle-up"></i>`;
 }
 
 export function playSnake() {

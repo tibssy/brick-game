@@ -1,7 +1,15 @@
-import { globals, constants } from "./globals.js";
+import { globals } from "./globals.js";
+import { startGame } from "./game.js";
 
 export function settings() {
+    const startButton = document.getElementById("start-button");
+
     gameSelector();
+
+    startButton.addEventListener("click", () => {
+        closeSettings();
+        startGame();
+    });
 }
 
 function gameSelector() {
@@ -19,9 +27,17 @@ function gameSelector() {
         button.addEventListener("click", (event) => {
             const buttonId = event.currentTarget.id;
 
-            currentIndex = Math.max(0, Math.min(buttonActions[buttonId], captions.length));
+            let newIndex = Math.max(
+                0,
+                Math.min(currentIndex + buttonActions[buttonId], captions.length - 1)
+            );
+            if (newIndex !== currentIndex) {
+                currentIndex = newIndex;
+                updateCarousel();
+                console.log("update...");
+            }
 
-            updateCarousel();
+            console.log(currentIndex);
         });
     }
 
@@ -33,4 +49,29 @@ function gameSelector() {
     }
 
     updateCarousel();
+}
+
+function closeSettings() {
+    const modal = document.getElementById("settings");
+    modal.style.transform = "scale(1.5)";
+    modal.style.filter = "opacity(0)";
+
+    modal.addEventListener("transitionend", onTransitionEnd);
+
+    function onTransitionEnd() {
+        modal.style.display = "none";
+        modal.removeEventListener("transitionend", onTransitionEnd);
+    }
+
+    document.querySelector("main").style.transform = "scale(1)";
+}
+
+export function openSettings() {
+    const modal = document.getElementById("settings");
+    modal.style.display = "flex";
+    modal.offsetHeight;
+    modal.style.transform = "scale(1)";
+    modal.style.filter = "opacity(1)";
+
+    document.querySelector("main").style.transform = "scale(0.8)";
 }

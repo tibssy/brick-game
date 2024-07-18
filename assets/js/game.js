@@ -8,7 +8,7 @@ import {
     removeAllEventListeners,
 } from "./controls.js";
 import { generateGrid, renderOnGrid, insertToMatrix } from "./display.js";
-import { openModal } from "./main.js";
+import { openSettings } from "./settings.js";
 
 export function startGame() {
     const platform =
@@ -74,6 +74,5 @@ export function resetGame() {
     clearInterval(globals.gameLoop);
     globals.gameGrid.innerHTML = "";
     removeAllEventListeners();
-
-    openModal();
+    openSettings();
 }
