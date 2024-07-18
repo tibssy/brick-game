@@ -15,7 +15,6 @@ export function buildTetris() {
 export function playTetris() {
     console.log("play...");
     initializeGame();
-    setupControlButtons();
     startGameLoop();
 }
 
@@ -27,14 +26,6 @@ function initializeGame() {
     updateBrickMatrix();
     renderOnGrid(globals.gameGrid, globals.brickMatrix);
     renderIndicator(globals.nextBrick);
-}
-
-function setupControlButtons() {
-    const controlButtons = document.getElementsByClassName("control-button");
-
-    for (let button of controlButtons) {
-        button.addEventListener("click", handleControlButtonClick);
-    }
 }
 
 function startGameLoop() {
@@ -116,7 +107,7 @@ function getRandomBrick() {
     return brick;
 }
 
-function rotateBrick(brick) {
+export function rotateBrick(brick) {
     const dimensionDifference = brick[0].length - brick.length;
 
     globals.position[0] += Math.trunc(dimensionDifference / 2);
@@ -137,33 +128,7 @@ function rotateBrick(brick) {
     }
 }
 
-function handleControlButtonClick(event) {
-    const buttonId = event.currentTarget.id;
-    const previousPosition = [...globals.position];
-    const previousBrickState = globals.currentBrick.map((innerArray) => [...innerArray]);
-
-    switch (buttonId) {
-        case "up-button":
-            globals.currentBrick = rotateBrick(globals.currentBrick);
-            break;
-        case "left-button":
-            globals.position[0]--;
-            break;
-        case "right-button":
-            globals.position[0]++;
-            break;
-        case "down-button":
-            globals.position[1]++;
-            break;
-        default:
-            throw new Error(`Invalid button id: ${buttonId}`);
-    }
-
-    updateGameState(previousPosition, previousBrickState);
-    renderOnGrid(globals.gameGrid, globals.brickMatrix);
-}
-
-function updateGameState(previousPosition, previousBrickState) {
+export function updateGameState(previousPosition, previousBrickState) {
     let matrix = insertToMatrix(globals.currentBrick, globals.position);
 
     if (isCollision(matrix) || !globals.isPlaying) {

@@ -1,6 +1,7 @@
 import { constants, globals } from "./globals.js";
-import { invertBrickMatrix, invertGameMatrix } from "./display.js";
+import { invertBrickMatrix, invertGameMatrix, renderOnGrid } from "./display.js";
 import { resetGame } from "./game.js";
+import { updateGameState, rotateBrick } from "./tetris.js";
 
 export function setupPowerButtons() {
     const powerButtons = document.getElementsByClassName("power-button");
@@ -57,4 +58,65 @@ function handleSnakeKeyDown(event) {
     if (direction) {
         globals.snakeDirection = direction;
     }
+}
+
+export function setupTetrisControls(platform) {
+    const controlButtons = document.getElementsByClassName("control-button");
+
+    for (let button of controlButtons) {
+        button.addEventListener("click", handleTetrisControlButtonClick);
+    }
+
+    if (platform === "desktop") {
+        document.addEventListener("keydown", handleTetrisKeyDown);
+    }
+}
+
+function handleTetrisControlButtonClick(event) {
+    const buttonId = event.currentTarget.id;
+    const previousPosition = [...globals.position];
+    const previousBrickState = globals.currentBrick.map((innerArray) => [...innerArray]);
+
+    switch (buttonId) {
+        case "up-button":
+            globals.currentBrick = rotateBrick(globals.currentBrick);
+            break;
+        case "left-button":
+            globals.position[0]--;
+            break;
+        case "right-button":
+            globals.position[0]++;
+            break;
+        case "down-button":
+            globals.position[1]++;
+            break;
+        default:
+            throw new Error(`Invalid button id: ${buttonId}`);
+    }
+
+    updateGameState(previousPosition, previousBrickState);
+    renderOnGrid(globals.gameGrid, globals.brickMatrix);
+}
+
+function handleTetrisKeyDown(event) {
+    const previousPosition = [...globals.position];
+    const previousBrickState = globals.currentBrick.map((innerArray) => [...innerArray]);
+
+    switch (event.key) {
+        case "ArrowUp":
+            globals.currentBrick = rotateBrick(globals.currentBrick);
+            break;
+        case "ArrowLeft":
+            globals.position[0]--;
+            break;
+        case "ArrowRight":
+            globals.position[0]++;
+            break;
+        case "ArrowDown":
+            globals.position[1]++;
+            break;
+    }
+
+    updateGameState(previousPosition, previousBrickState);
+    renderOnGrid(globals.gameGrid, globals.brickMatrix);
 }
