@@ -120,3 +120,13 @@ function handleTetrisKeyDown(event) {
     updateGameState(previousPosition, previousBrickState);
     renderOnGrid(globals.gameGrid, globals.brickMatrix);
 }
+
+export function removeAllEventListeners() {
+    const gameControls = document.getElementById("game-controls");
+    const buttons = gameControls.getElementsByTagName("button");
+
+    for (let button of buttons) {
+        const clonedButton = button.cloneNode(true);
+        button.parentNode.replaceChild(clonedButton, button);
+    }
+}
