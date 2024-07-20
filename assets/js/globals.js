@@ -102,6 +102,7 @@ export const constants = {
 };
 
 export const globals = {
+    accentColor: "#fcd234",
     gameLoop: null,
     paltform: null,
     gridSize: [10, 20],

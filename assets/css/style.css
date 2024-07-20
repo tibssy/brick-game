@@ -96,13 +96,15 @@ main {
     padding: 8px;
     flex-grow: 1;
     aspect-ratio: 1/2;
-    background-color: var(--outline-variant);
+    /* background-color: var(--outline-variant); */
+    background-color: #2b2b2b;
     border-radius: var(--border-radius-large);
     box-shadow: var(--box-shadow-large) inset;
 }
 
 #game-display > div {
-    border-radius: 4px;
+    /* border-radius: 4px; */
+    filter: opacity(0);
     transition: 500ms ease-in-out;
 }
 

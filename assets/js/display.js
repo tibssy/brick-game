@@ -8,21 +8,26 @@ export function generateGrid(element, size) {
 
     for (let i = 0; i < cols * rows; i++) {
         const cell = document.createElement("div");
+        const maskUrl = `assets/images/blocks/block-${Math.floor(Math.random() * 10)}.svg`;
+
+        cell.style.mask = `url("${maskUrl}") no-repeat 100% 100%`;
+        cell.style.maskSize = "cover";
+        cell.style.backgroundColor = globals.accentColor;
+
         element.appendChild(cell);
     }
 }
 
 export function renderOnGrid(element, array) {
     array.flat().forEach((value, index) => {
+        const blockStyle = element.children[index].style;
         if (value) {
-            element.children[index].style.boxShadow = "0 0 6px #333333";
-            element.children[index].style.backgroundColor = "#b9f46c";
-            element.children[index].style.transform = "scale(1)";
-            element.children[index].style.transition = `${globals.interval / 4}ms ease-in-out`;
+            blockStyle.transform = "scale(1)";
+            blockStyle.filter = "opacity(1)";
+            blockStyle.transition = `${globals.interval / 5}ms ease-in-out`;
         } else {
-            element.children[index].style.boxShadow = "none";
-            element.children[index].style.backgroundColor = element.style.backgroundColor;
-            element.children[index].style.transform = "scale(0.3)";
+            blockStyle.transform = "scale(0.3)";
+            blockStyle.filter = "opacity(0)";
         }
     });
 }
