@@ -11,7 +11,7 @@ export function generateGrid(element, size) {
         const maskUrl = `assets/images/blocks/block-${Math.floor(Math.random() * 10)}.svg`;
 
         cell.style.mask = `url("${maskUrl}") no-repeat 100% 100%`;
-        cell.style.maskSize = "cover";
+        cell.style.maskSize = "contain";
         cell.style.backgroundColor = globals.accentColor;
 
         element.appendChild(cell);
