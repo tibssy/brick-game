@@ -24,7 +24,7 @@ export function renderOnGrid(element, array) {
         if (value) {
             blockStyle.transform = "scale(1)";
             blockStyle.filter = "opacity(1)";
-            blockStyle.transition = `${globals.interval / 5}ms ease-in-out`;
+            blockStyle.transition = `${globals.interval / 4}ms ease-in-out`;
         } else {
             blockStyle.transform = "scale(0.3)";
             blockStyle.filter = "opacity(0)";
