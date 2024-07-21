@@ -3,8 +3,39 @@ import { invertBrickMatrix, invertGameMatrix, renderOnGrid } from "./display.js"
 import { resetGame } from "./game.js";
 import { updateGameState, rotateBrick } from "./tetris.js";
 
+export function setupButtons() {
+    const buttons = document.querySelectorAll(".icon-button");
+    const buttonImages = {
+        "break-button": "break",
+        "speaker-button": "speaker-on",
+        "exit-button": "close",
+        "up-button": "arrow-up",
+        "down-button": "arrow-down",
+        "left-button": "arrow-left",
+        "right-button": "arrow-right",
+    };
+
+    buttons.forEach((button) => {
+        const icon = buttonImages[button.id];
+
+        if (icon) {
+            const iconButton = createIconButton(icon);
+            button.appendChild(iconButton);
+        }
+    });
+}
+
+function createIconButton(icon) {
+    const iconButton = document.createElement("div");
+    iconButton.style.mask = `url("assets/images/buttons/${icon}.svg") no-repeat center / contain`;
+    iconButton.style.aspectRatio = "1/1";
+    iconButton.style.backgroundColor = globals.accentColor;
+    return iconButton;
+}
+
 export function setupPowerButtons() {
-    const powerButtons = document.getElementsByClassName("power-button");
+    const powerButtons = document.getElementById("power-buttons").children;
+    console.log(powerButtons);
 
     for (let button of powerButtons) {
         button.addEventListener("click", handlePowerButtonClick);
@@ -61,7 +92,7 @@ function handleSnakeKeyDown(event) {
 }
 
 export function setupTetrisControls(platform) {
-    const controlButtons = document.getElementsByClassName("control-button");
+    const controlButtons = document.getElementById("game-controls").children;
 
     for (let button of controlButtons) {
         button.addEventListener("click", handleTetrisControlButtonClick);

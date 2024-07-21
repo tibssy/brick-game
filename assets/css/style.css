@@ -67,7 +67,6 @@ main {
     align-items: center;
     gap: 20px;
     padding: 6px;
-    /* background-color: var(--secondary-container); */
     transform: scale(0.8);
     transition: 0.5s ease-in-out;
 }
@@ -75,13 +74,18 @@ main {
 #game-area {
     display: flex;
     justify-content: space-evenly;
-    max-width: 600px;
+    max-width: 500px;
     width: 100%;
-    height: 75vh;
+    padding: 6px;
     gap: 6px;
+    border-radius: var(--border-radius-large);
+    border: 3px solid #fcd234;
 }
 
 #indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 20%;
     height: 100%;
 }
@@ -92,10 +96,8 @@ main {
     justify-content: center;
     align-items: center;
     padding: 8px;
-    width: 100%;
+    width: 90%;
     aspect-ratio: 1/1;
-    border-radius: var(--border-radius-large);
-    border: 3px solid #fcd234;
 }
 
 #next-brick-indicator {
@@ -107,10 +109,18 @@ main {
     display: grid;
     width: 80%;
     grid-gap: 5px;
-    padding: 5px;
+    padding-right: 6px;
     aspect-ratio: 1/2;
-    border: 5px solid #fcd234;
-    border-radius: var(--border-radius-large);
+    height: fit-content;
+    border-right: 3px solid #fcd234;
+}
+
+.icon-button {
+    display: flex;
+    justify-content: center;
+    background-color: #00000000;
+    border: 3px solid #fcd234;
+    padding: 5px;
 }
 
 #game-display > div {
@@ -123,29 +133,23 @@ main {
     border-radius: var(--border-radius-normal);
 }
 
+#power-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 30px;
+    max-width: 500px;
+    width: 100%;
+    height: 40px;
+}
+
 #game-controls {
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-template-rows: repeat(3, auto);
-    width: 90%;
+    max-width: 500px;
+    width: 100%;
+    flex-grow: 1;
     gap: 15px 30px;
-}
-
-.power-button,
-.control-button {
-    background-color: var(--primary-container);
-    padding: 5px;
-    font-size: 30px;
-    font-weight: bold;
-    box-shadow: var(--box-shadow-large);
-    border-radius: var(--border-radius-large);
-    transition: 0.05s ease-in-out;
-}
-
-.power-button:active,
-.control-button:active {
-    box-shadow: var(--box-shadow-small);
-    transform: scale(0.98);
 }
 
 .power-button {
@@ -175,6 +179,7 @@ main {
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+    max-width: 500px;
     width: 85%;
     height: 94%;
     padding: 10px;

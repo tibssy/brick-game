@@ -4,10 +4,7 @@ import { resetGame } from "./game.js";
 
 export function buildTetris() {
     document.getElementById("brick-indicator").style.visibility = "visible";
-    document.getElementById("up-button").innerHTML =
-        globals.rotation === "clockwise"
-            ? `<i class="fa-solid fa-rotate-right"></i>`
-            : `<i class="fa-solid fa-rotate-left"></i>`;
+
     globals.nextBrick = getRandomBrick();
     renderIndicator(globals.nextBrick);
 }
