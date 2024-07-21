@@ -34,11 +34,15 @@ export function renderOnGrid(element, array) {
 
 export function renderIndicator(brick) {
     const indicatorGrid = document.getElementById("next-brick-indicator");
-    const cols = brick[0].length;
-    const rows = brick.length;
+    const [cols, rows] = [brick[0].length, brick.length];
 
-    indicatorGrid.replaceChildren();
+    const isPortrait = cols < rows;
+    indicatorGrid.style.width = isPortrait ? "auto" : "100%";
+    indicatorGrid.style.height = isPortrait ? "100%" : "auto";
+
     indicatorGrid.style.aspectRatio = `${cols}/${rows}`;
+    indicatorGrid.replaceChildren();
+
     generateGrid(indicatorGrid, [cols, rows]);
     renderOnGrid(indicatorGrid, brick);
 }

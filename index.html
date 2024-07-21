@@ -19,13 +19,17 @@
         <link rel="stylesheet" href="assets/css/style.css" />
     </head>
     <body>
-        <!-- <header>
-            <h1>Brick Game</h1>
-            <button><i class="fa-solid fa-user"></i></button>
-        </header> -->
-
         <main>
-            <div id="game-display"></div>
+            <div id="game-area">
+                <div id="game-display"></div>
+                <div id="indicator">
+                    <div id="brick-indicator">
+                        <div id="next-brick-indicator"></div>
+                    </div>
+                    <div id="score-indicator"></div>
+                </div>
+            </div>
+
             <div id="game-controls">
                 <button class="power-button" id="break-button">
                     <i class="fa-solid fa-pause"></i>
@@ -39,9 +43,7 @@
                 <button class="control-button" id="left-button">
                     <i class="fa-solid fa-angle-left"></i>
                 </button>
-                <div id="indicator-container">
-                    <div id="next-brick-indicator"></div>
-                </div>
+                <div></div>
                 <button class="control-button" id="right-button">
                     <i class="fa-solid fa-angle-right"></i>
                 </button>

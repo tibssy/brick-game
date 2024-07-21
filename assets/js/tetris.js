@@ -3,7 +3,7 @@ import { insertToMatrix, renderIndicator, renderOnGrid } from "./display.js";
 import { resetGame } from "./game.js";
 
 export function buildTetris() {
-    document.getElementById("indicator-container").style.visibility = "visible";
+    document.getElementById("brick-indicator").style.visibility = "visible";
     document.getElementById("up-button").innerHTML =
         globals.rotation === "clockwise"
             ? `<i class="fa-solid fa-rotate-right"></i>`
