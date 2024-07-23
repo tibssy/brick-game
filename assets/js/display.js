@@ -36,7 +36,7 @@ export function renderIndicator(brick) {
     const indicatorGrid = document.getElementById("next-brick-indicator");
     const [cols, rows] = [brick[0].length, brick.length];
 
-    const isPortrait = cols < rows;
+    const isPortrait = cols <= rows;
     indicatorGrid.style.width = isPortrait ? "auto" : "100%";
     indicatorGrid.style.height = isPortrait ? "100%" : "auto";
 

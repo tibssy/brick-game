@@ -92,7 +92,7 @@ function handleSnakeKeyDown(event) {
 }
 
 export function setupTetrisControls(platform) {
-    const controlButtons = document.getElementById("game-controls").children;
+    const controlButtons = document.querySelectorAll(".control-button");
 
     for (let button of controlButtons) {
         button.addEventListener("click", handleTetrisControlButtonClick);

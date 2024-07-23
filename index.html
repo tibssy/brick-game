@@ -20,7 +20,44 @@
     </head>
     <body>
         <main>
-            <div id="game-area">
+            <!-- Indicator Area -->
+            <div id="game-indicator">
+                <p>Next Brick:</p>
+                <div id="brick-indicator">
+                    <div id="next-brick-indicator"></div>
+                </div>
+                <p>Score: <span id="score">100</span></p>
+                <p>Level: <span id="level">10</span></p>
+            </div>
+
+            <!-- Display Area -->
+            <div id="game-display"></div>
+
+            <!-- Game Control Area -->
+            <div id="control-area">
+                <div id="power-buttons">
+                    <button id="break-button"><i class="fa-solid fa-pause"></i></button>
+                    <button id="exit-button"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div id="game-controls">
+                    <button class="control-button" id="left-button">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </button>
+                    <div>
+                        <button class="control-button" id="up-button">
+                            <i class="fa-solid fa-angle-up"></i>
+                        </button>
+                        <button class="control-button" id="down-button">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </button>
+                    </div>
+                    <button class="control-button" id="right-button">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- <div id="game-area">
                 <div id="game-display"></div>
                 <div id="indicator">
                     <div id="brick-indicator">
@@ -46,12 +83,12 @@
                 <div></div>
                 <button class="icon-button" id="down-button"></button>
                 <div></div>
-            </div>
+            </div> -->
         </main>
 
         <settins id="settings" class="modal">
             <div class="modal-content">
-                <div id="game-selector">
+                <!-- <div id="game-selector">
                     <div id="carousel-container">
                         <div id="game-selector-images">
                             <img
@@ -80,7 +117,7 @@
                             <i class="fa-solid fa-angle-right"></i>
                         </button>
                     </div>
-                </div>
+                </div> -->
 
                 <button id="start-button">Start Game</button>
             </div>

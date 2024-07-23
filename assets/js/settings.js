@@ -4,7 +4,7 @@ import { startGame } from "./game.js";
 export function settings() {
     const startButton = document.getElementById("start-button");
 
-    gameSelector();
+    // gameSelector();
 
     startButton.addEventListener("click", () => {
         closeSettings();
@@ -53,6 +53,7 @@ function gameSelector() {
 
 function closeSettings() {
     const modal = document.getElementById("settings");
+    const main = document.querySelector("main");
     modal.style.transform = "scale(1.5)";
     modal.style.filter = "opacity(0)";
 
@@ -63,7 +64,8 @@ function closeSettings() {
         modal.removeEventListener("transitionend", onTransitionEnd);
     }
 
-    document.querySelector("main").style.transform = "scale(1)";
+    main.style.filter = "opacity(1)";
+    main.style.transform = "scale(1)";
 }
 
 export function openSettings() {
