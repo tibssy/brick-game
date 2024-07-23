@@ -2,7 +2,6 @@ import { buildTetris, playTetris } from "./tetris.js";
 import { buildSnake, playSnake } from "./snake.js";
 import { globals, constants } from "./globals.js";
 import {
-    setupButtons,
     setupPowerButtons,
     setupTetrisControls,
     setupSnakeControls,
@@ -24,7 +23,6 @@ export function startGame() {
         case "tetris":
         case "tetrismod":
             buildTetris();
-            setupButtons();
             countDown(() => {
                 setupPowerButtons();
                 setupTetrisControls(platform);
@@ -33,7 +31,6 @@ export function startGame() {
             break;
         case "snake":
             buildSnake();
-            setupButtons();
             countDown(() => {
                 setupPowerButtons();
                 setupSnakeControls(platform);

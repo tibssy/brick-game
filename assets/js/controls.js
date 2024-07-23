@@ -3,43 +3,59 @@ import { invertBrickMatrix, invertGameMatrix, renderOnGrid } from "./display.js"
 import { resetGame } from "./game.js";
 import { updateGameState, rotateBrick } from "./tetris.js";
 
-export function setupButtons() {
-    const buttons = document.querySelectorAll(".icon-button");
-    const buttonImages = {
-        "break-button": "break",
-        "speaker-button": "speaker-on",
-        "exit-button": "close",
-        "up-button": "arrow-up",
-        "down-button": "arrow-down",
-        "left-button": "arrow-left",
-        "right-button": "arrow-right",
-    };
+function setupTouchControls() {
+    const touchThreshold = 180;
+    let touchStartTime = 0;
 
-    buttons.forEach((button) => {
-        const icon = buttonImages[button.id];
+    globals.gameGrid.addEventListener("touchstart", touchHandler, false);
+    globals.gameGrid.addEventListener("touchend", touchHandler, false);
 
-        if (icon) {
-            const iconButton = createIconButton(icon);
-            button.appendChild(iconButton);
+    function touchHandler(event) {
+        if (event.type == "touchstart") {
+            touchStartTime = Date.now();
+        } else if (event.type == "touchend" && Date.now() - touchStartTime <= touchThreshold) {
+            toggleGamePause();
         }
-    });
+    }
 }
 
-function createIconButton(icon) {
-    const iconButton = document.createElement("div");
-    iconButton.style.mask = `url("assets/images/buttons/${icon}.svg") no-repeat center / contain`;
-    iconButton.style.aspectRatio = "1/1";
-    iconButton.style.backgroundColor = globals.accentColor;
-    return iconButton;
+function toggleGamePause() {
+    const powerButtons = document.querySelector("#power-buttons");
+    const gameControls = document.querySelector("#game-controls");
+    const invertMatrix = globals.game === "snake" ? invertGameMatrix : invertBrickMatrix;
+    globals.isPlaying = !globals.isPlaying;
+    invertMatrix();
+
+    if (window.screen.width < window.screen.height) {
+        powerButtons.style.display = globals.isPlaying ? "none" : "flex";
+        gameControls.style.display = globals.isPlaying ? "flex" : "none";
+    }
 }
 
 export function setupPowerButtons() {
+    if (window.screen.width < 992) {
+        setupTouchControls();
+    }
+
     const powerButtons = document.getElementById("power-buttons").children;
     console.log(powerButtons);
 
     for (let button of powerButtons) {
         button.addEventListener("click", handlePowerButtonClick);
     }
+
+    window.addEventListener("orientationchange", (event) => {
+        const powerButtons = document.querySelector("#power-buttons");
+        const gameControls = document.querySelector("#game-controls");
+
+        if (window.screen.orientation.type === "portrait-primary" && !globals.isPlaying) {
+            powerButtons.style.display = "flex";
+            gameControls.style.display = "none";
+        } else {
+            powerButtons.style.display = "";
+            gameControls.style.display = "";
+        }
+    });
 }
 
 function handlePowerButtonClick(event) {
@@ -52,8 +68,7 @@ function handlePowerButtonClick(event) {
             resetGame();
             break;
         case "break-button":
-            globals.isPlaying = !globals.isPlaying;
-            invertMatrix();
+            toggleGamePause();
             break;
         default:
             throw new Error(`Invalid button id: ${buttonId}`);
