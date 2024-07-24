@@ -42,7 +42,7 @@ main {
     flex-direction: column;
     align-items: center;
     flex-grow: 1;
-    gap: 6px;
+    gap: 10px;
     width: 100%;
     filter: opacity(0);
     transform: scale(0.8);
@@ -114,7 +114,8 @@ input[type="radio"]:checked + .color-label {
     align-items: center;
     width: 100%;
     height: 5%;
-    border-bottom: 3px solid var(--primary-accent);
+    border-bottom: 3px solid var(--secondary-accent);
+    box-shadow: var(--box-shadow-normal);
 }
 
 #game-display {
@@ -125,6 +126,7 @@ input[type="radio"]:checked + .color-label {
     width: fit-content;
     border-radius: var(--border-radius-large);
     border: 5px solid var(--secondary-accent);
+    box-shadow: var(--box-shadow-large) inset;
 }
 
 #next-brick-indicator div,
@@ -184,6 +186,7 @@ input[type="radio"]:checked + .color-label {
     transition: 0.05s ease-in-out;
     color: var(--secondary-accent);
     border: 5px solid var(--secondary-accent);
+    box-shadow: var(--box-shadow-normal);
 }
 
 .control-button:active {
@@ -303,6 +306,7 @@ input[type="radio"]:checked + .color-label {
         width: 50%;
         flex-direction: column;
         border-bottom: unset;
+        box-shadow: none;
     }
 
     #game-display {
