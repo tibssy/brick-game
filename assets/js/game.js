@@ -76,8 +76,13 @@ function countDown(callback) {
 export function toggleGamePause() {
     const powerButtons = document.querySelector("#power-buttons");
     const gameControls = document.querySelector("#game-controls");
+    const breakButton = document.getElementById("break-button");
     const invertMatrix = globals.game === "snake" ? invertGameMatrix : invertBrickMatrix;
+
     globals.isPlaying = !globals.isPlaying;
+    breakButton.innerHTML = globals.isPlaying
+        ? `<i class="fa-solid fa-pause"></i>`
+        : `<i class="fa-solid fa-play"></i>`;
     invertMatrix();
 
     if (window.screen.width < window.screen.height) {
