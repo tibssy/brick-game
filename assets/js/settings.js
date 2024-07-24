@@ -1,10 +1,11 @@
-import { globals } from "./globals.js";
+import { globals, constants } from "./globals.js";
 import { startGame } from "./game.js";
 
 export function settings() {
     const startButton = document.getElementById("start-button");
 
     gameSelector();
+    generateColorOptions();
 
     startButton.addEventListener("click", () => {
         closeSettings();
@@ -34,10 +35,7 @@ function gameSelector() {
             if (newIndex !== currentIndex) {
                 currentIndex = newIndex;
                 updateCarousel();
-                console.log("update...");
             }
-
-            console.log(currentIndex);
         });
     }
 
@@ -49,6 +47,59 @@ function gameSelector() {
     }
 
     updateCarousel();
+}
+
+function generateColorOptions(colorThemes) {
+    const colorOptions = document.getElementById("color-options");
+
+    Object.entries(constants.colorThemes).forEach(([key, value]) => {
+        console.log(key);
+        console.log(value);
+
+        const colorOption = document.createElement("div");
+        const input = document.createElement("input");
+        const label = document.createElement("label");
+
+        input.type = "radio";
+        input.name = "color";
+        input.value = key;
+        input.id = key;
+        input.classList.add("color-input");
+
+        label.setAttribute("for", input.id);
+        label.classList.add("color-label");
+        label.style.backgroundColor = value["primary-accent"];
+        label.style.setProperty("border", `5px solid ${value["primary-background"]}`);
+
+        colorOption.appendChild(input);
+        colorOption.appendChild(label);
+        colorOptions.appendChild(colorOption);
+
+        input.addEventListener("click", (event) => {
+            setColorTheme(event.target.value);
+        });
+    });
+}
+
+function setColorTheme(theme) {
+    const themeColors = constants.colorThemes[theme];
+
+    document.documentElement.style.setProperty(
+        "--primary-background",
+        `${themeColors["primary-background"]}`
+    );
+    document.documentElement.style.setProperty(
+        "--secondary-background",
+        `${themeColors["secondary-background"]}`
+    );
+    document.documentElement.style.setProperty(
+        "--primary-accent",
+        `${themeColors["primary-accent"]}`
+    );
+    document.documentElement.style.setProperty(
+        "--secondary-accent",
+        `${themeColors["secondary-accent"]}`
+    );
 }
 
 function closeSettings() {
