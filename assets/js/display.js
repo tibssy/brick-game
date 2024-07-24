@@ -8,12 +8,6 @@ export function generateGrid(element, size) {
 
     for (let i = 0; i < cols * rows; i++) {
         const cell = document.createElement("div");
-        const maskUrl = `assets/images/blocks/block-${Math.floor(Math.random() * 10)}.svg`;
-
-        cell.style.mask = `url("${maskUrl}") no-repeat 100% 100%`;
-        cell.style.maskSize = "contain";
-        cell.style.backgroundColor = globals.accentColor;
-
         element.appendChild(cell);
     }
 }
