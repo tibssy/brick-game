@@ -1,6 +1,6 @@
 import { globals, constants } from "./globals.js";
 import { insertToMatrix, renderIndicator, renderOnGrid } from "./display.js";
-import { resetGame } from "./game.js";
+import { exitGame } from "./game.js";
 
 export function buildTetris() {
     document.getElementById("brick-indicator").style.display = "flex";
@@ -43,7 +43,7 @@ function startGameLoop() {
             if (isCollision(matrix)) {
                 if (globals.position[1] <= 1) {
                     console.log("Stop Game Loop...");
-                    resetGame();
+                    exitGame();
                 }
                 moveToNextBrick();
                 updateBrickMatrix();

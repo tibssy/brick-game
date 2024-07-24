@@ -1,6 +1,6 @@
 import { constants, globals } from "./globals.js";
 import { invertBrickMatrix, invertGameMatrix, renderOnGrid } from "./display.js";
-import { resetGame } from "./game.js";
+import { toggleGamePause, restartGame, exitGame } from "./game.js";
 import { updateGameState, rotateBrick } from "./tetris.js";
 
 function setupTouchControls() {
@@ -17,19 +17,8 @@ function setupTouchControls() {
             toggleGamePause();
         }
     }
-}
 
-function toggleGamePause() {
-    const powerButtons = document.querySelector("#power-buttons");
-    const gameControls = document.querySelector("#game-controls");
-    const invertMatrix = globals.game === "snake" ? invertGameMatrix : invertBrickMatrix;
-    globals.isPlaying = !globals.isPlaying;
-    invertMatrix();
-
-    if (window.screen.width < window.screen.height) {
-        powerButtons.style.display = globals.isPlaying ? "none" : "flex";
-        gameControls.style.display = globals.isPlaying ? "flex" : "none";
-    }
+    globals.touchHandler = touchHandler;
 }
 
 export function setupPowerButtons() {
@@ -65,7 +54,10 @@ function handlePowerButtonClick(event) {
     switch (buttonId) {
         case "exit-button":
             console.log("exit...");
-            resetGame();
+            exitGame();
+            break;
+        case "reset-button":
+            restartGame();
             break;
         case "break-button":
             toggleGamePause();
@@ -170,6 +162,12 @@ function handleTetrisKeyDown(event) {
 export function removeAllEventListeners() {
     const gameControls = document.getElementById("game-controls");
     const buttons = gameControls.getElementsByTagName("button");
+
+    if (globals.touchHandler) {
+        globals.gameGrid.removeEventListener("touchstart", globals.touchHandler, false);
+        globals.gameGrid.removeEventListener("touchend", globals.touchHandler, false);
+        delete globals.touchHandler;
+    }
 
     for (let button of buttons) {
         const clonedButton = button.cloneNode(true);

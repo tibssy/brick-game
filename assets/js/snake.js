@@ -1,6 +1,6 @@
 import { globals } from "./globals.js";
 import { insertToMatrix, renderOnGrid } from "./display.js";
-import { resetGame } from "./game.js";
+import { exitGame } from "./game.js";
 
 export function buildSnake() {
     globals.snake = Array.from({ length: globals.snakeLength }, () => [1]);
@@ -44,7 +44,7 @@ function startGameLoop() {
                 renderOnGrid(globals.gameGrid, globals.gameMatrix);
             } else {
                 console.log("Game Over");
-                resetGame();
+                exitGame();
             }
         }
     }, globals.interval / 2);
