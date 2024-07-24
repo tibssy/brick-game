@@ -76,4 +76,7 @@ export function resetGame() {
     globals.gameGrid.innerHTML = "";
     removeAllEventListeners();
     openSettings();
+    document.getElementById("brick-indicator").style.display = "";
+    document.querySelector("#power-buttons").style.display = "";
+    document.querySelector("#game-controls").style.display = "";
 }

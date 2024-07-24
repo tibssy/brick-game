@@ -4,7 +4,7 @@ import { startGame } from "./game.js";
 export function settings() {
     const startButton = document.getElementById("start-button");
 
-    // gameSelector();
+    gameSelector();
 
     startButton.addEventListener("click", () => {
         closeSettings();
