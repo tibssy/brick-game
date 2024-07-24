@@ -27,7 +27,6 @@ export function setupPowerButtons() {
     }
 
     const powerButtons = document.getElementById("power-buttons").children;
-    console.log(powerButtons);
 
     for (let button of powerButtons) {
         button.addEventListener("click", handlePowerButtonClick);
@@ -53,7 +52,6 @@ function handlePowerButtonClick(event) {
 
     switch (buttonId) {
         case "exit-button":
-            console.log("exit...");
             exitGame();
             break;
         case "reset-button":
@@ -67,14 +65,14 @@ function handlePowerButtonClick(event) {
     }
 }
 
-export function setupSnakeControls(platform) {
+export function setupSnakeControls() {
     const controlButtons = document.getElementsByClassName("control-button");
 
     for (let button of controlButtons) {
         button.addEventListener("click", handleSnakeControlButtonClick);
     }
 
-    if (platform === "desktop") {
+    if (window.screen.width >= 992) {
         document.addEventListener("keydown", handleSnakeKeyDown);
     }
 }
@@ -98,14 +96,14 @@ function handleSnakeKeyDown(event) {
     }
 }
 
-export function setupTetrisControls(platform) {
+export function setupTetrisControls() {
     const controlButtons = document.querySelectorAll(".control-button");
 
     for (let button of controlButtons) {
         button.addEventListener("click", handleTetrisControlButtonClick);
     }
 
-    if (platform === "desktop") {
+    if (window.screen.width >= 992) {
         document.addEventListener("keydown", handleTetrisKeyDown);
     }
 }

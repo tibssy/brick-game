@@ -8,7 +8,6 @@ export function buildSnake() {
 }
 
 export function playSnake() {
-    console.log("play...");
     initializeGame();
     startGameLoop();
 }
@@ -43,7 +42,6 @@ function startGameLoop() {
 
                 renderOnGrid(globals.gameGrid, globals.gameMatrix);
             } else {
-                console.log("Game Over");
                 exitGame();
             }
         }

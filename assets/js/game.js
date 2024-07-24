@@ -17,8 +17,6 @@ import {
 import { openSettings } from "./settings.js";
 
 export function startGame() {
-    const platform =
-        "ontouchstart" in window || navigator.maxTouchPoints > 0 ? "mobile" : "desktop";
     globals.gameMatrix = Array.from(Array(globals.gridSize[1]), () =>
         Array(globals.gridSize[0]).fill(0)
     );
@@ -31,7 +29,7 @@ export function startGame() {
             buildTetris();
             countDown(() => {
                 setupPowerButtons();
-                setupTetrisControls(platform);
+                setupTetrisControls();
                 playTetris();
             });
             break;
@@ -39,7 +37,7 @@ export function startGame() {
             buildSnake();
             countDown(() => {
                 setupPowerButtons();
-                setupSnakeControls(platform);
+                setupSnakeControls();
                 playSnake();
             });
             break;
@@ -99,7 +97,6 @@ export function exitGame() {
 }
 
 function resetGame() {
-    console.log("Game Over");
     globals.isPlaying = false;
     clearInterval(globals.gameLoop);
     globals.gameGrid.innerHTML = "";

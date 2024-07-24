@@ -13,7 +13,6 @@ export function buildTetris() {
 }
 
 export function playTetris() {
-    console.log("play...");
     initializeGame();
     startGameLoop();
 }
@@ -42,7 +41,6 @@ function startGameLoop() {
 
             if (isCollision(matrix)) {
                 if (globals.position[1] <= 1) {
-                    console.log("Stop Game Loop...");
                     exitGame();
                 }
                 moveToNextBrick();

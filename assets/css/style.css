@@ -7,8 +7,8 @@
 :root {
     --primary-background: #2c2f33;
     --secondary-background: #868788;
-    --primary-accent: #0c813d;
-    --secondary-accent: #2ecc71;
+    --primary-accent: #5873d3;
+    --secondary-accent: #9fb1f1;
     --shadow: #000000;
 
     /* Other Variables */
@@ -53,7 +53,7 @@ main {
 p {
     font-size: large;
     font-weight: bold;
-    color: var(--primary-accent);
+    color: var(--secondary-accent);
 }
 
 input[type="radio"] {
@@ -124,15 +124,15 @@ input[type="radio"]:checked + .color-label {
     aspect-ratio: 0.5;
     width: fit-content;
     border-radius: var(--border-radius-large);
-    border: 5px solid var(--primary-accent);
+    border: 5px solid var(--secondary-accent);
 }
 
 #next-brick-indicator div,
 #game-display div {
     border: 3px solid var(--secondary-accent);
     background-color: var(--primary-accent);
-    border-radius: 10%;
-    margin: 10%;
+    border-radius: 8%;
+    margin: 8%;
     transition: 0.4s ease-in-out;
     box-shadow: var(--box-shadow-normal);
 }
@@ -161,7 +161,7 @@ input[type="radio"]:checked + .color-label {
 
 #power-buttons button {
     font-size: 3rem;
-    color: var(--primary-accent);
+    color: var(--secondary-accent);
     background-color: #00000000;
     margin: 0 15px;
 }
@@ -182,8 +182,8 @@ input[type="radio"]:checked + .color-label {
 .control-button {
     font-size: 1.8rem;
     transition: 0.05s ease-in-out;
-    color: var(--primary-accent);
-    border: 5px solid var(--primary-accent);
+    color: var(--secondary-accent);
+    border: 5px solid var(--secondary-accent);
 }
 
 .control-button:active {
