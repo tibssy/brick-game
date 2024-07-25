@@ -14,14 +14,11 @@ export function generateGrid(element, size) {
 
 export function renderOnGrid(element, array) {
     array.flat().forEach((value, index) => {
-        const blockStyle = element.children[index].style;
+        const block = element.children[index];
         if (value) {
-            blockStyle.transform = "scale(1)";
-            blockStyle.filter = "opacity(1)";
-            blockStyle.transition = `${globals.interval / 4}ms ease-in-out`;
+            block.classList.remove("hide-element");
         } else {
-            blockStyle.transform = "scale(0.3)";
-            blockStyle.filter = "opacity(0)";
+            block.classList.add("hide-element");
         }
     });
 }

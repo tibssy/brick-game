@@ -6,6 +6,8 @@ export function settings() {
 
     gameSelector();
     generateColorOptions();
+    setGridSize();
+    setGameSpeed();
 
     startButton.addEventListener("click", () => {
         closeSettings();
@@ -49,13 +51,10 @@ function gameSelector() {
     updateCarousel();
 }
 
-function generateColorOptions(colorThemes) {
+function generateColorOptions() {
     const colorOptions = document.getElementById("color-options");
 
     Object.entries(constants.colorThemes).forEach(([key, value]) => {
-        console.log(key);
-        console.log(value);
-
         const colorOption = document.createElement("div");
         const input = document.createElement("input");
         const label = document.createElement("label");
@@ -100,6 +99,63 @@ function setColorTheme(theme) {
         "--secondary-accent",
         `${themeColors["secondary-accent"]}`
     );
+}
+
+function setGridSize() {
+    const buttons = document.querySelectorAll("#grid-size-selector > div button");
+    const valueToDisplay = document.querySelector("#grid-size-selector > div p");
+    const valueRange = [6, 12];
+
+    for (let button of buttons) {
+        console.log(button);
+        console.log(button.className);
+        button.addEventListener("click", () => {
+            let adjustedValue;
+            let value =
+                button.className === "button-increment"
+                    ? 1
+                    : button.className === "button-decrement"
+                    ? -1
+                    : 0;
+
+            value += globals.gridSize[0];
+            adjustedValue = Math.max(valueRange[0], Math.min(value, valueRange[1]));
+            globals.gridSize = [adjustedValue, adjustedValue * 2];
+            valueToDisplay.textContent = `${adjustedValue} x ${adjustedValue * 2}`;
+        });
+    }
+}
+
+function setGameSpeed() {
+    const buttons = document.querySelectorAll("#speed-selector > div button");
+    const valueToDisplay = document.querySelector("#speed-selector > div p");
+    const valueRange = [1, 10];
+    const originalInterval = 1000;
+    let currentValue = 1;
+
+    for (let button of buttons) {
+        console.log(button);
+        console.log(button.className);
+        button.addEventListener("click", () => {
+            let adjustedValue;
+            let value =
+                button.className === "button-increment"
+                    ? 1
+                    : button.className === "button-decrement"
+                    ? -1
+                    : 0;
+
+            currentValue += value;
+            adjustedValue = Math.max(valueRange[0], Math.min(currentValue, valueRange[1]));
+            currentValue = adjustedValue;
+            globals.interval = parseInt(originalInterval / adjustedValue);
+            document.documentElement.style.setProperty(
+                "--transition",
+                `${parseInt(globals.interval / 5)}ms ease-in-out`
+            );
+            valueToDisplay.textContent = `${adjustedValue}`;
+        });
+    }
 }
 
 function closeSettings() {

@@ -45,7 +45,7 @@ function startGameLoop() {
                 exitGame();
             }
         }
-    }, globals.interval / 2);
+    }, globals.interval);
 }
 
 function updatePosition() {

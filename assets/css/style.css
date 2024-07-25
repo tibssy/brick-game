@@ -12,6 +12,7 @@
     --shadow: #000000;
 
     /* Other Variables */
+    --transition: 0.4s ease-in-out;
     --border-radius-large: 6px;
     --border-radius-normal: 4px;
     --box-shadow-small: 0 0 4px var(--shadow);
@@ -135,7 +136,7 @@ input[type="radio"]:checked + .color-label {
     background-color: var(--primary-accent);
     border-radius: 8%;
     margin: 8%;
-    transition: 0.4s ease-in-out;
+    transition: var(--transition);
     box-shadow: var(--box-shadow-normal);
 }
 
@@ -304,7 +305,12 @@ input[type="radio"]:checked + .color-label {
 
 .settings-option button {
     background-color: var(--secondary-background);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    padding: 3px 6px;
+}
+
+.settings-option button:active {
+    background-color: var(--primary-accent);
 }
 
 .settings-option p {
@@ -384,6 +390,12 @@ input:checked + .slider:before {
     font-size: 1.5rem;
     color: var(--primary-background);
     border: 3px solid var(--primary-background);
+}
+
+/* Property setters */
+.hide-element {
+    transform: scale(0.3);
+    filter: opacity(0);
 }
 
 @media screen and (min-width: 660px) and (orientation: landscape) {
