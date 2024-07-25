@@ -74,9 +74,18 @@ input[type="radio"]:checked + .color-label {
 }
 
 .card {
-    border-radius: var(--border-radius-normal);
+    border-radius: var(--border-radius-large);
     box-shadow: var(--box-shadow-normal);
     border: 1px solid var(--primary-background);
+    padding: 12px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.card h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--primary-background);
 }
 
 #color-options {
@@ -97,15 +106,6 @@ input[type="radio"]:checked + .color-label {
     align-items: center;
     gap: 12px;
     padding: 10px;
-    width: 100%;
-}
-
-#color-selector p {
-    font-size: 1.2rem;
-    color: var(--primary-background);
-    border-bottom: 1px solid var(--primary-background);
-    width: 100%;
-    text-align: center;
 }
 
 #game-indicator {
@@ -231,7 +231,7 @@ input[type="radio"]:checked + .color-label {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     max-width: 1200px;
     width: 90%;
     height: 90%;
@@ -240,13 +240,6 @@ input[type="radio"]:checked + .color-label {
     border-radius: var(--border-radius-large);
     box-shadow: var(--box-shadow-large);
     overflow: scroll;
-}
-
-#settings button {
-    width: 100%;
-    font-size: 1.6rem;
-    color: var(--primary-background);
-    border: 3px solid var(--primary-background);
 }
 
 #game-selector {
@@ -292,6 +285,105 @@ input[type="radio"]:checked + .color-label {
 
 .settings-field {
     width: 100%;
+}
+
+.settings-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 12px 6px 8px 6px;
+}
+
+.number-selector {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    align-content: center;
+    grid-gap: 12px;
+}
+
+.settings-option button {
+    background-color: var(--secondary-background);
+    font-size: 1.2rem;
+}
+
+.settings-option p {
+    color: var(--primary-background);
+}
+
+.number-selector p {
+    text-align: center;
+    align-content: center;
+    border: 2px solid var(--primary-background);
+    border-radius: var(--border-radius-normal);
+    padding: 0 12px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--primary-background);
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--secondary-background);
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-accent);
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: var(--border-radius-large);
+}
+
+.slider.round:before {
+    border-radius: var(--border-radius-normal);
+}
+
+.devider {
+    border-bottom: 1px solid var(--primary-background);
+}
+
+#start-button {
+    width: 100%;
+    font-size: 1.5rem;
+    color: var(--primary-background);
+    border: 3px solid var(--primary-background);
 }
 
 @media screen and (min-width: 660px) and (orientation: landscape) {
