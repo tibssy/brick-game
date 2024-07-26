@@ -181,13 +181,8 @@ function setLeftHanded() {
         const mainElement = document.querySelector("main");
         const powerButtons = document.querySelector("#power-buttons");
 
-        if (globals.isLeftHanded) {
-            mainElement.classList.add("left-handed");
-            powerButtons.classList.add("left-handed");
-        } else {
-            mainElement.classList.remove("left-handed");
-            powerButtons.classList.remove("left-handed");
-        }
+        mainElement.classList.toggle("left-handed", globals.isLeftHanded);
+        powerButtons.classList.toggle("left-handed", globals.isLeftHanded);
     });
 }
 
