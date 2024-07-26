@@ -8,6 +8,8 @@ export function settings() {
     generateColorOptions();
     setGridSize();
     setGameSpeed();
+    setBrickRotation();
+    setLeftHanded();
 
     startButton.addEventListener("click", () => {
         closeSettings();
@@ -151,11 +153,42 @@ function setGameSpeed() {
             globals.interval = parseInt(originalInterval / adjustedValue);
             document.documentElement.style.setProperty(
                 "--transition",
-                `${parseInt(globals.interval / 5)}ms ease-in-out`
+                `${parseInt(globals.interval / 3)}ms ease-in-out`
             );
             valueToDisplay.textContent = `${adjustedValue}`;
         });
     }
+}
+
+function setBrickRotation() {
+    const button = document.querySelector("#rotation-selector button");
+    const rotation = {
+        clockwise: `<i class="fa-solid fa-rotate-right"></i>`,
+        counterclockwise: `<i class="fa-solid fa-rotate-left"></i>`,
+    };
+
+    button.addEventListener("click", () => {
+        globals.rotation = globals.rotation === "clockwise" ? "counterclockwise" : "clockwise";
+        button.innerHTML = rotation[globals.rotation];
+    });
+}
+
+function setLeftHanded() {
+    const toggleSwitch = document.querySelector("#left-hand-selector input");
+
+    toggleSwitch.addEventListener("change", () => {
+        globals.isLeftHanded = !globals.isLeftHanded;
+        const mainElement = document.querySelector("main");
+        const powerButtons = document.querySelector("#power-buttons");
+
+        if (globals.isLeftHanded) {
+            mainElement.classList.add("left-handed");
+            powerButtons.classList.add("left-handed");
+        } else {
+            mainElement.classList.remove("left-handed");
+            powerButtons.classList.remove("left-handed");
+        }
+    });
 }
 
 function closeSettings() {

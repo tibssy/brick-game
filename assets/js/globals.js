@@ -145,6 +145,7 @@ export const globals = {
     position: [0, 0],
     interval: 1000,
     rotation: "counterclockwise",
+    isLeftHanded: false,
     game: "tetris",
     isPlaying: false,
     gameMatrix: null,

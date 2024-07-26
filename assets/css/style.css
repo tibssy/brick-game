@@ -12,7 +12,7 @@
     --shadow: #000000;
 
     /* Other Variables */
-    --transition: 0.4s ease-in-out;
+    --transition: 0.3s ease-in-out;
     --border-radius-large: 6px;
     --border-radius-normal: 4px;
     --box-shadow-small: 0 0 4px var(--shadow);
@@ -107,6 +107,7 @@ input[type="radio"]:checked + .color-label {
     align-items: center;
     gap: 12px;
     padding: 10px;
+    /* width: 100%; */
 }
 
 #game-indicator {
@@ -240,7 +241,7 @@ input[type="radio"]:checked + .color-label {
     background-color: var(--secondary-background);
     border-radius: var(--border-radius-large);
     box-shadow: var(--box-shadow-large);
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 #game-selector {
@@ -405,6 +406,10 @@ input:checked + .slider:before {
         max-width: 1200px;
     }
 
+    .left-handed {
+        flex-direction: row-reverse;
+    }
+
     #game-indicator {
         height: 98%;
         width: 50%;
@@ -425,7 +430,6 @@ input:checked + .slider:before {
 
     #power-buttons {
         display: flex;
-        align-self: flex-end;
         justify-content: flex-end;
     }
 
