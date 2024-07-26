@@ -108,24 +108,19 @@ function setGridSize() {
     const valueToDisplay = document.querySelector("#grid-size-selector > div p");
     const valueRange = [6, 12];
 
-    for (let button of buttons) {
-        console.log(button);
-        console.log(button.className);
-        button.addEventListener("click", () => {
-            let adjustedValue;
-            let value =
-                button.className === "button-increment"
-                    ? 1
-                    : button.className === "button-decrement"
-                    ? -1
-                    : 0;
+    const updateGridSize = (increment) => {
+        let newValue = globals.gridSize[0] + increment;
+        newValue = Math.max(valueRange[0], Math.min(newValue, valueRange[1]));
+        globals.gridSize = [newValue, newValue * 2];
+        valueToDisplay.textContent = `${newValue} x ${newValue * 2}`;
+    };
 
-            value += globals.gridSize[0];
-            adjustedValue = Math.max(valueRange[0], Math.min(value, valueRange[1]));
-            globals.gridSize = [adjustedValue, adjustedValue * 2];
-            valueToDisplay.textContent = `${adjustedValue} x ${adjustedValue * 2}`;
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const increment = button.classList.contains("button-increment") ? 1 : -1;
+            updateGridSize(increment);
         });
-    }
+    });
 }
 
 function setGameSpeed() {
