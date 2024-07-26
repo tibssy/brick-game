@@ -15,6 +15,7 @@ export function settings() {
     setGameSpeed();
     setBrickRotation();
     setLeftHanded();
+    setAnimation();
 }
 
 function gameSelector() {
@@ -140,10 +141,8 @@ function setGameSpeed() {
     const updateGameSpeed = (increment, valueToDisplay) => {
         currentValue = Math.max(valueRange[0], Math.min(currentValue + increment, valueRange[1]));
         globals.interval = Math.floor(originalInterval / currentValue);
-        document.documentElement.style.setProperty(
-            "--transition",
-            `${Math.floor(globals.interval / 3)}ms ease-in-out`
-        );
+        updateAnimationTransition();
+
         valueToDisplay.textContent = `${currentValue}`;
     };
 
@@ -182,6 +181,24 @@ function setLeftHanded() {
     };
 
     toggleSwitch.addEventListener("change", updateHandedness);
+}
+
+function setAnimation() {
+    const toggleSwitch = document.querySelector("#animation-selector input");
+
+    const updateAnimationMode = () => {
+        globals.animation = !globals.animation;
+        updateAnimationTransition();
+    };
+
+    toggleSwitch.addEventListener("click", updateAnimationMode);
+}
+
+function updateAnimationTransition() {
+    const isAnimate = globals.animation
+        ? `${Math.floor(globals.interval / 3)}ms ease-in-out`
+        : "none";
+    document.documentElement.style.setProperty("--transition", isAnimate);
 }
 
 function closeSettings() {

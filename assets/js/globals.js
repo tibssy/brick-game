@@ -144,6 +144,7 @@ export const globals = {
     gridSize: [10, 20],
     position: [0, 0],
     interval: 1000,
+    animation: true,
     rotation: "counterclockwise",
     isLeftHanded: false,
     game: "tetris",
