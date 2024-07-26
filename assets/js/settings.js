@@ -4,17 +4,17 @@ import { startGame } from "./game.js";
 export function settings() {
     const startButton = document.getElementById("start-button");
 
+    startButton.addEventListener("click", () => {
+        closeSettings();
+        startGame();
+    });
+
     gameSelector();
     generateColorOptions();
     setGridSize();
     setGameSpeed();
     setBrickRotation();
     setLeftHanded();
-
-    startButton.addEventListener("click", () => {
-        closeSettings();
-        startGame();
-    });
 }
 
 function gameSelector() {
@@ -103,34 +103,41 @@ function setColorTheme(theme) {
     );
 }
 
+function setupIncrementDecrementButtons(buttonSelector, valueDisplaySelector, updateCallback) {
+    const buttons = document.querySelectorAll(buttonSelector);
+    const valueToDisplay = document.querySelector(valueDisplaySelector);
+
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const increment = button.classList.contains("button-increment") ? 1 : -1;
+            updateCallback(increment, valueToDisplay);
+        });
+    });
+}
+
 function setGridSize() {
-    const buttons = document.querySelectorAll("#grid-size-selector > div button");
-    const valueToDisplay = document.querySelector("#grid-size-selector > div p");
     const valueRange = [6, 12];
 
-    const updateGridSize = (increment) => {
+    const updateGridSize = (increment, valueToDisplay) => {
         let newValue = globals.gridSize[0] + increment;
         newValue = Math.max(valueRange[0], Math.min(newValue, valueRange[1]));
         globals.gridSize = [newValue, newValue * 2];
         valueToDisplay.textContent = `${newValue} x ${newValue * 2}`;
     };
 
-    buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-            const increment = button.classList.contains("button-increment") ? 1 : -1;
-            updateGridSize(increment);
-        });
-    });
+    setupIncrementDecrementButtons(
+        "#grid-size-selector > div button",
+        "#grid-size-selector > div p",
+        updateGridSize
+    );
 }
 
 function setGameSpeed() {
-    const buttons = document.querySelectorAll("#speed-selector > div button");
-    const valueToDisplay = document.querySelector("#speed-selector > div p");
     const valueRange = [1, 10];
     const originalInterval = 1000;
     let currentValue = 1;
 
-    const updateSpeed = (increment) => {
+    const updateGameSpeed = (increment, valueToDisplay) => {
         currentValue = Math.max(valueRange[0], Math.min(currentValue + increment, valueRange[1]));
         globals.interval = Math.floor(originalInterval / currentValue);
         document.documentElement.style.setProperty(
@@ -140,16 +147,11 @@ function setGameSpeed() {
         valueToDisplay.textContent = `${currentValue}`;
     };
 
-    buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-            const increment = button.classList.contains("button-increment")
-                ? 1
-                : button.classList.contains("button-decrement")
-                ? -1
-                : 0;
-            updateSpeed(increment);
-        });
-    });
+    setupIncrementDecrementButtons(
+        "#speed-selector > div button",
+        "#speed-selector > div p",
+        updateGameSpeed
+    );
 }
 
 function setBrickRotation() {
