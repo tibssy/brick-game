@@ -135,42 +135,41 @@ function setGameSpeed() {
     const originalInterval = 1000;
     let currentValue = 1;
 
-    for (let button of buttons) {
-        console.log(button);
-        console.log(button.className);
-        button.addEventListener("click", () => {
-            let adjustedValue;
-            let value =
-                button.className === "button-increment"
-                    ? 1
-                    : button.className === "button-decrement"
-                    ? -1
-                    : 0;
+    const updateSpeed = (increment) => {
+        currentValue = Math.max(valueRange[0], Math.min(currentValue + increment, valueRange[1]));
+        globals.interval = Math.floor(originalInterval / currentValue);
+        document.documentElement.style.setProperty(
+            "--transition",
+            `${Math.floor(globals.interval / 3)}ms ease-in-out`
+        );
+        valueToDisplay.textContent = `${currentValue}`;
+    };
 
-            currentValue += value;
-            adjustedValue = Math.max(valueRange[0], Math.min(currentValue, valueRange[1]));
-            currentValue = adjustedValue;
-            globals.interval = parseInt(originalInterval / adjustedValue);
-            document.documentElement.style.setProperty(
-                "--transition",
-                `${parseInt(globals.interval / 3)}ms ease-in-out`
-            );
-            valueToDisplay.textContent = `${adjustedValue}`;
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const increment = button.classList.contains("button-increment")
+                ? 1
+                : button.classList.contains("button-decrement")
+                ? -1
+                : 0;
+            updateSpeed(increment);
         });
-    }
+    });
 }
 
 function setBrickRotation() {
     const button = document.querySelector("#rotation-selector button");
-    const rotation = {
+    const rotationIcons = {
         clockwise: `<i class="fa-solid fa-rotate-right"></i>`,
         counterclockwise: `<i class="fa-solid fa-rotate-left"></i>`,
     };
 
-    button.addEventListener("click", () => {
+    const updateRotationIcon = () => {
         globals.rotation = globals.rotation === "clockwise" ? "counterclockwise" : "clockwise";
-        button.innerHTML = rotation[globals.rotation];
-    });
+        button.innerHTML = rotationIcons[globals.rotation];
+    };
+
+    button.addEventListener("click", updateRotationIcon);
 }
 
 function setLeftHanded() {
