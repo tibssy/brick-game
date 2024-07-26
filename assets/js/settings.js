@@ -176,14 +176,16 @@ function setBrickRotation() {
 function setLeftHanded() {
     const toggleSwitch = document.querySelector("#left-hand-selector input");
 
-    toggleSwitch.addEventListener("change", () => {
+    const updateHandedness = () => {
         globals.isLeftHanded = !globals.isLeftHanded;
         const mainElement = document.querySelector("main");
         const powerButtons = document.querySelector("#power-buttons");
 
         mainElement.classList.toggle("left-handed", globals.isLeftHanded);
         powerButtons.classList.toggle("left-handed", globals.isLeftHanded);
-    });
+    };
+
+    toggleSwitch.addEventListener("change", updateHandedness);
 }
 
 function closeSettings() {
