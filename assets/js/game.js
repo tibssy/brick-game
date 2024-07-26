@@ -105,6 +105,7 @@ function resetGame() {
     globals.isPlaying = false;
     clearInterval(globals.gameLoop);
     globals.gameGrid.innerHTML = "";
+    globals.snakeDirection = "up";
     removeAllEventListeners();
     document.getElementById("brick-indicator").style.display = "";
     document.querySelector("#power-buttons").style.display = "";
