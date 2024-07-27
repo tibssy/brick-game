@@ -13,17 +13,19 @@ export function generateGrid(element, size) {
 }
 
 export function renderOnGrid(element, array) {
-    const blocks = element.children;
+    requestAnimationFrame(() => {
+        const blocks = element.children;
 
-    array.flat().forEach((value, index) => {
-        const block = blocks[index];
-        const isHidden = block.classList.contains("hide-element");
+        array.flat().forEach((value, index) => {
+            const block = blocks[index];
+            const isHidden = block.classList.contains("hide-element");
 
-        if (value && isHidden) {
-            block.classList.remove("hide-element");
-        } else if (!value && !isHidden) {
-            block.classList.add("hide-element");
-        }
+            if (value && isHidden) {
+                block.classList.remove("hide-element");
+            } else if (!value && !isHidden) {
+                block.classList.add("hide-element");
+            }
+        });
     });
 }
 
