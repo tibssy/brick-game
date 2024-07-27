@@ -136,13 +136,13 @@ function setGridSize() {
 function setGameSpeed() {
     const valueRange = [1, 10];
     const originalInterval = 1000;
+    const minInterval = 100;
     let currentValue = 1;
 
     const updateGameSpeed = (increment, valueToDisplay) => {
         currentValue = Math.max(valueRange[0], Math.min(currentValue + increment, valueRange[1]));
-        globals.interval = Math.floor(originalInterval / currentValue);
+        globals.interval = minInterval + (originalInterval - currentValue * 100);
         updateAnimationTransition();
-
         valueToDisplay.textContent = `${currentValue}`;
     };
 
