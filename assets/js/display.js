@@ -64,17 +64,8 @@ export function insertToMatrix(arr, position) {
     return matrix;
 }
 
-export function invertBrickMatrix() {
-    globals.brickMatrix = globals.brickMatrix.map((row) =>
-        row.map((element) => (element === 0 ? 1 : 0))
-    );
-
-    renderOnGrid(globals.gameGrid, globals.brickMatrix);
-}
-
-export function invertGameMatrix() {
-    globals.gameMatrix = globals.gameMatrix.map((row) =>
-        row.map((element) => (element === 0 ? 1 : 0))
-    );
-    renderOnGrid(globals.gameGrid, globals.gameMatrix);
+export function invertGrid() {
+    for (let element of globals.gameGrid.children) {
+        element.classList.toggle("hide-element");
+    }
 }

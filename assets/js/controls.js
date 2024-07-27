@@ -1,5 +1,5 @@
 import { constants, globals } from "./globals.js";
-import { invertBrickMatrix, invertGameMatrix, renderOnGrid } from "./display.js";
+import { renderOnGrid } from "./display.js";
 import { toggleGamePause, restartGame, exitGame } from "./game.js";
 import { updateGameState, rotateBrick } from "./tetris.js";
 
@@ -77,6 +77,10 @@ export function setupSnakeControls() {
 }
 
 function handleSnakeControlButtonClick(event) {
+    if (!globals.isPlaying) {
+        return;
+    }
+
     const buttonId = event.currentTarget.id;
     const direction = constants.buttonActions[buttonId];
 
@@ -88,6 +92,10 @@ function handleSnakeControlButtonClick(event) {
 }
 
 function handleSnakeKeyDown(event) {
+    if (!globals.isPlaying) {
+        return;
+    }
+
     const direction = constants.keyActions[event.key];
 
     if (direction) {
@@ -108,6 +116,10 @@ export function setupTetrisControls() {
 }
 
 function handleTetrisControlButtonClick(event) {
+    if (!globals.isPlaying) {
+        return;
+    }
+
     const buttonId = event.currentTarget.id;
     const previousPosition = [...globals.position];
     const previousBrickState = globals.currentBrick.map((innerArray) => [...innerArray]);
@@ -134,6 +146,10 @@ function handleTetrisControlButtonClick(event) {
 }
 
 function handleTetrisKeyDown(event) {
+    if (!globals.isPlaying) {
+        return;
+    }
+
     const previousPosition = [...globals.position];
     const previousBrickState = globals.currentBrick.map((innerArray) => [...innerArray]);
 

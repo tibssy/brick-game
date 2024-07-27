@@ -7,13 +7,7 @@ import {
     setupSnakeControls,
     removeAllEventListeners,
 } from "./controls.js";
-import {
-    generateGrid,
-    renderOnGrid,
-    insertToMatrix,
-    invertGameMatrix,
-    invertBrickMatrix,
-} from "./display.js";
+import { generateGrid, renderOnGrid, insertToMatrix, invertGrid } from "./display.js";
 import { openSettings } from "./settings.js";
 
 export function startGame() {
@@ -77,13 +71,12 @@ export function toggleGamePause() {
     const powerButtons = document.querySelector("#power-buttons");
     const gameControls = document.querySelector("#game-controls");
     const breakButton = document.getElementById("break-button");
-    const invertMatrix = globals.game === "snake" ? invertGameMatrix : invertBrickMatrix;
-
     globals.isPlaying = !globals.isPlaying;
+
     breakButton.innerHTML = globals.isPlaying
         ? `<i class="fa-solid fa-pause"></i>`
         : `<i class="fa-solid fa-play"></i>`;
-    invertMatrix();
+    invertGrid();
 
     if (window.screen.width < window.screen.height) {
         powerButtons.style.display = globals.isPlaying ? "none" : "flex";
