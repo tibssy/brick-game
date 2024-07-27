@@ -100,6 +100,7 @@ function resetGame() {
     globals.gameGrid.innerHTML = "";
     globals.snakeDirection = "up";
     removeAllEventListeners();
+    document.getElementById("break-button").innerHTML = `<i class="fa-solid fa-pause"></i>`;
     document.getElementById("brick-indicator").style.display = "";
     document.querySelector("#power-buttons").style.display = "";
     document.querySelector("#game-controls").style.display = "";

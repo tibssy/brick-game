@@ -32,7 +32,7 @@ export function setupPowerButtons() {
         button.addEventListener("click", handlePowerButtonClick);
     }
 
-    window.addEventListener("orientationchange", (event) => {
+    window.addEventListener("orientationchange", () => {
         const powerButtons = document.querySelector("#power-buttons");
         const gameControls = document.querySelector("#game-controls");
 
@@ -174,12 +174,18 @@ function handleTetrisKeyDown(event) {
 
 export function removeAllEventListeners() {
     const gameControls = document.getElementById("game-controls");
+    const powerButtons = document.getElementById("power-buttons").children;
     const buttons = gameControls.getElementsByTagName("button");
 
     if (globals.touchHandler) {
         globals.gameGrid.removeEventListener("touchstart", globals.touchHandler, false);
         globals.gameGrid.removeEventListener("touchend", globals.touchHandler, false);
         delete globals.touchHandler;
+    }
+
+    for (let powerButton of powerButtons) {
+        const clonedPowerButton = powerButton.cloneNode(true);
+        powerButton.parentNode.replaceChild(clonedPowerButton, powerButton);
     }
 
     for (let button of buttons) {
