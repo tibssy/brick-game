@@ -13,11 +13,15 @@ export function generateGrid(element, size) {
 }
 
 export function renderOnGrid(element, array) {
+    const blocks = element.children;
+
     array.flat().forEach((value, index) => {
-        const block = element.children[index];
-        if (value) {
+        const block = blocks[index];
+        const isHidden = block.classList.contains("hide-element");
+
+        if (value && isHidden) {
             block.classList.remove("hide-element");
-        } else {
+        } else if (!value && !isHidden) {
             block.classList.add("hide-element");
         }
     });
