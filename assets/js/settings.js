@@ -1,5 +1,6 @@
 import { globals, constants } from "./globals.js";
 import { startGame } from "./game.js";
+import { updateAnimationTransition } from "./display.js";
 
 export function settings() {
     const startButton = document.getElementById("start-button");
@@ -134,16 +135,16 @@ function setGridSize() {
 }
 
 function setGameSpeed() {
-    const valueRange = [1, 10];
-    const originalInterval = 1000;
-    const minInterval = 100;
-    let currentValue = 1;
+    const valueRange = [0, 10];
+    let currentValue = 0;
 
     const updateGameSpeed = (increment, valueToDisplay) => {
         currentValue = Math.max(valueRange[0], Math.min(currentValue + increment, valueRange[1]));
-        globals.interval = minInterval + (originalInterval - currentValue * 100);
         updateAnimationTransition();
         valueToDisplay.textContent = `${currentValue}`;
+        globals.level = currentValue;
+        globals.initialLevel = currentValue;
+        globals.interval = 1000 - currentValue * 90;
     };
 
     setupIncrementDecrementButtons(
@@ -192,13 +193,6 @@ function setAnimation() {
     };
 
     toggleSwitch.addEventListener("click", updateAnimationMode);
-}
-
-function updateAnimationTransition() {
-    const isAnimate = globals.animation
-        ? `${Math.floor(globals.interval / 3)}ms ease-in-out`
-        : "none";
-    document.documentElement.style.setProperty("--transition", isAnimate);
 }
 
 function closeSettings() {

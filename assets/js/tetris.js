@@ -1,6 +1,7 @@
 import { globals, constants } from "./globals.js";
-import { insertToMatrix, renderIndicator, renderOnGrid, updateScore } from "./display.js";
+import { insertToMatrix, renderIndicator, renderOnGrid } from "./display.js";
 import { exitGame } from "./game.js";
+import { updateScore } from "./score.js";
 
 export function buildTetris() {
     document.getElementById("brick-indicator").style.display = "flex";
@@ -30,7 +31,7 @@ function initializeGame() {
 function startGameLoop() {
     globals.isPlaying = true;
 
-    globals.gameLoop = setInterval(() => {
+    globals.gameUpdate = () => {
         if (globals.isPlaying) {
             globals.position[1]++;
             if (isBrickAtBottom()) {
@@ -49,14 +50,13 @@ function startGameLoop() {
                 globals.brickMatrix = matrix;
             }
 
-            renderOnGrid(globals.gameGrid, globals.brickMatrix);
+            if (globals.gameGrid.hasChildNodes()) {
+                renderOnGrid(globals.gameGrid, globals.brickMatrix);
+            }
         }
-    }, globals.interval);
-}
+    };
 
-function calculateScore(lines) {
-    globals.score += constants.tetrisScore[lines];
-    updateScore();
+    globals.gameLoop = setInterval(globals.gameUpdate, globals.interval);
 }
 
 function isCollision(matrix) {
@@ -68,18 +68,18 @@ function isBrickAtBottom() {
 }
 
 function cleanFullRows() {
-    let rowCounter = 0;
+    let lines = 0;
 
     globals.gameMatrix.forEach((row, rowIndex) => {
         if (row.every(Boolean)) {
             globals.gameMatrix.splice(rowIndex, 1);
             globals.gameMatrix.splice(0, 0, Array(row.length).fill(0));
-            rowCounter++;
+            lines++;
         }
     });
 
-    if (rowCounter) {
-        calculateScore(rowCounter);
+    if (lines) {
+        updateScore(lines);
     }
 }
 

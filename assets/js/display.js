@@ -70,6 +70,21 @@ export function invertGrid() {
     }
 }
 
-export function updateScore() {
+export function displayScore() {
     document.getElementById("score").textContent = globals.score;
+}
+
+export function displayLevel() {
+    document.getElementById("level").textContent = globals.level;
+}
+
+export function displayClearedLines() {
+    document.getElementById("lines").textContent = globals.clearedLines;
+}
+
+export function updateAnimationTransition() {
+    const isAnimate = globals.animation
+        ? `${Math.floor(globals.interval / 3)}ms ease-in-out`
+        : "none";
+    document.documentElement.style.setProperty("--transition", isAnimate);
 }

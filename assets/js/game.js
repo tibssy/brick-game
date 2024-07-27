@@ -7,8 +7,9 @@ import {
     setupSnakeControls,
     removeAllEventListeners,
 } from "./controls.js";
-import { generateGrid, renderOnGrid, insertToMatrix, invertGrid } from "./display.js";
+import { generateGrid, renderOnGrid, insertToMatrix, invertGrid, displayLevel } from "./display.js";
 import { openSettings } from "./settings.js";
+import { resetScore } from "./score.js";
 
 export function startGame() {
     globals.gameMatrix = Array.from(Array(globals.gridSize[1]), () =>
@@ -16,7 +17,7 @@ export function startGame() {
     );
     globals.gameGrid = document.getElementById("game-display");
     generateGrid(globals.gameGrid, globals.gridSize);
-    globals.score = 0;
+    displayLevel();
 
     switch (globals.game) {
         case "tetris":
@@ -96,6 +97,8 @@ export function exitGame() {
 }
 
 function resetGame() {
+    resetScore();
+    globals.initialLevel = 1000;
     globals.isPlaying = false;
     clearInterval(globals.gameLoop);
     globals.gameGrid.innerHTML = "";
@@ -105,4 +108,11 @@ function resetGame() {
     document.getElementById("brick-indicator").style.display = "";
     document.querySelector("#power-buttons").style.display = "";
     document.querySelector("#game-controls").style.display = "";
+}
+
+export function restartGameLoop() {
+    if (globals.gameLoop) {
+        clearInterval(globals.gameLoop);
+        globals.gameLoop = setInterval(globals.gameUpdate, globals.interval);
+    }
 }
