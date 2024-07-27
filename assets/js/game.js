@@ -98,7 +98,6 @@ export function exitGame() {
 
 function resetGame() {
     resetScore();
-    globals.initialLevel = 1000;
     globals.isPlaying = false;
     clearInterval(globals.gameLoop);
     globals.gameGrid.innerHTML = "";

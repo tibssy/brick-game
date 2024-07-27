@@ -12,6 +12,7 @@ export function updateScore(lines) {
     calculateLevel(lines);
     displayScore();
 
+    console.log("global initialLevel:", globals.initialLevel);
     console.log("cleared lines:", globals.clearedLines);
     console.log("global level:", globals.level);
     console.log("global interval:", globals.interval);
@@ -22,9 +23,10 @@ export function resetScore() {
     globals.score = 0;
     globals.level = globals.initialLevel;
     globals.interval = 1000 - globals.level * 90;
+
+    displayClearedLines();
     displayScore();
     displayLevel();
-    displayClearedLines();
 }
 
 function calculateScore(lines) {
