@@ -1,5 +1,5 @@
 import { globals, constants } from "./globals.js";
-import { insertToMatrix, renderIndicator, renderOnGrid } from "./display.js";
+import { insertToMatrix, renderIndicator, renderOnGrid, updateScore } from "./display.js";
 import { exitGame } from "./game.js";
 
 export function buildTetris() {
@@ -54,6 +54,11 @@ function startGameLoop() {
     }, globals.interval);
 }
 
+function calculateScore(lines) {
+    globals.score += constants.tetrisScore[lines];
+    updateScore();
+}
+
 function isCollision(matrix) {
     return matrix.flat().includes(2);
 }
@@ -63,12 +68,19 @@ function isBrickAtBottom() {
 }
 
 function cleanFullRows() {
+    let rowCounter = 0;
+
     globals.gameMatrix.forEach((row, rowIndex) => {
         if (row.every(Boolean)) {
             globals.gameMatrix.splice(rowIndex, 1);
             globals.gameMatrix.splice(0, 0, Array(row.length).fill(0));
+            rowCounter++;
         }
     });
+
+    if (rowCounter) {
+        calculateScore(rowCounter);
+    }
 }
 
 function moveToNextBrick() {

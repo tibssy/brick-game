@@ -16,6 +16,7 @@ export function startGame() {
     );
     globals.gameGrid = document.getElementById("game-display");
     generateGrid(globals.gameGrid, globals.gridSize);
+    globals.score = 0;
 
     switch (globals.game) {
         case "tetris":

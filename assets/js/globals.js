@@ -137,6 +137,12 @@ export const constants = {
             "secondary-accent": "#1f947d",
         },
     },
+    tetrisScore: {
+        1: 40,
+        2: 100,
+        3: 300,
+        4: 1200,
+    },
 };
 
 export const globals = {
@@ -144,6 +150,7 @@ export const globals = {
     gridSize: [10, 20],
     position: [0, 0],
     interval: 1000,
+    score: null,
     animation: true,
     rotation: "counterclockwise",
     isLeftHanded: false,

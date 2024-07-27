@@ -69,3 +69,7 @@ export function invertGrid() {
         element.classList.toggle("hide-element");
     }
 }
+
+export function updateScore() {
+    document.getElementById("score").textContent = globals.score;
+}
