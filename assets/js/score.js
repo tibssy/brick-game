@@ -21,6 +21,7 @@ export function resetScore() {
     globals.clearedLines = 0;
     globals.score = 0;
     globals.level = globals.initialLevel;
+    globals.interval = 1000 - globals.level * 90;
     displayScore();
     displayLevel();
     displayClearedLines();
