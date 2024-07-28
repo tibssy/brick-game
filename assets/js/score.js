@@ -26,6 +26,7 @@ export function resetScore() {
     displayClearedLines();
     displayScore();
     displayLevel();
+    updateAnimationTransition();
 }
 
 function updateScore(baseScore) {
