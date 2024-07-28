@@ -177,6 +177,9 @@ export function removeAllEventListeners() {
     const powerButtons = document.getElementById("power-buttons").children;
     const buttons = gameControls.getElementsByTagName("button");
 
+    document.removeEventListener("keydown", handleSnakeKeyDown);
+    document.removeEventListener("keydown", handleTetrisKeyDown);
+
     if (globals.touchHandler) {
         globals.gameGrid.removeEventListener("touchstart", globals.touchHandler, false);
         globals.gameGrid.removeEventListener("touchend", globals.touchHandler, false);
