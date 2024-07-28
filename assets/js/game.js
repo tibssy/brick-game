@@ -2,10 +2,10 @@ import { buildTetris, playTetris } from "./tetris.js";
 import { buildSnake, playSnake } from "./snake.js";
 import { globals, constants } from "./globals.js";
 import {
-    setupPowerButtons,
-    setupTetrisControls,
-    setupSnakeControls,
     removeAllEventListeners,
+    setTetrisControls,
+    setSnakeControls,
+    setupPowerControls,
 } from "./controls.js";
 import { generateGrid, renderOnGrid, insertToMatrix, invertGrid, displayLevel } from "./display.js";
 import { openSettings } from "./settings.js";
@@ -24,16 +24,16 @@ export function startGame() {
         case "tetrismod":
             buildTetris();
             countDown(() => {
-                setupPowerButtons();
-                setupTetrisControls();
+                setupPowerControls();
+                setTetrisControls();
                 playTetris();
             });
             break;
         case "snake":
             buildSnake();
             countDown(() => {
-                setupPowerButtons();
-                setupSnakeControls();
+                setupPowerControls();
+                setSnakeControls();
                 playSnake();
             });
             break;
@@ -69,9 +69,20 @@ function countDown(callback) {
     }, 1000);
 }
 
-export function toggleGamePause() {
+export function handleOrientationChange() {
     const powerButtons = document.querySelector("#power-buttons");
     const gameControls = document.querySelector("#game-controls");
+
+    if (window.screen.orientation.type === "portrait-primary") {
+        powerButtons.style.display = globals.isPlaying ? "none" : "flex";
+        gameControls.style.display = globals.isPlaying ? "flex" : "none";
+    } else {
+        powerButtons.style.display = globals.isPlaying ? "" : "";
+        gameControls.style.display = globals.isPlaying ? "" : "";
+    }
+}
+
+export function toggleGamePause() {
     const breakButton = document.getElementById("break-button");
     globals.isPlaying = !globals.isPlaying;
 
@@ -80,10 +91,7 @@ export function toggleGamePause() {
         : `<i class="fa-solid fa-play"></i>`;
     invertGrid();
 
-    if (window.screen.width < window.screen.height) {
-        powerButtons.style.display = globals.isPlaying ? "none" : "flex";
-        gameControls.style.display = globals.isPlaying ? "flex" : "none";
-    }
+    handleOrientationChange();
 }
 
 export function restartGame() {

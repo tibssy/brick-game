@@ -434,7 +434,7 @@ input:checked + .slider:before {
     }
 
     #power-buttons {
-        display: flex;
+        display: flex !important;
         justify-content: flex-end;
     }
 
@@ -443,7 +443,7 @@ input:checked + .slider:before {
     }
 
     #game-controls {
-        display: flex;
+        display: flex !important;
         max-width: 300px;
         width: 90%;
         height: fit-content;

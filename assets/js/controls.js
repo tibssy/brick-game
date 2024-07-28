@@ -1,49 +1,50 @@
 import { constants, globals } from "./globals.js";
 import { renderOnGrid } from "./display.js";
-import { toggleGamePause, restartGame, exitGame } from "./game.js";
+import { handleOrientationChange, toggleGamePause, restartGame, exitGame } from "./game.js";
 import { updateGameState, rotateBrick } from "./tetris.js";
 
-function setupTouchControls() {
+export function setupPowerControls() {
+    setTouchControls();
+    setupButtons("#power-buttons button", handlePowerButtonClick);
+    document.addEventListener("keyup", handleEscapeKeyUp);
+
+    window.addEventListener("orientationchange", handleOrientationChange);
+}
+
+function handleEscapeKeyUp(event) {
+    if (event.key === "Escape") {
+        toggleGamePause();
+    }
+}
+
+function setTouchControls() {
     const touchThreshold = 180;
     let touchStartTime = 0;
 
-    globals.gameGrid.addEventListener("touchstart", touchHandler, false);
-    globals.gameGrid.addEventListener("touchend", touchHandler, false);
+    globals.gameGrid.addEventListener("touchstart", handleTouchStart, false);
+    globals.gameGrid.addEventListener("touchend", handleTouchEnd, false);
 
-    function touchHandler(event) {
-        if (event.type == "touchstart") {
-            touchStartTime = Date.now();
-        } else if (event.type == "touchend" && Date.now() - touchStartTime <= touchThreshold) {
+    function handleTouchStart() {
+        touchStartTime = Date.now();
+    }
+
+    function handleTouchEnd() {
+        if (Date.now() - touchStartTime <= touchThreshold) {
             toggleGamePause();
         }
     }
 
-    globals.touchHandler = touchHandler;
+    globals.touchHandler = { handleTouchStart, handleTouchEnd };
 }
 
-export function setupPowerButtons() {
-    if (window.screen.width < 992) {
-        setupTouchControls();
-    }
+export function setTetrisControls() {
+    setupButtons(".control-button", handleTetrisControlButtonClick);
+    document.addEventListener("keydown", handleTetrisKeyDown);
+}
 
-    const powerButtons = document.getElementById("power-buttons").children;
-
-    for (let button of powerButtons) {
-        button.addEventListener("click", handlePowerButtonClick);
-    }
-
-    window.addEventListener("orientationchange", () => {
-        const powerButtons = document.querySelector("#power-buttons");
-        const gameControls = document.querySelector("#game-controls");
-
-        if (window.screen.orientation.type === "portrait-primary" && !globals.isPlaying) {
-            powerButtons.style.display = "flex";
-            gameControls.style.display = "none";
-        } else {
-            powerButtons.style.display = "";
-            gameControls.style.display = "";
-        }
-    });
+export function setSnakeControls() {
+    setupButtons(".control-button", handleSnakeControlButtonClick);
+    document.addEventListener("keydown", handleSnakeKeyDown);
 }
 
 function handlePowerButtonClick(event) {
@@ -64,135 +65,108 @@ function handlePowerButtonClick(event) {
     }
 }
 
-export function setupSnakeControls() {
-    const controlButtons = document.getElementsByClassName("control-button");
-
-    for (let button of controlButtons) {
-        button.addEventListener("click", handleSnakeControlButtonClick);
-    }
-
-    if (window.screen.width >= 992) {
-        document.addEventListener("keydown", handleSnakeKeyDown);
-    }
-}
-
 function handleSnakeControlButtonClick(event) {
-    if (!globals.isPlaying) {
-        return;
-    }
+    if (!globals.isPlaying) return;
 
-    const buttonId = event.currentTarget.id;
-    const direction = constants.buttonActions[buttonId];
-
+    const direction = constants.buttonActions[event.currentTarget.id];
     if (direction) {
         globals.snakeDirection = direction;
     } else {
-        throw new Error(`Invalid button id: ${buttonId}`);
+        throw new Error(`Invalid button id: ${event.currentTarget.id}`);
     }
 }
 
 function handleSnakeKeyDown(event) {
-    if (!globals.isPlaying) {
-        return;
-    }
+    if (!globals.isPlaying) return;
 
     const direction = constants.keyActions[event.key];
-
     if (direction) {
         globals.snakeDirection = direction;
     }
 }
 
-export function setupTetrisControls() {
-    const controlButtons = document.querySelectorAll(".control-button");
-
-    for (let button of controlButtons) {
-        button.addEventListener("click", handleTetrisControlButtonClick);
-    }
-
-    if (window.screen.width >= 992) {
-        document.addEventListener("keydown", handleTetrisKeyDown);
-    }
-}
-
 function handleTetrisControlButtonClick(event) {
-    if (!globals.isPlaying) {
-        return;
-    }
+    if (!globals.isPlaying) return;
 
     const buttonId = event.currentTarget.id;
-    const previousPosition = [...globals.position];
-    const previousBrickState = globals.currentBrick.map((innerArray) => [...innerArray]);
+    const previousState = {
+        position: [...globals.position],
+        brick: globals.currentBrick.map((row) => [...row]),
+    };
 
-    switch (buttonId) {
-        case "up-button":
-            globals.currentBrick = rotateBrick(globals.currentBrick);
-            break;
-        case "left-button":
-            globals.position[0]--;
-            break;
-        case "right-button":
-            globals.position[0]++;
-            break;
-        case "down-button":
-            globals.position[1]++;
-            break;
-        default:
-            throw new Error(`Invalid button id: ${buttonId}`);
-    }
-
-    updateGameState(previousPosition, previousBrickState);
+    updateTetrisState(buttonId);
+    updateGameState(previousState.position, previousState.brick);
     renderOnGrid(globals.gameGrid, globals.brickMatrix);
 }
 
 function handleTetrisKeyDown(event) {
-    if (!globals.isPlaying) {
-        return;
-    }
+    if (!globals.isPlaying) return;
 
-    const previousPosition = [...globals.position];
-    const previousBrickState = globals.currentBrick.map((innerArray) => [...innerArray]);
+    if (event.key === "Escape") return;
 
-    switch (event.key) {
+    const previousState = {
+        position: [...globals.position],
+        brick: globals.currentBrick.map((row) => [...row]),
+    };
+
+    updateTetrisState(event.key);
+    updateGameState(previousState.position, previousState.brick);
+    renderOnGrid(globals.gameGrid, globals.brickMatrix);
+}
+
+function updateTetrisState(control) {
+    switch (control) {
+        case "up-button":
         case "ArrowUp":
             globals.currentBrick = rotateBrick(globals.currentBrick);
             break;
+        case "left-button":
         case "ArrowLeft":
             globals.position[0]--;
             break;
+        case "right-button":
         case "ArrowRight":
             globals.position[0]++;
             break;
+        case "down-button":
         case "ArrowDown":
             globals.position[1]++;
             break;
     }
+}
 
-    updateGameState(previousPosition, previousBrickState);
-    renderOnGrid(globals.gameGrid, globals.brickMatrix);
+function setupButtons(selector, handler) {
+    const buttons = document.querySelectorAll(selector);
+    buttons.forEach((button) => button.addEventListener("click", handler));
 }
 
 export function removeAllEventListeners() {
-    const gameControls = document.getElementById("game-controls");
-    const powerButtons = document.getElementById("power-buttons").children;
-    const buttons = gameControls.getElementsByTagName("button");
-
     document.removeEventListener("keydown", handleSnakeKeyDown);
     document.removeEventListener("keydown", handleTetrisKeyDown);
+    document.removeEventListener("keyup", handleEscapeKeyUp);
 
     if (globals.touchHandler) {
-        globals.gameGrid.removeEventListener("touchstart", globals.touchHandler, false);
-        globals.gameGrid.removeEventListener("touchend", globals.touchHandler, false);
+        globals.gameGrid.removeEventListener(
+            "touchstart",
+            globals.touchHandler.handleTouchStart,
+            false
+        );
+        globals.gameGrid.removeEventListener(
+            "touchend",
+            globals.touchHandler.handleTouchEnd,
+            false
+        );
         delete globals.touchHandler;
     }
 
-    for (let powerButton of powerButtons) {
-        const clonedPowerButton = powerButton.cloneNode(true);
-        powerButton.parentNode.replaceChild(clonedPowerButton, powerButton);
-    }
+    removeAllButtonListeners("#game-controls");
+    removeAllButtonListeners("#power-buttons");
+}
 
-    for (let button of buttons) {
+function removeAllButtonListeners(selector) {
+    const buttons = document.querySelectorAll(`${selector} button`);
+    buttons.forEach((button) => {
         const clonedButton = button.cloneNode(true);
         button.parentNode.replaceChild(clonedButton, button);
-    }
+    });
 }

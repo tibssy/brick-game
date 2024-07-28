@@ -167,5 +167,6 @@ export const globals = {
     brickIndex: null,
     snakeDirection: "up",
     snakeLength: 4,
+    snakeBody: null,
     snake: null,
 };
