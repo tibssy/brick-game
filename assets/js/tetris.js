@@ -1,7 +1,7 @@
 import { globals, constants } from "./globals.js";
 import { insertToMatrix, renderIndicator, renderOnGrid } from "./display.js";
 import { exitGame } from "./game.js";
-import { updateScore } from "./score.js";
+import { updateTetrisScore } from "./score.js";
 
 export function buildTetris() {
     document.getElementById("brick-indicator").style.display = "flex";
@@ -50,9 +50,7 @@ function startGameLoop() {
                 globals.brickMatrix = matrix;
             }
 
-            if (globals.gameGrid.hasChildNodes()) {
-                renderOnGrid(globals.gameGrid, globals.brickMatrix);
-            }
+            renderOnGrid(globals.gameGrid, globals.brickMatrix);
         }
     };
 
@@ -79,7 +77,7 @@ function cleanFullRows() {
     });
 
     if (lines) {
-        updateScore(lines);
+        updateTetrisScore(lines);
     }
 }
 

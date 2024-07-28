@@ -1,6 +1,7 @@
 import { globals } from "./globals.js";
 import { insertToMatrix, renderOnGrid } from "./display.js";
 import { exitGame } from "./game.js";
+import { updateSnakeScore } from "./score.js";
 
 export function buildSnake() {
     globals.snake = Array.from({ length: globals.snakeLength }, () => [1]);
@@ -27,15 +28,17 @@ function initializeGame() {
 }
 
 function startGameLoop() {
+    globals.interval /= 2;
     globals.isPlaying = true;
 
-    globals.gameLoop = setInterval(() => {
+    globals.gameUpdate = () => {
         if (globals.isPlaying) {
             updatePosition();
             if (isPositionInMatrix() && !isCollision(globals.position)) {
                 if (isCollision(globals.snakeFood)) {
                     growSnake();
                     getRandomSnakeFood();
+                    updateSnakeScore();
                 } else {
                     moveSnake();
                 }
@@ -45,7 +48,9 @@ function startGameLoop() {
                 exitGame();
             }
         }
-    }, globals.interval);
+    };
+
+    globals.gameLoop = setInterval(globals.gameUpdate, globals.interval);
 }
 
 function updatePosition() {

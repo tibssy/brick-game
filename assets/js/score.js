@@ -7,15 +7,14 @@ import {
 } from "./display.js";
 import { restartGameLoop } from "./game.js";
 
-export function updateScore(lines) {
-    calculateScore(lines);
-    calculateLevel(lines);
-    displayScore();
+export function updateTetrisScore(lines) {
+    updateScore(constants.tetrisScore[lines]);
+    calculateLevel(lines, 10);
+}
 
-    console.log("global initialLevel:", globals.initialLevel);
-    console.log("cleared lines:", globals.clearedLines);
-    console.log("global level:", globals.level);
-    console.log("global interval:", globals.interval);
+export function updateSnakeScore() {
+    updateScore(40);
+    calculateLevel(1, 5);
 }
 
 export function resetScore() {
@@ -29,21 +28,28 @@ export function resetScore() {
     displayLevel();
 }
 
-function calculateScore(lines) {
-    globals.score += constants.tetrisScore[lines] * (globals.level + 1);
+function updateScore(baseScore) {
+    globals.score += baseScore * (globals.level + 1);
+    displayScore();
 }
 
-function calculateLevel(lines) {
-    globals.clearedLines += lines;
+function calculateLevel(increment, levelThreshold) {
+    globals.clearedLines += increment;
     const initialLevel = globals.initialLevel;
-    let newLevel = initialLevel + Math.floor(globals.clearedLines / 10);
+    let newLevel = initialLevel + Math.floor(globals.clearedLines / levelThreshold);
 
     displayClearedLines();
     newLevel = Math.min(newLevel, 10);
 
     if (globals.level !== newLevel) {
+        let interval = 1000 - newLevel * 90;
         globals.level = newLevel;
-        globals.interval = 1000 - newLevel * 90;
+
+        if (globals.game === "snake") {
+            interval /= 2;
+        }
+
+        globals.interval = interval;
         updateAnimationTransition();
         displayLevel();
         restartGameLoop();

@@ -13,6 +13,10 @@ export function generateGrid(element, size) {
 }
 
 export function renderOnGrid(element, array) {
+    if (!element.hasChildNodes()) {
+        return;
+    }
+
     requestAnimationFrame(() => {
         const blocks = element.children;
 
