@@ -8,7 +8,7 @@
 :root {
     /* Colors */
     --primary-background: #2c2f33;
-    --secondary-background: #868788;
+    --secondary-background: #bcbdbe;
     --primary-accent: #5873d3;
     --secondary-accent: #9fb1f1;
     --shadow: #000000;
@@ -51,7 +51,11 @@ input[type="radio"] {
     display: none;
 }
 
-.devider {
+input[type="text"] {
+    all: unset;
+}
+
+.divider {
     border-bottom: 1px solid var(--primary-background);
 }
 
@@ -96,7 +100,10 @@ main > div {
 }
 
 #score-area {
-    background-color: rgb(135, 197, 222);
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    background-color: var(--primary-background);
 }
 
 .card {
@@ -369,6 +376,14 @@ main > div {
     transition: 0.4s;
 }
 
+.slider.round {
+    border-radius: var(--border-radius-large);
+}
+
+.slider.round:before {
+    border-radius: var(--border-radius-normal);
+}
+
 input:checked + .slider {
     background-color: var(--primary-accent);
 }
@@ -389,7 +404,88 @@ input:checked + .slider:before {
     box-shadow: var(--box-shadow-normal);
 }
 
-/* Property Setters */
+/* ---------- Score Area ---------- */
+#score-area h1,
+#high-score > p {
+    text-align: center;
+    color: var(--secondary-background);
+}
+
+#high-score {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--secondary-background);
+}
+
+#score-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 6px;
+}
+
+#close-score {
+    font-size: 2rem;
+    color: var(--secondary-background);
+}
+
+#player-input label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--secondary-background);
+}
+
+.input-group {
+    display: flex;
+    background-color: var(--secondary-background);
+    margin-top: 10px;
+    padding: 4px 4px;
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--box-shadow-normal) inset;
+    border: 1px solid var(--primary-background);
+}
+
+.input-group input {
+    width: 100%;
+    font-size: 1.3rem;
+    padding: 3px 6px;
+}
+
+.input-group button {
+    font-size: 1.3rem;
+    padding: 0 8px;
+    box-shadow: var(--box-shadow-small);
+    background-color: var(--primary-background);
+    color: var(--secondary-background);
+    border-radius: var(--border-radius-normal);
+}
+
+#score-table {
+    height: 100%;
+    background-color: var(--secondary-background);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--box-shadow-normal) inset;
+    border: 1px solid var(--primary-background);
+}
+
+.social-networks {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    list-style: none;
+    background-color: var(--secondary-background);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--box-shadow-normal) inset;
+    border: 1px solid var(--primary-background);
+}
+
+.social-networks a {
+    color: var(--primary-background);
+    font-size: 2.2rem;
+}
+
+/* ---------- Property Setters ---------- */
 .hide-element {
     transform: scale(0.3);
     filter: opacity(0);
@@ -432,7 +528,6 @@ input[type="radio"]:checked + .color-label {
     #game-area {
         flex-direction: row;
         justify-content: space-evenly;
-        max-width: 1200px;
     }
 
     .left-handed {
@@ -495,8 +590,9 @@ input[type="radio"]:checked + .color-label {
     }
 
     main > div {
-        height: 95%;
+        max-width: 1200px;
         width: 95%;
+        height: 95%;
         box-shadow: var(--box-shadow-large);
         border-radius: var(--border-radius-large);
     }

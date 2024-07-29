@@ -6,6 +6,19 @@ import {
     updateAnimationTransition,
 } from "./display.js";
 import { restartGameLoop } from "./game.js";
+import { switchToArea } from "./main.js";
+
+export function highScore() {
+    const exitButton = document.getElementById("close-score");
+
+    const closeScores = () => {
+        switchToArea("settings-area");
+        resetScore();
+        exitButton.removeEventListener("click", closeScores);
+    };
+
+    exitButton.addEventListener("click", closeScores);
+}
 
 export function updateTetrisScore(lines) {
     updateScore(constants.tetrisScore[lines]);
@@ -17,7 +30,7 @@ export function updateSnakeScore() {
     calculateLevel(1, 5);
 }
 
-export function resetScore() {
+function resetScore() {
     globals.clearedLines = 0;
     globals.score = 0;
     globals.level = globals.initialLevel;

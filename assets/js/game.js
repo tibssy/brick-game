@@ -8,7 +8,7 @@ import {
     setupPowerControls,
 } from "./controls.js";
 import { generateGrid, renderOnGrid, insertToMatrix, invertGrid, displayLevel } from "./display.js";
-import { resetScore } from "./score.js";
+import { highScore } from "./score.js";
 import { switchToArea } from "./main.js";
 
 export function startGame() {
@@ -101,12 +101,11 @@ export function restartGame() {
 
 export function exitGame() {
     resetGame();
-    // switchToArea("score-area");
-    switchToArea("settings-area");
+    highScore();
+    switchToArea("score-area");
 }
 
 function resetGame() {
-    resetScore();
     globals.isPlaying = false;
     clearInterval(globals.gameLoop);
     globals.gameGrid.innerHTML = "";

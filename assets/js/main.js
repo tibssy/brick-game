@@ -1,7 +1,6 @@
 import { settings } from "./settings.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("settings-area").classList.add("show-element-a");
     settings();
 });
 
