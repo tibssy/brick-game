@@ -8,8 +8,8 @@ import {
     setupPowerControls,
 } from "./controls.js";
 import { generateGrid, renderOnGrid, insertToMatrix, invertGrid, displayLevel } from "./display.js";
-import { openSettings } from "./settings.js";
 import { resetScore } from "./score.js";
+import { switchToArea } from "./main.js";
 
 export function startGame() {
     globals.gameMatrix = Array.from(Array(globals.gridSize[1]), () =>
@@ -101,7 +101,8 @@ export function restartGame() {
 
 export function exitGame() {
     resetGame();
-    openSettings();
+    // switchToArea("score-area");
+    switchToArea("settings-area");
 }
 
 function resetGame() {

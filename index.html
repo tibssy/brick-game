@@ -19,52 +19,9 @@
         <link rel="stylesheet" href="assets/css/style.css" />
     </head>
     <body>
-        <!-- Main -->
         <main>
-            <!-- Indicator Area -->
-            <div id="game-indicator">
-                <p>Next Brick:</p>
-                <div id="brick-indicator">
-                    <div id="next-brick-indicator"></div>
-                </div>
-                <p>Score: <span id="score">0</span></p>
-                <p>Level: <span id="level">0</span></p>
-                <p>Lines: <span id="lines">0</span></p>
-            </div>
-
-            <!-- Display Area -->
-            <div id="game-display"></div>
-
-            <!-- Game Control Area -->
-            <div id="control-area">
-                <div id="power-buttons">
-                    <button id="break-button"><i class="fa-solid fa-pause"></i></button>
-                    <button id="reset-button"><i class="fa-solid fa-arrows-rotate"></i></button>
-                    <button id="exit-button"><i class="fa-solid fa-xmark"></i></button>
-                </div>
-                <div id="game-controls">
-                    <button class="control-button" id="left-button">
-                        <i class="fa-solid fa-angle-left"></i>
-                    </button>
-                    <div>
-                        <button class="control-button" id="up-button">
-                            <i class="fa-solid fa-angle-up"></i>
-                        </button>
-                        <button class="control-button" id="down-button">
-                            <i class="fa-solid fa-angle-down"></i>
-                        </button>
-                    </div>
-                    <button class="control-button" id="right-button">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </button>
-                </div>
-            </div>
-        </main>
-
-        <!-- Settings -->
-        <settins id="settings" class="modal">
-            <div class="modal-content">
-                <!-- Game Selector -->
+            <!-- Settings Area -->
+            <div id="settings-area" class="element">
                 <div id="game-selector" class="card">
                     <div id="carousel-container">
                         <div id="game-selector-images">
@@ -96,7 +53,6 @@
                     </div>
                 </div>
 
-                <!-- Color Selector -->
                 <div id="color-selector" class="card">
                     <h2>Theme Selector</h2>
                     <div id="color-options"></div>
@@ -104,7 +60,6 @@
 
                 <div class="card">
                     <h2>Game Settins</h2>
-                    <!-- Grid Size Selector -->
                     <div id="grid-size-selector" class="settings-option devider">
                         <p>Game Size:</p>
                         <div class="number-selector">
@@ -118,7 +73,6 @@
                         </div>
                     </div>
 
-                    <!-- Speed Selector -->
                     <div id="speed-selector" class="settings-option devider">
                         <p>Game Speed:</p>
                         <div class="number-selector">
@@ -132,13 +86,11 @@
                         </div>
                     </div>
 
-                    <!-- Tetris Brick Rotation Selector -->
                     <div id="rotation-selector" class="settings-option devider">
                         <p>Tetris Brick Rotation:</p>
                         <button><i class="fa-solid fa-rotate-left"></i></button>
                     </div>
 
-                    <!-- Left or Right Handed Switch -->
                     <div id="left-hand-selector" class="settings-option devider">
                         <p>Left Handed Mode:</p>
                         <label class="switch">
@@ -147,7 +99,6 @@
                         </label>
                     </div>
 
-                    <!-- Animation ON/OFF Switch -->
                     <div id="animation-selector" class="settings-option">
                         <p>Animation:</p>
                         <label class="switch">
@@ -159,7 +110,51 @@
 
                 <button id="start-button">Start Game</button>
             </div>
-        </settins>
+
+            <!-- Game Area -->
+            <div id="game-area" class="element closed-element-a">
+                <div id="game-indicator">
+                    <p>Next Brick:</p>
+                    <div id="brick-indicator">
+                        <div id="next-brick-indicator"></div>
+                    </div>
+                    <p>Score: <span id="score">0</span></p>
+                    <p>Level: <span id="level">0</span></p>
+                    <p>Lines: <span id="lines">0</span></p>
+                </div>
+
+                <div id="game-display"></div>
+
+                <div id="control-area">
+                    <div id="power-buttons">
+                        <button id="break-button"><i class="fa-solid fa-pause"></i></button>
+                        <button id="reset-button"><i class="fa-solid fa-arrows-rotate"></i></button>
+                        <button id="exit-button"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <div id="game-controls">
+                        <button class="control-button" id="left-button">
+                            <i class="fa-solid fa-angle-left"></i>
+                        </button>
+                        <div>
+                            <button class="control-button" id="up-button">
+                                <i class="fa-solid fa-angle-up"></i>
+                            </button>
+                            <button class="control-button" id="down-button">
+                                <i class="fa-solid fa-angle-down"></i>
+                            </button>
+                        </div>
+                        <button class="control-button" id="right-button">
+                            <i class="fa-solid fa-angle-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Score Area -->
+            <div id="score-area" class="element closed-element-a">
+                <h1>page 3</h1>
+            </div>
+        </main>
 
         <script src="https://kit.fontawesome.com/77df4eb855.js" crossorigin="anonymous"></script>
         <script type="module" src="assets/js/main.js"></script>

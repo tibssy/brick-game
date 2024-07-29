@@ -1,12 +1,13 @@
 import { globals, constants } from "./globals.js";
 import { startGame } from "./game.js";
 import { updateAnimationTransition } from "./display.js";
+import { switchToArea } from "./main.js";
 
 export function settings() {
     const startButton = document.getElementById("start-button");
 
     startButton.addEventListener("click", () => {
-        closeSettings();
+        switchToArea("game-area");
         startGame();
     });
 
@@ -174,10 +175,12 @@ function setLeftHanded() {
 
     const updateHandedness = () => {
         globals.isLeftHanded = !globals.isLeftHanded;
-        const mainElement = document.querySelector("main");
+        const gameArea = document.querySelector("#game-area");
         const powerButtons = document.querySelector("#power-buttons");
 
-        mainElement.classList.toggle("left-handed", globals.isLeftHanded);
+        console.log(gameArea);
+
+        gameArea.classList.toggle("left-handed", globals.isLeftHanded);
         powerButtons.classList.toggle("left-handed", globals.isLeftHanded);
     };
 
@@ -193,31 +196,4 @@ function setAnimation() {
     };
 
     toggleSwitch.addEventListener("click", updateAnimationMode);
-}
-
-function closeSettings() {
-    const modal = document.getElementById("settings");
-    const main = document.querySelector("main");
-    modal.style.transform = "scale(1.5)";
-    modal.style.filter = "opacity(0)";
-
-    modal.addEventListener("transitionend", onTransitionEnd);
-
-    function onTransitionEnd() {
-        modal.style.display = "none";
-        modal.removeEventListener("transitionend", onTransitionEnd);
-    }
-
-    main.style.filter = "opacity(1)";
-    main.style.transform = "scale(1)";
-}
-
-export function openSettings() {
-    const modal = document.getElementById("settings");
-    modal.style.display = "flex";
-    modal.offsetHeight;
-    modal.style.transform = "scale(1)";
-    modal.style.filter = "opacity(1)";
-
-    document.querySelector("main").style.transform = "scale(0.8)";
 }
