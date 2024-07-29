@@ -4,6 +4,7 @@ import {
     displayLevel,
     displayClearedLines,
     updateAnimationTransition,
+    displayScores,
 } from "./display.js";
 import { restartGameLoop } from "./game.js";
 import { switchToArea } from "./main.js";
@@ -18,6 +19,9 @@ export function highScore() {
     };
 
     exitButton.addEventListener("click", closeScores);
+
+    displayScores();
+    resetScore();
 }
 
 export function updateTetrisScore(lines) {

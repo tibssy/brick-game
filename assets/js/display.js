@@ -92,3 +92,11 @@ export function updateAnimationTransition() {
         : "none";
     document.documentElement.style.setProperty("--transition", isAnimate);
 }
+
+export function displayScores() {
+    const scoreSpans = document.querySelectorAll("#high-score span");
+
+    [globals.score, globals.level, globals.clearedLines].forEach((score, index) => {
+        scoreSpans[index].textContent = score;
+    });
+}
