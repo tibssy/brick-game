@@ -24,16 +24,19 @@ export function highScore() {
     };
 
     const saveScore = () => {
-        console.log(playerName.value);
-
-        saveHighscore(playerName.value, ...scores, globals.game, timeStamp);
+        if (playerName.value) {
+            saveHighscore(playerName.value, scores[0], globals.game, timeStamp);
+            playerName.value = "";
+            resetScore();
+            updateTable();
+        }
     };
 
     exitButton.addEventListener("click", closeScores);
     saveScoreButton.addEventListener("click", saveScore);
 
     displayScores(scores);
-    // localStorage.clear();
+    updateTable();
 }
 
 export function updateTetrisScore(lines) {
@@ -95,8 +98,31 @@ function getTimeStamp() {
     return `${month}/${day} - ${hours}:${minutes}`;
 }
 
-function saveHighscore(player, score, level, lines, game, date) {
-    const highscore = { player, score, level, lines, game, date };
+function updateTable() {
+    const table = document.querySelector("#score-table table");
+    const tableBody = table.querySelector("tbody");
+    const scores = getHighscores();
+
+    console.log(tableBody.children.length);
+    if (tableBody.children.length) {
+        tableBody.innerHTML = "";
+    }
+
+    scores.forEach((element) => {
+        const tableRow = `
+            <tr>
+                <td>${element.player}</td>
+                <td>${element.score}</td>
+                <td>${element.game}</td>
+                <td>${element.date}</td>
+            </tr>`;
+
+        tableBody.insertAdjacentHTML("beforeend", tableRow);
+    });
+}
+
+function saveHighscore(player, score, game, date) {
+    const highscore = { player, score, game, date };
     let highscores = JSON.parse(localStorage.getItem("highscores")) || [];
 
     highscores.push(highscore);
