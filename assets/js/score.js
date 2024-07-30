@@ -11,17 +11,29 @@ import { switchToArea } from "./main.js";
 
 export function highScore() {
     const exitButton = document.getElementById("close-score");
+    const scores = [globals.score, globals.level, globals.clearedLines];
+    let playerName = document.getElementById("player-name");
+    const saveScoreButton = document.getElementById("save-score");
+    const timeStamp = getTimeStamp();
 
     const closeScores = () => {
         switchToArea("settings-area");
         resetScore();
         exitButton.removeEventListener("click", closeScores);
+        saveScoreButton.removeEventListener("click", saveScore);
+    };
+
+    const saveScore = () => {
+        console.log(playerName.value);
+
+        saveHighscore(playerName.value, ...scores, globals.game, timeStamp);
     };
 
     exitButton.addEventListener("click", closeScores);
+    saveScoreButton.addEventListener("click", saveScore);
 
-    displayScores();
-    resetScore();
+    displayScores(scores);
+    // localStorage.clear();
 }
 
 export function updateTetrisScore(lines) {
@@ -72,4 +84,30 @@ function calculateLevel(increment, levelThreshold) {
         displayLevel();
         restartGameLoop();
     }
+}
+
+function getTimeStamp() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, "0");
+    const minutes = String(now.getMinutes()).padStart(2, "0");
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    return `${month}/${day} - ${hours}:${minutes}`;
+}
+
+function saveHighscore(player, score, level, lines, game, date) {
+    const highscore = { player, score, level, lines, game, date };
+    let highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+
+    highscores.push(highscore);
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+}
+
+function getHighscores() {
+    return JSON.parse(localStorage.getItem("highscores")) || [];
+}
+
+function getSortedHighscores(sortKey) {
+    const highscores = getHighscores();
+    return highscores.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
 }

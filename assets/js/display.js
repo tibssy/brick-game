@@ -93,10 +93,10 @@ export function updateAnimationTransition() {
     document.documentElement.style.setProperty("--transition", isAnimate);
 }
 
-export function displayScores() {
+export function displayScores(scores) {
     const scoreSpans = document.querySelectorAll("#high-score span");
 
-    [globals.score, globals.level, globals.clearedLines].forEach((score, index) => {
+    scores.forEach((score, index) => {
         scoreSpans[index].textContent = score;
     });
 }
