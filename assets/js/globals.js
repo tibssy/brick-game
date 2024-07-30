@@ -153,7 +153,7 @@ export const globals = {
     initialLevel: 0,
     level: 0,
     clearedLines: 0,
-    score: null,
+    score: 0,
     animation: true,
     rotation: "counterclockwise",
     isLeftHanded: false,
