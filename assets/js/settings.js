@@ -13,6 +13,7 @@ export function settings() {
 
     gameSelector();
     generateColorOptions();
+    setDarkMode();
     setGridSize();
     setGameSpeed();
     setBrickRotation();
@@ -56,10 +57,22 @@ function gameSelector() {
     updateCarousel();
 }
 
+function setDarkMode() {
+    const toggleSwitch = document.querySelector("#dark-mode-selector input");
+
+    const updateDarkLightMode = () => {
+        globals.colorMode = globals.colorMode === "dark" ? "light" : "dark";
+        setColorTheme(document.querySelector('input[name="color"]:checked').value);
+    };
+
+    toggleSwitch.addEventListener("change", updateDarkLightMode);
+}
+
 function generateColorOptions() {
     const colorOptions = document.getElementById("color-options");
+    let isFirst = true;
 
-    Object.entries(constants.colorThemes).forEach(([key, value]) => {
+    Object.entries(constants.hslColorThemes.hue).forEach(([key, hue]) => {
         const colorOption = document.createElement("div");
         const input = document.createElement("input");
         const label = document.createElement("label");
@@ -70,10 +83,14 @@ function generateColorOptions() {
         input.id = key;
         input.classList.add("color-input");
 
+        if (isFirst) {
+            input.checked = true;
+            isFirst = false;
+        }
+
         label.setAttribute("for", input.id);
         label.classList.add("color-label");
-        label.style.backgroundColor = value["primary-accent"];
-        label.style.setProperty("border", `5px solid ${value["primary-background"]}`);
+        label.style.backgroundColor = `hsl(${hue}, ${constants.hslColorThemes.light["primary-accent"]})`;
 
         colorOption.appendChild(input);
         colorOption.appendChild(label);
@@ -86,23 +103,24 @@ function generateColorOptions() {
 }
 
 function setColorTheme(theme) {
-    const themeColors = constants.colorThemes[theme];
+    const hueValue = constants.hslColorThemes.hue[theme];
+    const slValues = constants.hslColorThemes[globals.colorMode];
 
     document.documentElement.style.setProperty(
         "--primary-background",
-        `${themeColors["primary-background"]}`
+        `hsl(${hueValue}, ${slValues["primary-background"]})`
     );
     document.documentElement.style.setProperty(
         "--secondary-background",
-        `${themeColors["secondary-background"]}`
+        `hsl(${hueValue}, ${slValues["secondary-background"]})`
     );
     document.documentElement.style.setProperty(
         "--primary-accent",
-        `${themeColors["primary-accent"]}`
+        `hsl(${hueValue}, ${slValues["primary-accent"]})`
     );
     document.documentElement.style.setProperty(
         "--secondary-accent",
-        `${themeColors["secondary-accent"]}`
+        `hsl(${hueValue}, ${slValues["secondary-accent"]})`
     );
 }
 

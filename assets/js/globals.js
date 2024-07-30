@@ -99,42 +99,26 @@ export const constants = {
         "right-button": "right",
         "down-button": "down",
     },
-    colorThemes: {
-        "blue-dark": {
-            "primary-background": "#2C2F33",
-            "secondary-background": "#868788",
-            "primary-accent": "#5873d3",
-            "secondary-accent": "#9fb1f1",
+    hslColorThemes: {
+        hue: {
+            yellow: 33,
+            lime: 66,
+            green: 100,
+            blue: 200,
+            purple: 266,
+            red: 0,
         },
-        "red-dark": {
-            "primary-background": "#25211f",
-            "secondary-background": "#928281",
-            "primary-accent": "#a32314",
-            "secondary-accent": "#e74c3b",
+        light: {
+            "primary-background": "100%, 95%",
+            "secondary-background": "15%, 30%",
+            "primary-accent": "100%, 65%",
+            "secondary-accent": "100%, 35%",
         },
-        "green-dark": {
-            "primary-background": "#1d2521",
-            "secondary-background": "#84968b",
-            "primary-accent": "#149b4c",
-            "secondary-accent": "#33eb80",
-        },
-        "red-light": {
-            "primary-background": "#fcf1f1",
-            "secondary-background": "#a39797",
-            "primary-accent": "#ff6b6b",
-            "secondary-accent": "#c42e2e",
-        },
-        "yellow-light": {
-            "primary-background": "#fff0d9",
-            "secondary-background": "#b8afa0",
-            "primary-accent": "#fda81e",
-            "secondary-accent": "#aa6d0c",
-        },
-        "cyan-light": {
-            "primary-background": "#e3fff9",
-            "secondary-background": "#9cb1ad",
-            "primary-accent": "#4fe4c6",
-            "secondary-accent": "#1f947d",
+        dark: {
+            "primary-background": "20%, 16%",
+            "secondary-background": "100%, 95%",
+            "primary-accent": "100%, 65%",
+            "secondary-accent": "100%, 80%",
         },
     },
     tetrisScore: {
@@ -146,6 +130,7 @@ export const constants = {
 };
 
 export const globals = {
+    colorMode: "dark",
     gameLoop: null,
     gridSize: [10, 20],
     position: [0, 0],

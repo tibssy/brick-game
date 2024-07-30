@@ -7,17 +7,17 @@
 /* Root Variables */
 :root {
     /* Colors */
-    --primary-background: #2c2f33;
-    --secondary-background: #bcbdbe;
-    --primary-accent: #5873d3;
-    --secondary-accent: #9fb1f1;
+    --primary-background: #332b21;
+    --secondary-background: #fff4e6;
+    --primary-accent: #ffb14d;
+    --secondary-accent: #ffd8a6;
     --shadow: #000000;
 
     /* Other Variables */
     --transition: 0.3s ease-in-out;
     --border-radius-large: 6px;
     --border-radius-normal: 4px;
-    --box-shadow-small: 0 0 4px var(--shadow);
+    --box-shadow-small: 0 0 3px var(--shadow);
     --box-shadow-normal: 0 0 6px var(--shadow);
     --box-shadow-large: 0 0 8px var(--shadow);
     --box-shadow-normal-inv: 0 2px 4px #ffffff;
@@ -30,6 +30,7 @@ body {
     align-items: center;
     height: 100vh;
     background-color: var(--secondary-background);
+    transition: 0.5s ease-out;
 }
 
 /* Globals */
@@ -126,6 +127,7 @@ main > div {
     grid-template-columns: repeat(6, auto);
     justify-content: space-evenly;
     width: 100%;
+    margin-bottom: 6px;
 }
 
 #color-options div {
@@ -370,11 +372,13 @@ main > div {
     left: 4px;
     bottom: 4px;
     background-color: var(--secondary-background);
+    box-shadow: var(--box-shadow-small);
     -webkit-transition: 0.4s;
     transition: 0.4s;
 }
 
 .slider.round {
+    box-shadow: var(--box-shadow-small) inset;
     border-radius: var(--border-radius-large);
 }
 
@@ -528,10 +532,14 @@ input:checked + .slider:before {
     border-radius: var(--border-radius-large);
     cursor: pointer;
     margin: 0 10px;
+    border: 1px solid var(--shadow);
+    box-shadow: var(--box-shadow-small) inset;
+    transition: 0.1s ease-out;
 }
 
 input[type="radio"]:checked + .color-label {
-    border: 2px solid #fff;
+    box-shadow: var(--box-shadow-small);
+    transform: scale(1.2);
 }
 
 @media screen and (min-width: 660px) and (orientation: landscape) {
