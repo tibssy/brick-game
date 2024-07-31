@@ -87,9 +87,7 @@ export function displayClearedLines() {
 }
 
 export function updateAnimationTransition() {
-    const isAnimate = globals.animation
-        ? `${Math.floor(globals.interval / 3)}ms ease-in-out`
-        : "none";
+    const isAnimate = globals.animation ? `${Math.floor(globals.interval / 4)}ms ease-in-out` : "none";
     document.documentElement.style.setProperty("--transition", isAnimate);
 }
 

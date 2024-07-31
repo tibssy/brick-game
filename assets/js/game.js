@@ -1,20 +1,13 @@
 import { buildTetris, playTetris } from "./tetris.js";
 import { buildSnake, playSnake } from "./snake.js";
 import { globals, constants } from "./globals.js";
-import {
-    removeAllEventListeners,
-    setTetrisControls,
-    setSnakeControls,
-    setupPowerControls,
-} from "./controls.js";
+import { removeAllEventListeners, setTetrisControls, setSnakeControls, setupPowerControls } from "./controls.js";
 import { generateGrid, renderOnGrid, insertToMatrix, invertGrid, displayLevel } from "./display.js";
 import { highScore } from "./score.js";
 import { switchToArea } from "./main.js";
 
 export function startGame() {
-    globals.gameMatrix = Array.from(Array(globals.gridSize[1]), () =>
-        Array(globals.gridSize[0]).fill(0)
-    );
+    globals.gameMatrix = Array.from(Array(globals.gridSize[1]), () => Array(globals.gridSize[0]).fill(0));
     globals.gameGrid = document.getElementById("game-display");
     generateGrid(globals.gameGrid, globals.gridSize);
     displayLevel();
@@ -58,10 +51,7 @@ function countDown(callback) {
                 callback();
             }
         } else {
-            const numberArray = insertToMatrix(
-                constants.countdownNumbers[countDownValue - 1],
-                position
-            );
+            const numberArray = insertToMatrix(constants.countdownNumbers[countDownValue - 1], position);
             renderOnGrid(globals.gameGrid, numberArray);
         }
 
@@ -100,9 +90,11 @@ export function restartGame() {
 }
 
 export function exitGame() {
+    const nextArea = globals.score ? "score-area" : "settings-area";
+
     resetGame();
     highScore();
-    switchToArea("score-area");
+    switchToArea(nextArea);
 }
 
 function resetGame() {

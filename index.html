@@ -1,225 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- Meta tags for search engines -->
-        <meta name="description" content="A classic style brick game " />
-        <meta
-            name="keywords"
-            content="brick game, brick, game, tetris, snake, classic tetris, classic snake"
-        />
-        <!-- Title -->
-        <title>Brick Game</title>
-        <!-- Favicon -->
-        <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
-        <!-- Stylesheet -->
-        <link rel="stylesheet" href="assets/css/style.css" />
-    </head>
-    <body>
-        <main>
-            <!-- Settings Area -->
-            <div id="settings-area" class="element show-element-a">
-                <div id="game-selector" class="card">
-                    <div id="carousel-container">
-                        <div id="game-selector-images">
-                            <img
-                                src="assets/images/tetris-sample.webp"
-                                class="carousel-image"
-                                alt="tetris sample image"
-                            />
-                            <img
-                                src="assets/images/snake-sample.webp"
-                                class="carousel-image"
-                                alt="snake sample image"
-                            />
-                            <img
-                                src="assets/images/tetris-mod-sample.webp"
-                                class="carousel-image"
-                                alt="tetris mod sample image"
-                            />
-                        </div>
-                    </div>
-                    <div id="game-selector-controls">
-                        <button class="carousel-button left-button" id="previous-game">
-                            <i class="fa-solid fa-angle-left"></i>
-                        </button>
-                        <p>Tetris</p>
-                        <button class="carousel-button right-button" id="next-game">
-                            <i class="fa-solid fa-angle-right"></i>
-                        </button>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta tags for search engines -->
+    <meta name="description" content="A classic style brick game ">
+    <meta name="keywords" content="brick game, brick, game, tetris, snake, classic tetris, classic snake">
+    <!-- Title -->
+    <title>Brick Game</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <main>
+        <!-- Settings Area -->
+        <div id="settings-area" class="show-element-a">
+            <div id="game-selector" class="card">
+                <div id="carousel-container">
+                    <div id="game-selector-images">
+                        <img src="assets/images/tetris-sample.webp" class="carousel-image" alt="tetris sample image">
+                        <img src="assets/images/snake-sample.webp" class="carousel-image" alt="snake sample image">
+                        <img src="assets/images/tetris-mod-sample.webp" class="carousel-image"
+                            alt="tetris mod sample image">
                     </div>
                 </div>
-
-                <div id="color-selector" class="card">
-                    <div id="dark-mode-selector" class="settings-option divider">
-                        <p>Dark mode:</p>
-                        <label class="switch">
-                            <input type="checkbox" checked />
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-                    <div id="color-options"></div>
-                </div>
-
-                <div class="card">
-                    <h2>Game Settins</h2>
-                    <div id="grid-size-selector" class="settings-option divider">
-                        <p>Game Size:</p>
-                        <div class="number-selector">
-                            <button class="button-decrement">
-                                <i class="fa-solid fa-minus"></i>
-                            </button>
-                            <p>10 x 20</p>
-                            <button class="button-increment">
-                                <i class="fa-solid fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="speed-selector" class="settings-option divider">
-                        <p>Game Speed:</p>
-                        <div class="number-selector">
-                            <button class="button-decrement">
-                                <i class="fa-solid fa-minus"></i>
-                            </button>
-                            <p>0</p>
-                            <button class="button-increment">
-                                <i class="fa-solid fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="rotation-selector" class="settings-option divider">
-                        <p>Tetris Brick Rotation:</p>
-                        <button><i class="fa-solid fa-rotate-left"></i></button>
-                    </div>
-
-                    <div id="left-hand-selector" class="settings-option divider">
-                        <p>Left Handed Mode:</p>
-                        <label class="switch">
-                            <input type="checkbox" />
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-
-                    <div id="animation-selector" class="settings-option">
-                        <p>Animation:</p>
-                        <label class="switch">
-                            <input type="checkbox" checked />
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-                </div>
-
-                <button id="start-button">Start Game</button>
-            </div>
-
-            <!-- Game Area -->
-            <div id="game-area" class="element closed-element-a">
-                <div id="game-indicator">
-                    <p>Next Brick:</p>
-                    <div id="brick-indicator">
-                        <div id="next-brick-indicator"></div>
-                    </div>
-                    <p>Score: <span id="score">0</span></p>
-                    <p>Level: <span id="level">0</span></p>
-                    <p>Lines: <span id="lines">0</span></p>
-                </div>
-
-                <div id="game-display"></div>
-
-                <div id="control-area">
-                    <div id="power-buttons">
-                        <button id="break-button"><i class="fa-solid fa-pause"></i></button>
-                        <button id="reset-button"><i class="fa-solid fa-arrows-rotate"></i></button>
-                        <button id="exit-button"><i class="fa-solid fa-xmark"></i></button>
-                    </div>
-                    <div id="game-controls">
-                        <button class="control-button" id="left-button">
-                            <i class="fa-solid fa-angle-left"></i>
-                        </button>
-                        <div>
-                            <button class="control-button" id="up-button">
-                                <i class="fa-solid fa-angle-up"></i>
-                            </button>
-                            <button class="control-button" id="down-button">
-                                <i class="fa-solid fa-angle-down"></i>
-                            </button>
-                        </div>
-                        <button class="control-button" id="right-button">
-                            <i class="fa-solid fa-angle-right"></i>
-                        </button>
-                    </div>
+                <div id="game-selector-controls">
+                    <button class="carousel-button left-button" id="previous-game">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </button>
+                    <p>Tetris</p>
+                    <button class="carousel-button right-button" id="next-game">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </button>
                 </div>
             </div>
 
-            <!-- Score Area -->
-            <div id="score-area" class="element closed-element-a">
-                <div id="score-header">
-                    <h1>High Scores</h1>
-                    <button id="close-score"><i class="fa-solid fa-xmark"></i></button>
+            <div id="color-selector" class="card">
+                <div id="dark-mode-selector" class="settings-option divider">
+                    <p>Dark mode:</p>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
                 </div>
+                <div id="color-options"></div>
+            </div>
 
-                <div id="high-score">
-                    <p>Score: <span>0</span></p>
-                    <p>Level: <span>0</span></p>
-                    <p>Lines: <span>0</span></p>
-                </div>
-
-                <div id="player-input">
-                    <label for="player-name">Save Your Score:</label>
-                    <div class="input-group">
-                        <input
-                            type="text"
-                            id="player-name"
-                            placeholder="Enter your name"
-                            maxlength="10"
-                        />
-                        <button id="save-score">Save</button>
+            <div class="card">
+                <h2>Game Settins</h2>
+                <div id="grid-size-selector" class="settings-option divider">
+                    <p>Game Size:</p>
+                    <div class="number-selector">
+                        <button class="button-decrement">
+                            <i class="fa-solid fa-minus"></i>
+                        </button>
+                        <p>10 x 20</p>
+                        <button class="button-increment">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
                     </div>
                 </div>
 
-                <div id="score-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Player</th>
-                                <th>Score</th>
-                                <th>Game</th>
-                                <th>Date</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+                <div id="speed-selector" class="settings-option divider">
+                    <p>Game Speed:</p>
+                    <div class="number-selector">
+                        <button class="button-decrement">
+                            <i class="fa-solid fa-minus"></i>
+                        </button>
+                        <p>0</p>
+                        <button class="button-increment">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
                 </div>
 
-                <ul class="social-networks">
-                    <li>
-                        <a
-                            href="https://github.com/tibssy"
-                            target="_blank"
-                            rel="noopener"
-                            aria-label="Visit Us on Facebook"
-                            ><i class="fa-brands fa-github"></i
-                        ></a>
-                    </li>
-                    <li>
-                        <a
-                            href="https://www.linkedin.com/in/norbert-tiborcz/"
-                            target="_blank"
-                            rel="noopener"
-                            aria-label="Visit Us on Twitter"
-                            ><i class="fa-brands fa-linkedin"></i
-                        ></a>
-                    </li>
-                </ul>
-            </div>
-        </main>
+                <div id="rotation-selector" class="settings-option divider">
+                    <p>Tetris Brick Rotation:</p>
+                    <button><i class="fa-solid fa-rotate-left"></i></button>
+                </div>
 
-        <script src="https://kit.fontawesome.com/77df4eb855.js" crossorigin="anonymous"></script>
-        <script type="module" src="assets/js/main.js"></script>
-    </body>
+                <div id="left-hand-selector" class="settings-option divider">
+                    <p>Left Handed Mode:</p>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div id="animation-selector" class="settings-option">
+                    <p>Animation:</p>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+
+            <button id="start-button">Start Game</button>
+        </div>
+
+        <!-- Game Area -->
+        <div id="game-area" class="closed-element-a">
+            <div id="game-indicator">
+                <p>Next Brick:</p>
+                <div id="brick-indicator">
+                    <div id="next-brick-indicator"></div>
+                </div>
+                <p>
+                    Score:
+                    <span id="score">0</span>
+                </p>
+                <p>
+                    Level:
+                    <span id="level">0</span>
+                </p>
+                <p>
+                    Lines:
+                    <span id="lines">0</span>
+                </p>
+            </div>
+
+            <div id="game-display"></div>
+
+            <div id="control-area">
+                <div id="power-buttons">
+                    <button id="break-button"><i class="fa-solid fa-pause"></i></button>
+                    <button id="reset-button"><i class="fa-solid fa-arrows-rotate"></i></button>
+                    <button id="exit-button"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div id="game-controls">
+                    <button class="control-button" id="left-button">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </button>
+                    <div>
+                        <button class="control-button" id="up-button">
+                            <i class="fa-solid fa-angle-up"></i>
+                        </button>
+                        <button class="control-button" id="down-button">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </button>
+                    </div>
+                    <button class="control-button" id="right-button">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Score Area -->
+        <div id="score-area" class="closed-element-a">
+            <div id="score-header">
+                <h1>High Scores</h1>
+                <button id="close-score"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div id="high-score">
+                <p>
+                    Score:
+                    <span>0</span>
+                </p>
+                <p>
+                    Level:
+                    <span>0</span>
+                </p>
+                <p>
+                    Lines:
+                    <span>0</span>
+                </p>
+            </div>
+
+            <div id="player-input">
+                <label for="player-name">Save Your Score:</label>
+                <div class="input-group card">
+                    <input type="text" id="player-name" placeholder="Enter your name" maxlength="10">
+                    <button id="save-score">Save</button>
+                </div>
+            </div>
+
+            <div id="score-table" class="card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Player</th>
+                            <th>Score</th>
+                            <th>Game</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <ul class="social-networks card">
+                <li>
+                    <a href="https://github.com/tibssy" target="_blank" rel="noopener"
+                        aria-label="Visit Us on Facebook">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/norbert-tiborcz/" target="_blank" rel="noopener"
+                        aria-label="Visit Us on Twitter">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <script src="https://kit.fontawesome.com/77df4eb855.js" crossorigin="anonymous"></script>
+    <script type="module" src="assets/js/main.js"></script>
+</body>
+
 </html>

@@ -7,14 +7,15 @@
 /* Root Variables */
 :root {
     /* Colors */
-    --primary-background: #332b21;
-    --secondary-background: #fff4e6;
-    --primary-accent: #ffb14d;
-    --secondary-accent: #ffd8a6;
+    --primary-background: #2f2922;
+    --secondary-background: #494136;
+    --primary-accent: #ffa333;
+    --secondary-accent: #ffd199;
+    --font-color: #fef3e6;
     --shadow: #000000;
 
     /* Other Variables */
-    --transition: 0.3s ease-in-out;
+    --transition: 0.25s ease-in-out;
     --border-radius-large: 6px;
     --border-radius-normal: 4px;
     --box-shadow-small: 0 0 3px var(--shadow);
@@ -29,7 +30,7 @@ body {
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    background-color: var(--secondary-background);
+    background-color: var(--font-color);
     transition: 0.5s ease-out;
 }
 
@@ -45,7 +46,7 @@ button {
 p {
     font-size: large;
     font-weight: bold;
-    color: var(--secondary-accent);
+    color: var(--font-color);
 }
 
 input[type="radio"] {
@@ -58,6 +59,23 @@ input[type="text"] {
 
 .divider {
     border-bottom: 1px solid var(--primary-background);
+}
+
+.card {
+    padding: 12px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--box-shadow-normal) inset;
+    border: 3px solid var(--secondary-accent);
+    background-color: var(--secondary-background);
+    transition: 0.5s ease-out;
+}
+
+.card h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--font-color);
 }
 
 /* Main */
@@ -85,7 +103,7 @@ main > div {
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    padding: 10px;
+    padding: 20px;
     background-color: var(--primary-background);
     overflow-y: scroll;
 }
@@ -103,48 +121,10 @@ main > div {
     padding: 20px;
     gap: 20px;
     background-color: var(--primary-background);
-}
-
-.card {
-    border-radius: var(--border-radius-large);
-    box-shadow: var(--box-shadow-normal) inset;
-    border: 1px solid var(--primary-background);
-    background-color: var(--secondary-background);
-    padding: 12px;
-    width: 100%;
-    max-width: 400px;
-}
-
-.card h2 {
-    text-align: center;
-    margin-bottom: 10px;
-    color: var(--primary-background);
-}
-
-/* Color Selector */
-#color-options {
-    display: grid;
-    grid-template-columns: repeat(6, auto);
-    justify-content: space-evenly;
-    width: 100%;
-    margin-bottom: 6px;
-}
-
-#color-options div {
-    display: flex;
     align-items: center;
-}
-
-#color-selector {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    padding: 10px;
 }
 
 /* ---------- Game Area ---------- */
-
 /* Display */
 #game-indicator {
     display: flex;
@@ -184,6 +164,7 @@ main > div {
     border-radius: var(--border-radius-large);
     border: 5px solid var(--secondary-accent);
     box-shadow: var(--box-shadow-large) inset;
+    background-color: var(--secondary-background);
 }
 
 #next-brick-indicator div,
@@ -284,14 +265,12 @@ main > div {
     font-size: 1.2rem;
     font-weight: 600;
     margin: auto 0;
-    color: var(--primary-background);
+    color: var(--font-color);
 }
 
 #carousel-container {
     overflow: hidden;
     border: 3px solid var(--primary);
-    border-radius: var(--border-radius-normal);
-    background-color: var(--primary-background);
 }
 
 .carousel-image {
@@ -309,6 +288,7 @@ main > div {
 }
 
 .settings-option button {
+    color: var(--font-color);
     background-color: var(--secondary-background);
     font-size: 1.4rem;
     padding: 3px 6px;
@@ -319,7 +299,7 @@ main > div {
 }
 
 .settings-option p {
-    color: var(--primary-background);
+    color: var(--font-color);
 }
 
 .number-selector {
@@ -327,6 +307,28 @@ main > div {
     grid-template-columns: repeat(3, auto);
     align-content: center;
     grid-gap: 12px;
+}
+
+/* Color Selector */
+#color-options {
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    justify-content: space-evenly;
+    width: 100%;
+    margin-bottom: 6px;
+}
+
+#color-options div {
+    display: flex;
+    align-items: center;
+}
+
+#color-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
 }
 
 /* Number Selector */
@@ -399,7 +401,7 @@ input:checked + .slider:before {
 #start-button {
     width: 100%;
     font-size: 1.5rem;
-    color: var(--primary-background);
+    color: var(--font-color);
     border: 1px solid var(--primary-background);
     max-width: 400px;
     padding: 3px;
@@ -411,7 +413,7 @@ input:checked + .slider:before {
 #score-area h1,
 #high-score > p {
     text-align: center;
-    color: var(--secondary-background);
+    color: var(--font-color);
 }
 
 #high-score {
@@ -429,23 +431,19 @@ input:checked + .slider:before {
 
 #close-score {
     font-size: 2rem;
-    color: var(--secondary-background);
+    color: var(--font-color);
 }
 
 #player-input label {
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--secondary-background);
+    color: var(--font-color);
 }
 
 .input-group {
     display: flex;
-    background-color: var(--secondary-background);
     margin-top: 10px;
     padding: 4px 4px;
-    border-radius: var(--border-radius-large);
-    box-shadow: var(--box-shadow-normal) inset;
-    border: 1px solid var(--primary-background);
 }
 
 .input-group input {
@@ -459,17 +457,13 @@ input:checked + .slider:before {
     padding: 0 8px;
     box-shadow: var(--box-shadow-small);
     background-color: var(--primary-background);
-    color: var(--secondary-background);
+    color: var(--font-color);
     border-radius: var(--border-radius-normal);
 }
 
 #score-table {
     height: 100%;
     overflow-y: scroll;
-    background-color: var(--secondary-background);
-    border-radius: var(--border-radius-large);
-    box-shadow: var(--box-shadow-normal) inset;
-    border: 1px solid var(--primary-background);
 }
 
 #score-table table {
@@ -486,16 +480,11 @@ input:checked + .slider:before {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 10px;
     list-style: none;
-    background-color: var(--secondary-background);
-    border-radius: var(--border-radius-large);
-    box-shadow: var(--box-shadow-normal) inset;
-    border: 1px solid var(--primary-background);
 }
 
 .social-networks a {
-    color: var(--primary-background);
+    color: var(--font-color);
     font-size: 2.2rem;
 }
 
@@ -595,10 +584,6 @@ input[type="radio"]:checked + .color-label {
     #brick-indicator {
         max-width: 60px;
         max-height: 60px;
-    }
-
-    #game-selector {
-        max-width: 300px;
     }
 }
 

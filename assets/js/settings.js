@@ -36,10 +36,7 @@ function gameSelector() {
         button.addEventListener("click", (event) => {
             const buttonId = event.currentTarget.id;
 
-            let newIndex = Math.max(
-                0,
-                Math.min(currentIndex + buttonActions[buttonId], captions.length - 1)
-            );
+            let newIndex = Math.max(0, Math.min(currentIndex + buttonActions[buttonId], captions.length - 1));
             if (newIndex !== currentIndex) {
                 currentIndex = newIndex;
                 updateCarousel();
@@ -105,6 +102,11 @@ function generateColorOptions() {
 function setColorTheme(theme) {
     const hueValue = constants.hslColorThemes.hue[theme];
     const slValues = constants.hslColorThemes[globals.colorMode];
+    const carouselImages = document.querySelectorAll(".carousel-image");
+
+    carouselImages.forEach((image) => {
+        image.style.filter = `hue-rotate(${hueValue - 33}deg) contrast(1.3)`;
+    });
 
     document.documentElement.style.setProperty(
         "--primary-background",
@@ -114,14 +116,12 @@ function setColorTheme(theme) {
         "--secondary-background",
         `hsl(${hueValue}, ${slValues["secondary-background"]})`
     );
-    document.documentElement.style.setProperty(
-        "--primary-accent",
-        `hsl(${hueValue}, ${slValues["primary-accent"]})`
-    );
+    document.documentElement.style.setProperty("--primary-accent", `hsl(${hueValue}, ${slValues["primary-accent"]})`);
     document.documentElement.style.setProperty(
         "--secondary-accent",
         `hsl(${hueValue}, ${slValues["secondary-accent"]})`
     );
+    document.documentElement.style.setProperty("--font-color", `hsl(${hueValue}, ${slValues["font-color"]})`);
 }
 
 function setupIncrementDecrementButtons(buttonSelector, valueDisplaySelector, updateCallback) {
@@ -146,11 +146,7 @@ function setGridSize() {
         valueToDisplay.textContent = `${newValue} x ${newValue * 2}`;
     };
 
-    setupIncrementDecrementButtons(
-        "#grid-size-selector > div button",
-        "#grid-size-selector > div p",
-        updateGridSize
-    );
+    setupIncrementDecrementButtons("#grid-size-selector > div button", "#grid-size-selector > div p", updateGridSize);
 }
 
 function setGameSpeed() {
@@ -166,11 +162,7 @@ function setGameSpeed() {
         globals.interval = 1000 - currentValue * 90;
     };
 
-    setupIncrementDecrementButtons(
-        "#speed-selector > div button",
-        "#speed-selector > div p",
-        updateGameSpeed
-    );
+    setupIncrementDecrementButtons("#speed-selector > div button", "#speed-selector > div p", updateGameSpeed);
 }
 
 function setBrickRotation() {

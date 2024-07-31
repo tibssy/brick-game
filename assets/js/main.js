@@ -16,8 +16,6 @@ export function switchToArea(nextAreaId) {
         }
     });
 
-    console.log(currentArea);
-
     if (currentArea && nextArea) {
         nextArea.classList.add("display-flex");
         nextArea.offsetHeight;
