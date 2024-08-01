@@ -415,14 +415,27 @@ input:checked + .slider:before {
 #high-score {
     display: flex;
     justify-content: space-around;
+    align-items: baseline;
     padding-bottom: 6px;
-    border-bottom: 1px solid var(--secondary-background);
+    max-width: 600px;
+    width: inherit;
+    border-bottom: 1px solid var(--secondary-accent);
+}
+
+#high-score h2 {
+    color: var(--font-color);
+    font-size: 2.2rem;
+}
+
+#high-score span {
+    color: var(--primary-accent);
 }
 
 #score-header {
     display: flex;
     justify-content: space-between;
     margin: 0 6px;
+    width: inherit;
 }
 
 #close-score {
@@ -430,8 +443,13 @@ input:checked + .slider:before {
     color: var(--font-color);
 }
 
+#player-input {
+    max-width: 600px;
+    width: 100%;
+}
+
 #player-input label {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: var(--font-color);
 }
@@ -439,7 +457,6 @@ input:checked + .slider:before {
 .input-group {
     display: flex;
     margin-top: 10px;
-    padding: 4px 4px;
 }
 
 .input-group input {
@@ -490,18 +507,18 @@ input:checked + .slider:before {
     filter: opacity(0);
 }
 
-.show-element-a {
+.show-area {
     display: flex;
     transform: scale(1);
     filter: opacity(1);
 }
 
-.hide-element-a {
+.hide-area {
     transform: scale(1.2);
     filter: opacity(0);
 }
 
-.closed-element-a {
+.closed-area {
     transform: scale(0.8);
     filter: opacity(0);
 }
@@ -527,6 +544,7 @@ input[type="radio"]:checked + .color-label {
     transform: scale(1.2);
 }
 
+/* ---------- Landscape Mobile and Tablet ---------- */
 @media screen and (min-width: 660px) and (orientation: landscape) {
     #game-area {
         flex-direction: row;
@@ -585,8 +603,29 @@ input[type="radio"]:checked + .color-label {
     #carousel-container {
         display: none;
     }
+
+    #high-score {
+        position: absolute;
+        width: 40%;
+        border-bottom: unset;
+        padding-top: 6px;
+    }
+
+    #high-score h2,
+    #high-score p {
+        font-size: 1.4rem;
+    }
+
+    #player-input label {
+        display: none;
+    }
+
+    .input-group {
+        margin: 0;
+    }
 }
 
+/* ---------- Laptop and Desktop ---------- */
 @media screen and (min-width: 992px) and (orientation: landscape) {
     body {
         justify-content: center;
@@ -610,5 +649,29 @@ input[type="radio"]:checked + .color-label {
 
     #carousel-container {
         display: unset;
+    }
+
+    #high-score {
+        position: unset;
+        width: 100%;
+        border-bottom: 1px solid var(--secondary-accent);
+        padding-top: 0;
+        padding-bottom: 6px;
+    }
+
+    #high-score h2 {
+        font-size: 2.2rem;
+    }
+
+    #high-score p {
+        font-size: 1.4rem;
+    }
+
+    #player-input label {
+        display: unset;
+    }
+
+    .input-group {
+        margin-top: 10px;
     }
 }

@@ -11,7 +11,7 @@ export function switchToArea(nextAreaId) {
 
     areas.forEach((area) => {
         const style = window.getComputedStyle(area);
-        if (style.display !== "none" && !area.classList.contains("closed-element-a")) {
+        if (style.display !== "none" && !area.classList.contains("closed-area")) {
             currentArea = area;
         }
     });
@@ -20,13 +20,13 @@ export function switchToArea(nextAreaId) {
         nextArea.classList.add("display-flex");
         nextArea.offsetHeight;
 
-        currentArea.classList.add("hide-element-a");
-        nextArea.classList.remove("closed-element-a");
-        nextArea.classList.add("show-element-a");
+        currentArea.classList.add("hide-area");
+        nextArea.classList.remove("closed-area");
+        nextArea.classList.add("show-area");
 
         const onTransitionEnd = () => {
-            currentArea.classList.remove("show-element-a", "hide-element-a");
-            currentArea.classList.add("closed-element-a");
+            currentArea.classList.remove("show-area", "hide-area");
+            currentArea.classList.add("closed-area");
             currentArea.classList.remove("display-flex");
             currentArea.removeEventListener("transitionend", onTransitionEnd);
         };
