@@ -1,6 +1,6 @@
 import { constants, globals } from "./globals.js";
 import { renderOnGrid } from "./display.js";
-import { handleOrientationChange, toggleGamePause, restartGame, exitGame } from "./game.js";
+import { handleOrientationChange, toggleGamePause, restartGame, exitGame, restartGameLoop } from "./game.js";
 import { updateGameState, rotateBrick } from "./tetris.js";
 
 export function setupPowerControls() {
@@ -17,12 +17,56 @@ function handleEscapeKeyUp(event) {
     }
 }
 
+export function setupLongTouchDownControl() {
+    const downButton = document.getElementById("down-button");
+    const longTouchThreshold = 180;
+    const speed = Math.floor(250 / globals.gridSize[0]);
+    let touchStartTime = 0;
+    let interval;
+    let touchTimer;
+
+    downButton.addEventListener("touchstart", handleLongTouchStart);
+    downButton.addEventListener("touchend", handleLongTouchEnd);
+    downButton.addEventListener("touchcancel", handleLongTouchEnd);
+    downButton.addEventListener("touchleave", handleLongTouchEnd);
+
+    function handleLongTouchStart() {
+        touchStartTime = Date.now();
+        interval = globals.interval;
+
+        if (touchTimer) {
+            clearTimeout(touchTimer);
+        }
+
+        touchTimer = setTimeout(() => {
+            globals.interval = speed;
+            restartGameLoop();
+        }, longTouchThreshold);
+    }
+
+    function handleLongTouchEnd() {
+        if (touchTimer) {
+            clearTimeout(touchTimer);
+            touchTimer = null;
+        }
+
+        if (Date.now() - touchStartTime < longTouchThreshold) {
+            return;
+        }
+
+        globals.interval = interval;
+        restartGameLoop();
+    }
+
+    globals.touchHandler = { handleLongTouchStart, handleLongTouchEnd };
+}
+
 function setTouchControls() {
     const touchThreshold = 180;
     let touchStartTime = 0;
 
-    globals.gameGrid.addEventListener("touchstart", handleTouchStart, false);
-    globals.gameGrid.addEventListener("touchend", handleTouchEnd, false);
+    globals.gameGrid.addEventListener("touchstart", handleTouchStart);
+    globals.gameGrid.addEventListener("touchend", handleTouchEnd);
 
     function handleTouchStart() {
         touchStartTime = Date.now();
@@ -141,13 +185,19 @@ function setupButtons(selector, handler) {
 }
 
 export function removeAllEventListeners() {
+    const downButton = document.getElementById("down-button");
+
     document.removeEventListener("keydown", handleSnakeKeyDown);
     document.removeEventListener("keydown", handleTetrisKeyDown);
     document.removeEventListener("keyup", handleEscapeKeyUp);
 
     if (globals.touchHandler) {
-        globals.gameGrid.removeEventListener("touchstart", globals.touchHandler.handleTouchStart, false);
-        globals.gameGrid.removeEventListener("touchend", globals.touchHandler.handleTouchEnd, false);
+        globals.gameGrid.removeEventListener("touchstart", globals.touchHandler.handleTouchStart);
+        globals.gameGrid.removeEventListener("touchend", globals.touchHandler.handleTouchEnd);
+        downButton.removeEventListener("touchstart", globals.touchHandler.handleLongTouchStart);
+        downButton.removeEventListener("touchend", globals.touchHandler.handleLongTouchEnd);
+        downButton.removeEventListener("touchcancel", globals.touchHandler.handleLongTouchEnd);
+        downButton.removeEventListener("touchleave", globals.touchHandler.handleLongTouchEnd);
         delete globals.touchHandler;
     }
 

@@ -125,8 +125,7 @@ export function rotateBrick(brick) {
     globals.position[0] += Math.trunc(dimensionDifference / 2);
     globals.position[1] -= dimensionDifference;
 
-    const rotateClockwise = (matrix) =>
-        matrix[0].map((val, index) => matrix.map((row) => row[index]).reverse());
+    const rotateClockwise = (matrix) => matrix[0].map((val, index) => matrix.map((row) => row[index]).reverse());
 
     const rotateCounterclockwise = (matrix) =>
         matrix[0].map((val, index) => matrix.map((row) => row[row.length - 1 - index]));

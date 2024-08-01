@@ -1,7 +1,13 @@
 import { buildTetris, playTetris } from "./tetris.js";
 import { buildSnake, playSnake } from "./snake.js";
 import { globals, constants } from "./globals.js";
-import { removeAllEventListeners, setTetrisControls, setSnakeControls, setupPowerControls } from "./controls.js";
+import {
+    removeAllEventListeners,
+    setTetrisControls,
+    setSnakeControls,
+    setupPowerControls,
+    setupLongTouchDownControl,
+} from "./controls.js";
 import { generateGrid, renderOnGrid, insertToMatrix, invertGrid, displayLevel } from "./display.js";
 import { highScore } from "./score.js";
 import { switchToArea } from "./main.js";
@@ -19,6 +25,7 @@ export function startGame() {
             countDown(() => {
                 setupPowerControls();
                 setTetrisControls();
+                setupLongTouchDownControl();
                 playTetris();
             });
             break;

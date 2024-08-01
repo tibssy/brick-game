@@ -14,10 +14,7 @@ export function playSnake() {
 }
 
 function initializeGame() {
-    globals.position = [
-        Math.ceil(globals.gridSize[0] / 2),
-        globals.gridSize[1] - globals.snakeLength,
-    ];
+    globals.position = [Math.ceil(globals.gridSize[0] / 2), globals.gridSize[1] - globals.snakeLength];
     globals.snakeBody = Array.from({ length: globals.snakeLength }, (_, i) => [
         globals.position[0],
         globals.position[1] + i,
