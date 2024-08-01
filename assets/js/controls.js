@@ -146,16 +146,8 @@ export function removeAllEventListeners() {
     document.removeEventListener("keyup", handleEscapeKeyUp);
 
     if (globals.touchHandler) {
-        globals.gameGrid.removeEventListener(
-            "touchstart",
-            globals.touchHandler.handleTouchStart,
-            false
-        );
-        globals.gameGrid.removeEventListener(
-            "touchend",
-            globals.touchHandler.handleTouchEnd,
-            false
-        );
+        globals.gameGrid.removeEventListener("touchstart", globals.touchHandler.handleTouchStart, false);
+        globals.gameGrid.removeEventListener("touchend", globals.touchHandler.handleTouchEnd, false);
         delete globals.touchHandler;
     }
 
