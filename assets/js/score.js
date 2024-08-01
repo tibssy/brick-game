@@ -11,7 +11,7 @@ import { switchToArea } from "./main.js";
 
 export function highScore() {
     const exitButton = document.getElementById("close-score");
-    const scores = [globals.score, globals.level, globals.clearedLines];
+    const scores = [globals.score, globals.clearedLines];
     let playerName = document.getElementById("player-name");
     const saveScoreButton = document.getElementById("save-score");
     const timeStamp = getTimeStamp();
@@ -103,7 +103,6 @@ function updateTable() {
     const tableBody = table.querySelector("tbody");
     const scores = getHighscores();
 
-    console.log(tableBody.children.length);
     if (tableBody.children.length) {
         tableBody.innerHTML = "";
     }
