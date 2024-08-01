@@ -23,9 +23,9 @@ export function startGame() {
         case "tetrismod":
             buildTetris();
             countDown(() => {
+                setupLongTouchDownControl();
                 setupPowerControls();
                 setTetrisControls();
-                setupLongTouchDownControl();
                 playTetris();
             });
             break;
