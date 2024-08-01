@@ -109,6 +109,7 @@ main > div {
     gap: 15px;
     padding: 16px;
     background-color: var(--primary-background);
+    /* overflow-y: scroll; */
 }
 
 #game-area {
@@ -137,6 +138,14 @@ main > div {
     height: 5%;
     border-bottom: 3px solid var(--secondary-accent);
     box-shadow: var(--box-shadow-normal);
+}
+
+#game-indicator p {
+    color: var(--secondary-accent);
+}
+
+#game-indicator span {
+    color: var(--primary-accent);
 }
 
 #brick-indicator {
@@ -237,6 +246,8 @@ main > div {
 }
 
 /* ---------- Settings Area ---------- */
+
+/* Game Selector */
 #game-selector {
     position: relative;
     display: flex;
@@ -282,6 +293,7 @@ main > div {
 }
 
 /* Settings Options */
+
 #settings {
     overflow-y: scroll;
     height: 100%;
@@ -306,6 +318,10 @@ main > div {
     background-color: var(--primary-accent);
 }
 
+/* .settings-option p {
+    color: var(--font-color);
+} */
+
 .number-selector {
     display: grid;
     grid-template-columns: repeat(3, auto);
@@ -326,6 +342,14 @@ main > div {
     display: flex;
     align-items: center;
 }
+
+/* #color-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+} */
 
 /* Number Selector */
 .number-selector p {
@@ -406,11 +430,10 @@ input:checked + .slider:before {
 }
 
 /* ---------- Score Area ---------- */
-#score-area h1,
-#high-score > p {
+/* #high-score p {
     text-align: center;
     color: var(--font-color);
-}
+} */
 
 #high-score {
     display: flex;
@@ -422,9 +445,9 @@ input:checked + .slider:before {
     border-bottom: 1px solid var(--secondary-accent);
 }
 
-#high-score h2 {
+#high-score p {
     color: var(--font-color);
-    font-size: 2.2rem;
+    font-size: 1.5rem;
 }
 
 #high-score span {
@@ -436,6 +459,7 @@ input:checked + .slider:before {
     justify-content: space-between;
     margin: 0 6px;
     width: inherit;
+    color: var(--font-color);
 }
 
 #close-score {
@@ -457,36 +481,51 @@ input:checked + .slider:before {
 .input-group {
     display: flex;
     margin-top: 10px;
+    padding: 4px 4px;
 }
 
 .input-group input {
     width: 100%;
     font-size: 1.3rem;
     padding: 3px 6px;
+    color: var(--font-color);
 }
 
 .input-group button {
     font-size: 1.3rem;
     padding: 0 8px;
     box-shadow: var(--box-shadow-small);
-    background-color: var(--primary-background);
-    color: var(--font-color);
+    background-color: var(--secondary-accent);
+    color: var(--primary-background);
     border-radius: var(--border-radius-normal);
 }
 
 #score-table {
     height: 100%;
+    padding: 0;
     overflow-y: scroll;
 }
 
 #score-table table {
     width: 100%;
-    border-collapse: collapse;
+    border-spacing: 6px;
+}
+
+#score-table table th {
+    width: 25%;
+    box-shadow: var(--box-shadow-small);
+    border-radius: var(--border-radius-normal);
+    background: var(--secondary-accent);
+    color: var(--primary-background);
+    padding: 2px;
+    cursor: pointer;
 }
 
 #score-table td {
     padding: 2px 6px;
-    border: 1px solid var(--primary-background);
+    /* border: 1px solid var(--primary-background); */
+    color: var(--font-color);
+    font-weight: 600;
 }
 
 .social-networks {
@@ -608,12 +647,7 @@ input[type="radio"]:checked + .color-label {
         position: absolute;
         width: 40%;
         border-bottom: unset;
-        padding-top: 6px;
-    }
-
-    #high-score h2,
-    #high-score p {
-        font-size: 1.4rem;
+        padding-top: 8px;
     }
 
     #player-input label {
@@ -657,14 +691,6 @@ input[type="radio"]:checked + .color-label {
         border-bottom: 1px solid var(--secondary-accent);
         padding-top: 0;
         padding-bottom: 6px;
-    }
-
-    #high-score h2 {
-        font-size: 2.2rem;
-    }
-
-    #high-score p {
-        font-size: 1.4rem;
     }
 
     #player-input label {

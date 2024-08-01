@@ -98,6 +98,7 @@ export function exitGame() {
 }
 
 function resetGame() {
+    toggleGamePause();
     globals.isPlaying = false;
     clearInterval(globals.gameLoop);
     globals.gameGrid.innerHTML = "";

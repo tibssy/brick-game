@@ -12,13 +12,21 @@ import { switchToArea } from "./main.js";
 export function highScore() {
     const exitButton = document.getElementById("close-score");
     const scores = [globals.score, globals.clearedLines];
+    const tableHeadElements = document.querySelectorAll("#score-table table th");
     let playerName = document.getElementById("player-name");
     const saveScoreButton = document.getElementById("save-score");
     const timeStamp = getTimeStamp();
 
+    tableHeadElements.forEach((th) => {
+        th.addEventListener("click", () => {
+            updateTable(getSortedHighscores(th.textContent.toLocaleLowerCase()));
+        });
+    });
+
     const closeScores = () => {
         switchToArea("settings-area");
         resetScore();
+        playerName.value = "";
         exitButton.removeEventListener("click", closeScores);
         saveScoreButton.removeEventListener("click", saveScore);
     };
@@ -28,7 +36,7 @@ export function highScore() {
             saveHighscore(playerName.value, scores[0], globals.game, timeStamp);
             playerName.value = "";
             resetScore();
-            updateTable();
+            updateTable(getHighscores());
         }
     };
 
@@ -36,7 +44,7 @@ export function highScore() {
     saveScoreButton.addEventListener("click", saveScore);
 
     displayScores(scores);
-    updateTable();
+    updateTable(getHighscores());
 }
 
 export function updateTetrisScore(lines) {
@@ -98,10 +106,9 @@ function getTimeStamp() {
     return `${month}/${day} - ${hours}:${minutes}`;
 }
 
-function updateTable() {
+function updateTable(scores) {
     const table = document.querySelector("#score-table table");
     const tableBody = table.querySelector("tbody");
-    const scores = getHighscores();
 
     if (tableBody.children.length) {
         tableBody.innerHTML = "";
@@ -116,7 +123,7 @@ function updateTable() {
                 <td>${element.date}</td>
             </tr>`;
 
-        tableBody.insertAdjacentHTML("beforeend", tableRow);
+        tableBody.insertAdjacentHTML("afterbegin", tableRow);
     });
 }
 
@@ -134,5 +141,12 @@ function getHighscores() {
 
 function getSortedHighscores(sortKey) {
     const highscores = getHighscores();
-    return highscores.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+
+    if (sortKey === "score") {
+        return highscores.sort((a, b) => a[sortKey] - b[sortKey]);
+    } else if (sortKey === "date") {
+        return highscores.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+    } else {
+        return highscores.sort((a, b) => b[sortKey].localeCompare(a[sortKey]));
+    }
 }
