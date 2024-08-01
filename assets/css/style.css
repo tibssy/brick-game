@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Freeman&family=Roboto+Condensed:wght@100..900&display=swap");
+
 * {
     padding: 0;
     margin: 0;
@@ -30,6 +32,8 @@ body {
     flex-direction: column;
     align-items: center;
     height: 100vh;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 360;
     background-color: var(--font-color);
     transition: 0.5s ease-out;
 }
@@ -58,13 +62,13 @@ input[type="text"] {
 }
 
 .divider {
-    border-bottom: 1px solid var(--primary-background);
+    border-bottom: 1px solid var(--secondary-accent);
 }
 
 .card {
-    padding: 12px;
+    padding: 6px 12px;
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
     border-radius: var(--border-radius-large);
     box-shadow: var(--box-shadow-normal) inset;
     border: 3px solid var(--secondary-accent);
@@ -103,9 +107,8 @@ main > div {
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    padding: 20px;
+    padding: 16px;
     background-color: var(--primary-background);
-    overflow-y: scroll;
 }
 
 #game-area {
@@ -234,13 +237,12 @@ main > div {
 }
 
 /* ---------- Settings Area ---------- */
-
-/* Game Selector */
 #game-selector {
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 6px 8px;
 }
 
 #game-selector-images {
@@ -257,15 +259,16 @@ main > div {
 #game-selector-controls button {
     width: 60px;
     font-size: 1.5rem;
-    color: var(--primary-background);
-    border: 2px solid var(--primary-background);
+    color: var(--secondary-accent);
+    border: 2px solid var(--secondary-accent);
+    box-shadow: var(--box-shadow-small);
 }
 
 #game-selector-controls p {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.4rem;
+    font-weight: 900;
     margin: auto 0;
-    color: var(--font-color);
+    color: var(--secondary-accent);
 }
 
 #carousel-container {
@@ -279,6 +282,11 @@ main > div {
 }
 
 /* Settings Options */
+#settings {
+    overflow-y: scroll;
+    height: 100%;
+}
+
 .settings-option {
     display: flex;
     justify-content: space-between;
@@ -298,10 +306,6 @@ main > div {
     background-color: var(--primary-accent);
 }
 
-.settings-option p {
-    color: var(--font-color);
-}
-
 .number-selector {
     display: grid;
     grid-template-columns: repeat(3, auto);
@@ -313,9 +317,9 @@ main > div {
 #color-options {
     display: grid;
     grid-template-columns: repeat(6, auto);
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 100%;
-    margin-bottom: 6px;
+    padding: 16px 0;
 }
 
 #color-options div {
@@ -323,20 +327,13 @@ main > div {
     align-items: center;
 }
 
-#color-selector {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    padding: 10px;
-}
-
 /* Number Selector */
 .number-selector p {
     text-align: center;
     align-content: center;
-    border: 2px solid var(--primary-background);
+    border: 2px solid var(--secondary-accent);
     border-radius: var(--border-radius-normal);
+    box-shadow: var(--box-shadow-small) inset;
     padding: 0 12px;
 }
 
@@ -401,12 +398,11 @@ input:checked + .slider:before {
 #start-button {
     width: 100%;
     font-size: 1.5rem;
-    color: var(--font-color);
-    border: 1px solid var(--primary-background);
-    max-width: 400px;
+    color: var(--shadow);
+    border: 3px solid var(--secondary-accent);
+    max-width: 600px;
     padding: 3px;
-    box-shadow: var(--box-shadow-normal);
-    background-color: var(--secondary-background);
+    background-color: var(--primary-accent);
 }
 
 /* ---------- Score Area ---------- */
@@ -585,6 +581,10 @@ input[type="radio"]:checked + .color-label {
         max-width: 60px;
         max-height: 60px;
     }
+
+    #carousel-container {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 992px) and (orientation: landscape) {
@@ -606,5 +606,9 @@ input[type="radio"]:checked + .color-label {
 
     #game-controls {
         max-width: 350px;
+    }
+
+    #carousel-container {
+        display: unset;
     }
 }
