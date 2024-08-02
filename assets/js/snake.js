@@ -51,24 +51,15 @@ function startGameLoop() {
 }
 
 function updatePosition() {
-    let position = [...globals.position];
+    const [x, y] = globals.position;
+    const directions = {
+        up: [x, y - 1],
+        down: [x, y + 1],
+        left: [x - 1, y],
+        right: [x + 1, y],
+    };
 
-    switch (globals.snakeDirection) {
-        case "up":
-            position[1]--;
-            break;
-        case "down":
-            position[1]++;
-            break;
-        case "left":
-            position[0]--;
-            break;
-        case "right":
-            position[0]++;
-            break;
-    }
-
-    globals.position = position;
+    globals.position = directions[globals.snakeDirection] || globals.position;
 }
 
 function isPositionInMatrix() {
