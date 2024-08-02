@@ -1,11 +1,5 @@
 import { globals, constants } from "./globals.js";
-import {
-    displayScore,
-    displayLevel,
-    displayClearedLines,
-    updateAnimationTransition,
-    displayScores,
-} from "./display.js";
+import { displayScore, displayLevel, displayClearedLines, displayScores } from "./display.js";
 import { restartGameLoop } from "./game.js";
 import { switchToArea } from "./main.js";
 
@@ -66,7 +60,6 @@ function resetScore() {
     displayClearedLines();
     displayScore();
     displayLevel();
-    updateAnimationTransition();
 }
 
 function updateScore(baseScore) {
@@ -91,7 +84,6 @@ function calculateLevel(increment, levelThreshold) {
         }
 
         globals.interval = interval;
-        updateAnimationTransition();
         displayLevel();
         restartGameLoop();
     }
