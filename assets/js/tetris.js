@@ -33,6 +33,7 @@ function startGameLoop() {
 
     globals.gameUpdate = () => {
         if (globals.isPlaying) {
+            updateAnimationTransition();
             globals.position[1]++;
             if (isBrickAtBottom()) {
                 moveToNextBrick();

@@ -12,13 +12,13 @@ export function generateGrid(element, size) {
     }
 }
 
-export function renderOnGrid(element, array) {
+export function renderOnGrid(element, matrix) {
     if (!element.hasChildNodes()) return;
 
     requestAnimationFrame(() => {
         const blocks = element.children;
 
-        array.flat().forEach((value, index) => {
+        matrix.flat().forEach((value, index) => {
             const block = blocks[index];
             const isHidden = block.classList.contains("hide-element");
 

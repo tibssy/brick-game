@@ -8,7 +8,14 @@ import {
     setupPowerControls,
     setupLongTouchControl,
 } from "./controls.js";
-import { generateGrid, renderOnGrid, insertToMatrix, invertGrid, displayLevel } from "./display.js";
+import {
+    generateGrid,
+    renderOnGrid,
+    insertToMatrix,
+    invertGrid,
+    displayLevel,
+    updateAnimationTransition,
+} from "./display.js";
 import { highScore } from "./score.js";
 import { switchToArea } from "./main.js";
 
@@ -98,10 +105,11 @@ export function handleOrientationChange() {
 export function toggleGamePause() {
     const breakButton = document.getElementById("break-button");
     globals.isPlaying = !globals.isPlaying;
-
     breakButton.innerHTML = globals.isPlaying
         ? `<i class="fa-solid fa-pause"></i>`
         : `<i class="fa-solid fa-play"></i>`;
+
+    applyTemporaryAnimation();
     invertGrid();
 
     handleOrientationChange();
@@ -121,7 +129,6 @@ export function exitGame() {
 }
 
 function resetGame() {
-    toggleGamePause();
     globals.isPlaying = false;
     clearInterval(globals.gameLoop);
     globals.gameGrid.innerHTML = "";
@@ -131,11 +138,22 @@ function resetGame() {
     document.getElementById("brick-indicator").style.display = "";
     document.querySelector("#power-buttons").style.display = "";
     document.querySelector("#game-controls").style.display = "";
+    applyTemporaryAnimation();
 }
 
 export function restartGameLoop() {
     if (globals.gameLoop) {
         clearInterval(globals.gameLoop);
         globals.gameLoop = setInterval(globals.gameUpdate, globals.interval);
+    }
+}
+
+function applyTemporaryAnimation() {
+    const animation = document.querySelector("#animation-selector input").checked;
+
+    if (!animation) {
+        globals.animation = true;
+        updateAnimationTransition();
+        globals.animation = false;
     }
 }

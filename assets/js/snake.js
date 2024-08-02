@@ -1,5 +1,5 @@
 import { globals } from "./globals.js";
-import { insertToMatrix, renderOnGrid } from "./display.js";
+import { insertToMatrix, renderOnGrid, updateAnimationTransition } from "./display.js";
 import { exitGame } from "./game.js";
 import { updateSnakeScore } from "./score.js";
 
@@ -30,6 +30,7 @@ function startGameLoop() {
 
     globals.gameUpdate = () => {
         if (globals.isPlaying) {
+            updateAnimationTransition();
             updatePosition();
             if (isPositionInMatrix() && !isCollision(globals.position)) {
                 if (isCollision(globals.snakeFood)) {

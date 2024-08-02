@@ -1,6 +1,5 @@
 import { globals, constants } from "./globals.js";
 import { startGame } from "./game.js";
-import { updateAnimationTransition } from "./display.js";
 import { switchToArea } from "./main.js";
 
 export function settings() {
@@ -155,7 +154,6 @@ function setGameSpeed() {
 
     const updateGameSpeed = (increment, valueToDisplay) => {
         currentValue = Math.max(valueRange[0], Math.min(currentValue + increment, valueRange[1]));
-        updateAnimationTransition();
         valueToDisplay.textContent = `${currentValue}`;
         globals.level = currentValue;
         globals.initialLevel = currentValue;
@@ -200,7 +198,6 @@ function setAnimation() {
 
     const updateAnimationMode = () => {
         globals.animation = !globals.animation;
-        updateAnimationTransition();
     };
 
     toggleSwitch.addEventListener("click", updateAnimationMode);
