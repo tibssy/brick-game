@@ -126,24 +126,21 @@ function handlePowerButtonClick(event) {
     }
 }
 
-function handleSnakeControlButtonClick(event) {
+function handleSnakeControlAction(action) {
     if (!globals.isPlaying) return;
 
-    const direction = constants.buttonActions[event.currentTarget.id];
-    if (direction) {
+    const direction = constants.snakeControlActions[action];
+    if (direction && constants.oppositeDirections[direction] !== globals.snakeDirection) {
         globals.snakeDirection = direction;
-    } else {
-        throw new Error(`Invalid button id: ${event.currentTarget.id}`);
     }
 }
 
-function handleSnakeKeyDown(event) {
-    if (!globals.isPlaying) return;
+function handleSnakeControlButtonClick(event) {
+    handleSnakeControlAction(event.currentTarget.id);
+}
 
-    const direction = constants.keyActions[event.key];
-    if (direction) {
-        globals.snakeDirection = direction;
-    }
+function handleSnakeKeyDown(event) {
+    handleSnakeControlAction(event.key);
 }
 
 function handleTetrisControlButtonClick(event) {

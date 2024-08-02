@@ -87,17 +87,21 @@ export const constants = {
             [0, 1, 1, 0],
         ],
     ],
-    keyActions: {
+    snakeControlActions: {
         ArrowUp: "up",
         ArrowLeft: "left",
         ArrowRight: "right",
         ArrowDown: "down",
-    },
-    buttonActions: {
         "up-button": "up",
         "left-button": "left",
         "right-button": "right",
         "down-button": "down",
+    },
+    oppositeDirections: {
+        up: "down",
+        down: "up",
+        left: "right",
+        right: "left",
     },
     hslColorThemes: {
         hue: {
