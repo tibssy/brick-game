@@ -19,7 +19,7 @@ function handleEscapeKeyUp(event) {
 
 export function setupLongTouchControl() {
     const buttons = document.querySelectorAll("#game-controls button");
-    const longTouchThreshold = 180;
+    const longTouchThreshold = 150;
     const touchState = {
         touchStartTime: 0,
         touchTimer: null,

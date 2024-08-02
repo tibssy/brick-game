@@ -92,9 +92,8 @@ function animateGridUpdate() {
 
     globals.animation = true;
     updateAnimationTransition();
-    renderOnGrid(globals.gameGrid, globals.brickMatrix);
     globals.animation = false;
-    setTimeout(updateAnimationTransition, Math.floor(globals.interval / 4));
+    setTimeout(updateAnimationTransition, globals.interval);
 }
 
 function moveToNextBrick() {
