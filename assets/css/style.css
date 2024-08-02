@@ -78,6 +78,7 @@ input[type="text"] {
     border-bottom: 1px solid var(--secondary-accent);
 }
 
+/* Card Component */
 .card {
     padding: 6px 12px;
     width: 100%;
@@ -95,7 +96,7 @@ input[type="text"] {
     color: var(--font-color);
 }
 
-/* Main */
+/* Main Styles */
 main {
     display: flex;
     justify-content: center;
@@ -115,7 +116,7 @@ main > div {
     transition: var(--transition-long);
 }
 
-/* Areas */
+/* Area Styles */
 #settings-area {
     flex-direction: column;
     align-items: center;
@@ -140,8 +141,7 @@ main > div {
     align-items: center;
 }
 
-/* ---------- Game Area ---------- */
-/* Display */
+/* Game Area Styles */
 #game-indicator {
     display: flex;
     justify-content: space-evenly;
@@ -201,7 +201,7 @@ main > div {
     box-shadow: var(--box-shadow-normal);
 }
 
-/* Controls */
+/* Control Area Styles */
 #control-area {
     display: flex;
     justify-content: center;
@@ -257,8 +257,7 @@ main > div {
     gap: 30px;
 }
 
-/* ---------- Settings Area ---------- */
-/* Game Selector */
+/* Settings Area Styles */
 #game-selector {
     position: relative;
     display: flex;
@@ -424,6 +423,7 @@ input:checked + .slider:before {
     transform: translateX(26px);
 }
 
+/* Start Button */
 #start-button {
     width: 100%;
     font-size: 1.5rem;
@@ -540,7 +540,7 @@ input:checked + .slider:before {
     font-size: 2.2rem;
 }
 
-/* ---------- Property Setters ---------- */
+/* Property Setters */
 .hide-element {
     transform: scale(0.5);
     filter: opacity(0);
