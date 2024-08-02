@@ -17,48 +17,65 @@ function handleEscapeKeyUp(event) {
     }
 }
 
-export function setupLongTouchDownControl() {
-    const downButton = document.getElementById("down-button");
+export function setupLongTouchControl() {
+    const buttons = document.querySelectorAll("#game-controls button");
     const longTouchThreshold = 180;
-    const speed = Math.floor(250 / globals.gridSize[0]);
-    let touchStartTime = 0;
-    let interval;
-    let touchTimer;
+    const touchState = {
+        touchStartTime: 0,
+        touchTimer: null,
+        repeatTouch: null,
+        touched: false,
+        buttonId: null,
+    };
 
-    downButton.addEventListener("touchstart", handleLongTouchStart);
-    downButton.addEventListener("touchend", handleLongTouchEnd);
-    downButton.addEventListener("touchcancel", handleLongTouchEnd);
-    downButton.addEventListener("touchleave", handleLongTouchEnd);
-
-    function handleLongTouchStart() {
-        touchStartTime = Date.now();
-        interval = globals.interval;
-
-        if (touchTimer) {
-            clearTimeout(touchTimer);
+    buttons.forEach((button) => {
+        if (button.id !== "up-button") {
+            button.addEventListener("touchstart", handleTouchStart);
+            button.addEventListener("touchend", handleTouchEnd);
+            button.addEventListener("touchcancel", handleTouchEnd);
+            button.addEventListener("touchleave", handleTouchEnd);
         }
+    });
 
-        touchTimer = setTimeout(() => {
-            globals.interval = speed;
-            restartGameLoop();
+    function handleTouchStart(event) {
+        event.preventDefault();
+        const { id } = event.currentTarget;
+        touchState.buttonId = id;
+        const axis = id === "down-button" ? 1 : 0;
+        const speed = Math.floor(500 / globals.gridSize[axis]);
+        touchState.touchStartTime = Date.now();
+        touchState.touched = true;
+
+        clearTimeout(touchState.touchTimer);
+
+        touchState.touchTimer = setTimeout(() => {
+            if (touchState.touched) {
+                touchState.repeatTouch = setInterval(() => {
+                    if (touchState.touched) {
+                        handleTetrisControlButtonClick({ currentTarget: { id } });
+                    } else {
+                        clearInterval(touchState.repeatTouch);
+                    }
+                }, speed);
+            }
         }, longTouchThreshold);
     }
 
-    function handleLongTouchEnd() {
-        if (touchTimer) {
-            clearTimeout(touchTimer);
-            touchTimer = null;
+    function handleTouchEnd() {
+        clearTimeout(touchState.touchTimer);
+        touchState.touchTimer = null;
+
+        clearInterval(touchState.repeatTouch);
+        touchState.repeatTouch = null;
+
+        if (Date.now() - touchState.touchStartTime < longTouchThreshold) {
+            handleTetrisControlButtonClick({ currentTarget: { id: touchState.buttonId } });
         }
 
-        if (Date.now() - touchStartTime < longTouchThreshold) {
-            return;
-        }
-
-        globals.interval = interval;
-        restartGameLoop();
+        touchState.touched = false;
     }
 
-    globals.touchHandler = { handleLongTouchStart, handleLongTouchEnd };
+    globals.touchHandler = { handleTouchStart, handleTouchEnd };
 }
 
 function setTouchControls() {
@@ -185,13 +202,13 @@ function setupButtons(selector, handler) {
 }
 
 export function removeAllEventListeners() {
-    const downButton = document.getElementById("down-button");
-
     document.removeEventListener("keydown", handleSnakeKeyDown);
     document.removeEventListener("keydown", handleTetrisKeyDown);
     document.removeEventListener("keyup", handleEscapeKeyUp);
 
     if (globals.touchHandler) {
+        const downButton = document.getElementById("down-button");
+
         globals.gameGrid.removeEventListener("touchstart", globals.touchHandler.handleTouchStart);
         globals.gameGrid.removeEventListener("touchend", globals.touchHandler.handleTouchEnd);
         downButton.removeEventListener("touchstart", globals.touchHandler.handleLongTouchStart);

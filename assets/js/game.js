@@ -6,7 +6,7 @@ import {
     setTetrisControls,
     setSnakeControls,
     setupPowerControls,
-    setupLongTouchDownControl,
+    setupLongTouchControl,
 } from "./controls.js";
 import { generateGrid, renderOnGrid, insertToMatrix, invertGrid, displayLevel } from "./display.js";
 import { highScore } from "./score.js";
@@ -23,7 +23,7 @@ export function startGame() {
         case "tetrismod":
             buildTetris();
             countDown(() => {
-                setupLongTouchDownControl();
+                setupLongTouchControl();
                 setupPowerControls();
                 setTetrisControls();
                 playTetris();

@@ -188,8 +188,6 @@ function setLeftHanded() {
         const gameArea = document.querySelector("#game-area");
         const powerButtons = document.querySelector("#power-buttons");
 
-        console.log(gameArea);
-
         gameArea.classList.toggle("left-handed", globals.isLeftHanded);
         powerButtons.classList.toggle("left-handed", globals.isLeftHanded);
     };

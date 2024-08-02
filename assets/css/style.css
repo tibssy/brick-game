@@ -109,7 +109,6 @@ main > div {
     gap: 15px;
     padding: 16px;
     background-color: var(--primary-background);
-    /* overflow-y: scroll; */
 }
 
 #game-area {
@@ -246,7 +245,6 @@ main > div {
 }
 
 /* ---------- Settings Area ---------- */
-
 /* Game Selector */
 #game-selector {
     position: relative;
@@ -293,7 +291,6 @@ main > div {
 }
 
 /* Settings Options */
-
 #settings {
     overflow-y: scroll;
     height: 100%;
@@ -318,10 +315,6 @@ main > div {
     background-color: var(--primary-accent);
 }
 
-/* .settings-option p {
-    color: var(--font-color);
-} */
-
 .number-selector {
     display: grid;
     grid-template-columns: repeat(3, auto);
@@ -342,14 +335,6 @@ main > div {
     display: flex;
     align-items: center;
 }
-
-/* #color-selector {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    padding: 10px;
-} */
 
 /* Number Selector */
 .number-selector p {
@@ -430,11 +415,6 @@ input:checked + .slider:before {
 }
 
 /* ---------- Score Area ---------- */
-/* #high-score p {
-    text-align: center;
-    color: var(--font-color);
-} */
-
 #high-score {
     display: flex;
     justify-content: space-around;
@@ -523,7 +503,6 @@ input:checked + .slider:before {
 
 #score-table td {
     padding: 2px 6px;
-    /* border: 1px solid var(--primary-background); */
     color: var(--font-color);
     font-weight: 600;
 }
@@ -542,7 +521,7 @@ input:checked + .slider:before {
 
 /* ---------- Property Setters ---------- */
 .hide-element {
-    transform: scale(0.3);
+    transform: scale(0.5);
     filter: opacity(0);
 }
 
