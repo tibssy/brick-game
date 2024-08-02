@@ -86,7 +86,7 @@ export function displayClearedLines() {
 
 export function updateAnimationTransition() {
     const isAnimate = globals.animation ? `${Math.floor(globals.interval / 4)}ms ease-in-out` : "none";
-    document.documentElement.style.setProperty("--transition", isAnimate);
+    document.documentElement.style.setProperty("--transition-normal", isAnimate);
 }
 
 export function displayScores(scores) {
