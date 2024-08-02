@@ -13,34 +13,50 @@ import { highScore } from "./score.js";
 import { switchToArea } from "./main.js";
 
 export function startGame() {
-    globals.gameMatrix = Array.from(Array(globals.gridSize[1]), () => Array(globals.gridSize[0]).fill(0));
-    globals.gameGrid = document.getElementById("game-display");
+    initializeGameMatrix();
+    initializeGameGrid();
     generateGrid(globals.gameGrid, globals.gridSize);
     displayLevel();
 
     switch (globals.game) {
         case "tetris":
-        case "tetrismod":
-            buildTetris();
-            countDown(() => {
-                setupLongTouchControl();
-                setupPowerControls();
-                setTetrisControls();
-                playTetris();
-            });
+        case "tetris extra":
+            setupTetrisGame();
             break;
         case "snake":
-            buildSnake();
-            countDown(() => {
-                setupPowerControls();
-                setSnakeControls();
-                playSnake();
-            });
+            setupSnakeGame();
             break;
         default:
             alert("No game selected");
             break;
     }
+}
+
+function initializeGameMatrix() {
+    globals.gameMatrix = Array.from(Array(globals.gridSize[1]), () => Array(globals.gridSize[0]).fill(0));
+}
+
+function initializeGameGrid() {
+    globals.gameGrid = document.getElementById("game-display");
+}
+
+function setupTetrisGame() {
+    buildTetris();
+    countDown(() => {
+        setupLongTouchControl();
+        setupPowerControls();
+        setTetrisControls();
+        playTetris();
+    });
+}
+
+function setupSnakeGame() {
+    buildSnake();
+    countDown(() => {
+        setupPowerControls();
+        setSnakeControls();
+        playSnake();
+    });
 }
 
 function countDown(callback) {

@@ -98,7 +98,7 @@ function getRandomBrick() {
     let bricks = constants.bricks;
     let brickIndex;
 
-    if (globals.game === "tetrismod" && Math.floor(Math.random() * 2)) {
+    if (globals.game === "tetris extra" && Math.floor(Math.random() * 2)) {
         bricks = constants.bricksMod;
     }
 
