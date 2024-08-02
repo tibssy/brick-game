@@ -145,7 +145,7 @@ export const globals = {
     level: 0,
     clearedLines: 0,
     score: 0,
-    animation: true,
+    animation: false,
     rotation: "counterclockwise",
     isLeftHanded: false,
     game: "tetris",

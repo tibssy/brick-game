@@ -1,5 +1,5 @@
 import { globals, constants } from "./globals.js";
-import { insertToMatrix, renderIndicator, renderOnGrid } from "./display.js";
+import { insertToMatrix, renderIndicator, renderOnGrid, updateAnimationTransition } from "./display.js";
 import { exitGame } from "./game.js";
 import { updateTetrisScore } from "./score.js";
 
@@ -78,7 +78,24 @@ function cleanFullRows() {
 
     if (lines) {
         updateTetrisScore(lines);
+        animateGridUpdate();
     }
+}
+
+function animateGridUpdate() {
+    if (globals.animation) {
+        renderOnGrid(globals.gameGrid, globals.brickMatrix);
+        return;
+    }
+
+    globals.animation = true;
+    updateAnimationTransition();
+    renderOnGrid(globals.gameGrid, globals.brickMatrix);
+
+    setTimeout(() => {
+        globals.animation = false;
+        updateAnimationTransition();
+    }, globals.interval);
 }
 
 function moveToNextBrick() {
