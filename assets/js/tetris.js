@@ -83,7 +83,9 @@ function cleanFullRows() {
 }
 
 function animateGridUpdate() {
-    if (globals.animation) {
+    const animation = globals.animation;
+
+    if (animation) {
         renderOnGrid(globals.gameGrid, globals.brickMatrix);
         return;
     }
@@ -91,11 +93,8 @@ function animateGridUpdate() {
     globals.animation = true;
     updateAnimationTransition();
     renderOnGrid(globals.gameGrid, globals.brickMatrix);
-
-    setTimeout(() => {
-        globals.animation = false;
-        updateAnimationTransition();
-    }, globals.interval);
+    globals.animation = false;
+    setTimeout(updateAnimationTransition, Math.floor(globals.interval / 4));
 }
 
 function moveToNextBrick() {
