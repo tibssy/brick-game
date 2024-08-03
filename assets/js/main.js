@@ -1,5 +1,7 @@
 import { settings } from "./settings.js";
 
+registerServiceWorker();
+
 document.addEventListener("DOMContentLoaded", () => {
     settings();
 });
@@ -32,5 +34,16 @@ export function switchToArea(nextAreaId) {
         };
 
         currentArea.addEventListener("transitionend", onTransitionEnd);
+    }
+}
+
+function registerServiceWorker() {
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+            .register("./service-worker.js")
+            .then((registration) => {
+                console.log("Registered!");
+            })
+            .catch(console.error);
     }
 }

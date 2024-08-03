@@ -21,6 +21,7 @@
     --transition-long: 0.5s ease-in-out;
     --transition-normal: 0.25s ease-in-out;
     --transition-short: 0.1s ease-in-out;
+    --transition: 0.25s ease-in-out;
 
     /* Border Radius */
     --border-radius-large: 6px;
@@ -197,7 +198,7 @@ main > div {
     background-color: var(--primary-accent);
     border-radius: 8%;
     margin: 8%;
-    transition: var(--transition-normal);
+    transition: var(--transition);
     box-shadow: var(--box-shadow-normal);
 }
 
@@ -387,8 +388,8 @@ main > div {
     right: 0;
     bottom: 0;
     background-color: var(--primary-background);
-    -webkit-transition: var(--transition-long);
-    transition: var(--transition-long);
+    -webkit-transition: var(--transition-normal);
+    transition: var(--transition-normal);
 }
 
 .slider:before {
@@ -400,8 +401,8 @@ main > div {
     bottom: 4px;
     background-color: var(--secondary-background);
     box-shadow: var(--box-shadow-small);
-    -webkit-transition: var(--transition-long);
-    transition: var(--transition-long);
+    -webkit-transition: var(--transition-normal);
+    transition: var(--transition-normal);
 }
 
 .slider.round {

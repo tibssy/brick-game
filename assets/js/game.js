@@ -14,7 +14,7 @@ import {
     insertToMatrix,
     invertGrid,
     displayLevel,
-    updateAnimationTransition,
+    applyTemporaryAnimation,
 } from "./display.js";
 import { highScore } from "./score.js";
 import { switchToArea } from "./main.js";
@@ -145,15 +145,5 @@ export function restartGameLoop() {
     if (globals.gameLoop) {
         clearInterval(globals.gameLoop);
         globals.gameLoop = setInterval(globals.gameUpdate, globals.interval);
-    }
-}
-
-function applyTemporaryAnimation() {
-    const animation = document.querySelector("#animation-selector input").checked;
-
-    if (!animation) {
-        globals.animation = true;
-        updateAnimationTransition();
-        globals.animation = false;
     }
 }
