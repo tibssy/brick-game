@@ -29,15 +29,16 @@
                         <img src="assets/images/tetris-sample.webp" class="carousel-image" alt="tetris sample image">
                         <img src="assets/images/snake-sample.webp" class="carousel-image" alt="snake sample image">
                         <img src="assets/images/tetris-mod-sample.webp" class="carousel-image"
-                            alt="tetris mod sample image">
+                            alt="tetris extra sample image">
                     </div>
                 </div>
                 <div id="game-selector-controls">
-                    <button class="carousel-button left-button" id="previous-game">
+                    <button id="previous-game" class="carousel-button left-button"
+                        aria-label="game selector left button">
                         <i class="fa-solid fa-angle-left"></i>
                     </button>
                     <p>Tetris</p>
-                    <button class="carousel-button right-button" id="next-game">
+                    <button id="next-game" class="carousel-button right-button" aria-label="game selector right button">
                         <i class="fa-solid fa-angle-right"></i>
                     </button>
                 </div>
@@ -55,11 +56,11 @@
                 <div id="grid-size-selector" class="settings-option divider">
                     <p>Game Grid Size:</p>
                     <div class="number-selector">
-                        <button class="button-decrement">
+                        <button class="button-decrement" aria-label="decrease quantity">
                             <i class="fa-solid fa-minus"></i>
                         </button>
                         <p>10 x 20</p>
-                        <button class="button-increment">
+                        <button class="button-increment" aria-label="increase quantity">
                             <i class="fa-solid fa-plus"></i>
                         </button>
                     </div>
@@ -68,11 +69,11 @@
                 <div id="speed-selector" class="settings-option divider">
                     <p>Game Speed:</p>
                     <div class="number-selector">
-                        <button class="button-decrement">
+                        <button class="button-decrement" aria-label="decrease speed">
                             <i class="fa-solid fa-minus"></i>
                         </button>
                         <p>0</p>
-                        <button class="button-increment">
+                        <button class="button-increment" aria-label="increase speed">
                             <i class="fa-solid fa-plus"></i>
                         </button>
                     </div>
@@ -80,7 +81,7 @@
 
                 <div id="rotation-selector" class="settings-option divider">
                     <p>Tetris Brick Rotation:</p>
-                    <button><i class="fa-solid fa-rotate-left"></i></button>
+                    <button><i class="fa-solid fa-rotate-left" aria-label="rotate otientation button"></i></button>
                 </div>
 
                 <div id="left-hand-selector" class="settings-option divider">
@@ -100,7 +101,7 @@
                 </div>
             </div>
 
-            <button id="start-button">Start Game</button>
+            <button id="start-button" aria-label="start game" autofocus>Start Game</button>
         </div>
 
         <!-- Game Area -->
@@ -128,23 +129,23 @@
 
             <div id="control-area">
                 <div id="power-buttons">
-                    <button id="break-button"><i class="fa-solid fa-pause"></i></button>
-                    <button id="reset-button"><i class="fa-solid fa-arrows-rotate"></i></button>
-                    <button id="exit-button"><i class="fa-solid fa-xmark"></i></button>
+                    <button id="break-button" aria-label="pause game"><i class="fa-solid fa-pause"></i></button>
+                    <button id="reset-button" aria-label="reset game"><i class="fa-solid fa-arrows-rotate"></i></button>
+                    <button id="exit-button" aria-label="exit game"><i class="fa-solid fa-xmark"></i></button>
                 </div>
                 <div id="game-controls">
-                    <button class="control-button" id="left-button">
-                        <i class="fa-solid fa-angle-left"></i>
+                    <button id="left-button" class="control-button" aria-label="game control left button"><i
+                            class="fa-solid fa-angle-left"></i>
                     </button>
                     <div>
-                        <button class="control-button" id="up-button">
+                        <button id="up-button" class="control-button" aria-label="game control up button">
                             <i class="fa-solid fa-angle-up"></i>
                         </button>
-                        <button class="control-button" id="down-button">
+                        <button id="down-button" class="control-button" aria-label="game control down button">
                             <i class="fa-solid fa-angle-down"></i>
                         </button>
                     </div>
-                    <button class="control-button" id="right-button">
+                    <button id="right-button" class="control-button" aria-label="game control right button">
                         <i class="fa-solid fa-angle-right"></i>
                     </button>
                 </div>
@@ -155,7 +156,7 @@
         <div id="score-area" class="closed-area">
             <div id="score-header">
                 <h1>High Scores</h1>
-                <button id="close-score"><i class="fa-solid fa-xmark"></i></button>
+                <button id="close-score"><i class="fa-solid fa-xmark" aria-label="close high-scores"></i></button>
             </div>
 
             <div id="high-score">
@@ -167,7 +168,7 @@
                 <div class="input-group card">
                     <label for="player-name"></label>
                     <input type="text" id="player-name" placeholder="Enter your name" maxlength="10">
-                    <button id="save-score"><i class="fa-solid fa-plus"></i></button>
+                    <button id="save-score"><i class="fa-solid fa-plus" aria-label="add your score"></i></button>
                 </div>
             </div>
 

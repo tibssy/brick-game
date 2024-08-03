@@ -16,7 +16,7 @@ import {
     displayLevel,
     applyTemporaryAnimation,
 } from "./display.js";
-import { highScore } from "./score.js";
+import { highScore, resetScore } from "./score.js";
 import { switchToArea } from "./main.js";
 
 export function startGame() {
@@ -132,13 +132,18 @@ function resetGame() {
     globals.isPlaying = false;
     clearInterval(globals.gameLoop);
     globals.gameGrid.innerHTML = "";
+    document.getElementById("brick-indicator").style.display = "";
+    resetScore();
+    resetButtons();
+    applyTemporaryAnimation();
+}
+
+function resetButtons() {
     globals.snakeDirection = "up";
     removeAllEventListeners();
     document.getElementById("break-button").innerHTML = `<i class="fa-solid fa-pause"></i>`;
-    document.getElementById("brick-indicator").style.display = "";
     document.querySelector("#power-buttons").style.display = "";
     document.querySelector("#game-controls").style.display = "";
-    applyTemporaryAnimation();
 }
 
 export function restartGameLoop() {

@@ -51,7 +51,7 @@ export function updateSnakeScore() {
     calculateLevel(1, 5);
 }
 
-function resetScore() {
+export function resetScore() {
     globals.clearedLines = 0;
     globals.score = 0;
     globals.level = globals.initialLevel;
