@@ -96,3 +96,16 @@ As a returning visitor to Brick Game, I want to:
 -   Left-Handed Mode:
 
     -   Users can switch to left-handed mode where the controls move to the left of the game on mobile landscape mode or on desktop mode, providing better accessibility and convenience for left-handed players.
+
+    -   **_Right-handed_**
+        ![right-handed](https://github.com/user-attachments/assets/5d1c73d9-1188-475b-99fe-0b615304c454)
+
+    -   **_Left-handed_**
+        ![left-handed](https://github.com/user-attachments/assets/30019002-8af7-465a-9aa3-a3e9beb25712)
+
+-   Gameplay Controls:
+
+    -   Users can control the game using the onscreen buttons or the keyboard arrow keys.
+    -   Users can pause the game using the ESC key on the keyboard or by touching the game area on mobile devices.
+    -   Users can restart the game without going back to the main window or exit the game to switch game modes.
+    -   Upon exiting the game or on game over, if the user has a score, the game transitions to the score window.
