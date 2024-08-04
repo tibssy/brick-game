@@ -12,6 +12,7 @@ The Tetris mode features the classic falling block gameplay where you aim to cle
 
 -   [User Experience](#user-experience)
 -   [Features](#features)
+-   [Installation](#installation)
 -   [Design](#design)
 -   [Testing](#testing)
 -   [Bugs](#bugs)
@@ -146,3 +147,11 @@ As a returning visitor to Brick Game, I want to:
         -   1 food: 40 \* (speed + 1)
 
     ![scores](https://github.com/user-attachments/assets/166cbd50-028f-4a63-905c-0f34d241d0da)
+
+### Progressive Web App (PWA)
+
+-   Easy Installation:
+    -   The game is designed as a Progressive Web App (PWA), allowing users to install it directly from their browser to their desktop or mobile device.
+    -   Once installed, the game supports offline mode, enabling users to play without an internet connection.
+
+## installation
