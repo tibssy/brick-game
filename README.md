@@ -1,131 +1,98 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Brick Game
 
-Welcome Norbert Tiborcz,
+Welcome to the Brick Game project! This isn't just a traditional Tetris game; it's a multifaceted arcade experience that combines several classic games into one. In addition to the traditional Tetris gameplay, this game includes a nostalgic snake game and a variant of Tetris with additional brick types and special features.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+The Tetris mode features the classic falling block gameplay where you aim to clear lines by arranging falling bricks. The Snake mode offers a nostalgic experience where you guide a snake to collect items and grow longer while avoiding collisions. The Tetris Extra mode introduces new brick types and special features, adding layers of strategy and challenge.
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+#### [Visit Brick Game](https://tibssy.github.io/brick-game)
 
-## Gitpod Reminders
+![sample](https://github.com/user-attachments/assets/c20ac6b1-4333-4ea3-8a46-241efddfd6ea)
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## Table of Contents
 
-`python3 -m http.server`
+-   [User Experience](#user-experience)
+-   [Features](#features)
+-   [Design](#design)
+-   [Testing](#testing)
+-   [Bugs](#bugs)
+-   [Deployment](#deployment)
+-   [Credits](#credits)
+-   [Conclusion](#conclusion)
 
-A blue button should appear to click: _Make Public_,
+## User Experience
 
-Another blue button should appear to click: _Open Browser_.
+### Ideal User Demographic
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+**Brick Game is perfect for:**
 
-A blue button should appear to click: _Make Public_,
+-   **New Users:**
 
-Another blue button should appear to click: _Open Browser_.
+    -   People who enjoy classic arcade games.
+    -   TCasual gamers looking for quick and engaging gameplay.
+    -   Families wanting a nostalgic gaming experience.
+    -   Retro gaming enthusiasts.
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+-   **Current Users:**
+    -   Returning players who enjoyed the Brick Game and want to explore new features.
+    -   Users looking for updates on game modes and customization options.
 
-To log into the Heroku toolbelt CLI:
+### Goals for First-Time Visitors
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+As a first-time visitor to Brick Game, I want to:
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+-   Easily understand what the game is about.
+-   Navigate the site easily using familiar menus and icons.
+-   Explore the different game modes.
+-   Access contact information for any questions or support.
 
-### Connecting your Mongo database
+### Goals for Returning Visitors
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
+As a returning visitor to Brick Game, I want to:
 
-------
+-   Check for new game modes or updates to existing ones.
+-   Quickly start a new game session.
+-   Access my previous scores and achievements.
+-   Customize my gaming experience with different themes and settings.
 
-## Release History
+## Features
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+### Game Selector
 
-**June 18, 2024,** Add Mongo back into template
+-   Multiple Game Modes:
 
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
+    -   Users can select from three different games: Tetris, Snake, and Tetris Extra with additional bricks.
+    -   The game selector is designed as a carousel, allowing users to easily navigate and choose their desired gameplay.
 
-**May 28 2024:** Fix Mongo and Links installs
+    ![game-selector](https://github.com/user-attachments/assets/81877e11-f69e-48d7-8e16-6ef963262b6e)
 
-**April 26 2024:** Update node version to 16
+-   Color Themes and Dark Mode
 
-**September 20 2023:** Update Python version to 3.9.17.
+    -   Users can select from different color themes to personalize their gaming experience.
+    -   A dark mode switch is available for a more comfortable viewing experience in low light.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+    ![settings](https://github.com/user-attachments/assets/a2b9f507-68fb-4620-ac7a-fb57badf3390)
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+-   Game Grid Size:
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+    -   Users can select between different grid sizes to play.
+    -   The original grid size is 10x20 blocks, but in this Brick Game, users can also choose from 6x12, 7x14, 8x16, 9x18, 11x22, and 12x24.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+    ![game-grid](https://github.com/user-attachments/assets/b5f0abf4-18f5-44ce-99db-0135b85bf7ac)
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+-   Brick Falling Speed:
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+    -   Users can select the initial brick falling speed.
+    -   The speed range is from 0 to 10, where 0 is 1 step per second, and 10 is 10 steps per second.
+    -   The speed increases by 1 for every 10 cleared lines, adding a progressive challenge.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+-   Tetris Brick Rotation:
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+    -   Users can switch the rotation of the Tetris brick both clockwise and counterclockwise for better control and strategy.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+-   Movement Animation:
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+    -   Users can toggle the brick/snake movement animation on or off to suit their visual preferences and gameplay style.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+-   Left-Handed Mode:
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+    -   Users can switch to left-handed mode where the controls move to the left of the game on mobile landscape mode or on desktop mode, providing better accessibility and convenience for left-handed players.

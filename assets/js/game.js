@@ -116,6 +116,7 @@ export function toggleGamePause() {
 }
 
 export function restartGame() {
+    resetScore();
     resetGame();
     startGame();
 }
@@ -133,7 +134,6 @@ function resetGame() {
     clearInterval(globals.gameLoop);
     globals.gameGrid.innerHTML = "";
     document.getElementById("brick-indicator").style.display = "";
-    resetScore();
     resetButtons();
     applyTemporaryAnimation();
 }
