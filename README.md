@@ -156,4 +156,39 @@ As a returning visitor to Brick Game, I want to:
 
 ## installation
 
-https://github.com/user-attachments/assets/5b977ba3-c530-47a7-a029-1bb37a4b18bd
+-   Installation on Mobile Devices:
+
+    1. Open the Browser:
+        - Open Google Chrome on your Android device.
+    2. Navigate to the Game:
+        - [Visit Brick Game](https://tibssy.github.io/brick-game)
+    3. Install the App:
+        - Once the page is loaded, you should see a prompt at the bottom of the screen that says "Add Brick Game to Home screen.
+        - If you don't see the prompt, tap the three-dot menu in the top right corner of the browser.
+        - Select "Add to Home screen" from the menu.
+    4. Confirm Installation:
+        - A dialog box will appear with an option to name the app. By default, it will be named after your website.
+        - Tap "Add/Install"
+    5. Launch the App:
+        - The app icon will appear on your home screen or you can find it on the app drawer.
+        - Tap the icon to launch your PWA in a standalone window.
+
+    https://github.com/user-attachments/assets/2b09eeef-51f6-40aa-a4d4-e6a3937081b9
+
+-   Installation on Desktop:
+
+    1. Open the Browser:
+        - Open Google Chrome on your desktop pc or on your laptop.
+    2. Navigate to the Game:
+        - [Visit Brick Game](https://tibssy.github.io/brick-game)
+    3. Install the App:
+        - Once the page is loaded, you should see an install icon (a computer with a download arrow) on the right side of the address bar.
+        - Click the install icon.
+    4. Confirm Installation:
+        - A dialog box will appear asking you to confirm the installation.
+        - Click "Install."
+    5. Launch the App:
+        - The app will open in a standalone window.
+        - An icon for the app will also be added to your desktop or start menu, depending on your operating system.
+
+    https://github.com/user-attachments/assets/5b977ba3-c530-47a7-a029-1bb37a4b18bd
