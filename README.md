@@ -63,37 +63,49 @@ As a returning visitor to Brick Game, I want to:
     -   Users can select from three different games: Tetris, Snake, and Tetris Extra with additional bricks.
     -   The game selector is designed as a carousel, allowing users to easily navigate and choose their desired gameplay.
 
-    ![game-selector](https://github.com/user-attachments/assets/81877e11-f69e-48d7-8e16-6ef963262b6e)
+![game-selector](https://github.com/user-attachments/assets/81877e11-f69e-48d7-8e16-6ef963262b6e)
 
--   Color Themes and Dark Mode
+### Color Themes and Dark Mode
+
+-   Customization:
 
     -   Users can select from different color themes to personalize their gaming experience.
     -   A dark mode switch is available for a more comfortable viewing experience in low light.
 
-    ![settings](https://github.com/user-attachments/assets/a2b9f507-68fb-4620-ac7a-fb57badf3390)
+![settings](https://github.com/user-attachments/assets/a2b9f507-68fb-4620-ac7a-fb57badf3390)
 
--   Game Grid Size:
+### Game Grid Size
+
+-   Flexible Grid Options:
 
     -   Users can select between different grid sizes to play.
     -   The original grid size is 10x20 blocks, but in this Brick Game, users can also choose from 6x12, 7x14, 8x16, 9x18, 11x22, and 12x24.
 
-    ![game-grid](https://github.com/user-attachments/assets/b5f0abf4-18f5-44ce-99db-0135b85bf7ac)
+![game-grid](https://github.com/user-attachments/assets/b5f0abf4-18f5-44ce-99db-0135b85bf7ac)
 
--   Brick Falling Speed:
+### Brick Falling Speed
+
+-   Adjustable Speed:
 
     -   Users can select the initial brick falling speed.
     -   The speed range is from 0 to 10, where 0 is 1 step per second, and 10 is 10 steps per second.
     -   The speed increases by 1 for every 10 cleared lines, adding a progressive challenge.
 
--   Tetris Brick Rotation:
+### Tetris Brick Rotation
+
+-   Flexible Rotation:
 
     -   Users can switch the rotation of the Tetris brick both clockwise and counterclockwise for better control and strategy.
 
--   Movement Animation:
+### Movement Animation
+
+-   Toggle Animation:
 
     -   Users can toggle the brick/snake movement animation on or off to suit their visual preferences and gameplay style.
 
--   Left-Handed Mode:
+### Left-Handed Mode
+
+-   Left-Handed Accessibility:
 
     -   Users can switch to left-handed mode where the controls move to the left of the game on mobile landscape mode or on desktop mode, providing better accessibility and convenience for left-handed players.
 
