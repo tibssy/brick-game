@@ -155,3 +155,5 @@ As a returning visitor to Brick Game, I want to:
     -   Once installed, the game supports offline mode, enabling users to play without an internet connection.
 
 ## installation
+
+https://github.com/user-attachments/assets/5b977ba3-c530-47a7-a029-1bb37a4b18bd
