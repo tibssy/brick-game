@@ -63,7 +63,7 @@ As a returning visitor to Brick Game, I want to:
     -   Users can select from three different games: Tetris, Snake, and Tetris Extra with additional bricks.
     -   The game selector is designed as a carousel, allowing users to easily navigate and choose their desired gameplay.
 
-![game-selector](https://github.com/user-attachments/assets/de64e89b-5c0e-4088-aed3-429d84f12b6e)
+    ![game-selector](https://github.com/user-attachments/assets/de64e89b-5c0e-4088-aed3-429d84f12b6e)
 
 ### Color Themes and Dark Mode
 
@@ -72,7 +72,7 @@ As a returning visitor to Brick Game, I want to:
     -   Users can select from different color themes to personalize their gaming experience.
     -   A dark mode switch is available for a more comfortable viewing experience in low light.
 
-![theme-selector](https://github.com/user-attachments/assets/9205eb9b-d9bc-4b17-b5b4-53e12262146b)
+    ![theme-selector](https://github.com/user-attachments/assets/9205eb9b-d9bc-4b17-b5b4-53e12262146b)
 
 ### Game Grid Size
 
@@ -81,15 +81,15 @@ As a returning visitor to Brick Game, I want to:
     -   Users can select between different grid sizes to play.
     -   The original grid size is 10x20 blocks, but in this Brick Game, users can also choose from 6x12, 7x14, 8x16, 9x18, 11x22, and 12x24.
 
-![size-selector](https://github.com/user-attachments/assets/fda1b280-5f3f-4966-b452-aee331b0b278)
+    ![size-selector](https://github.com/user-attachments/assets/fda1b280-5f3f-4966-b452-aee331b0b278)
 
-### Brick Falling Speed
+### Game Speed
 
 -   Adjustable Speed:
 
     -   Users can select the initial brick falling speed.
     -   The speed range is from 0 to 10, where 0 is 1 step per second, and 10 is 10 steps per second.
-    -   The speed increases by 1 for every 10 cleared lines, adding a progressive challenge.
+    -   The speed increases by 1 for every 10 cleared lines in Tetris or every 5 collected snake food, adding a progressive challenge.
 
 ### Tetris Brick Rotation
 
@@ -133,4 +133,16 @@ As a returning visitor to Brick Game, I want to:
     -   The score window displays a high score list, showing player names, scores, game mode, and date of the score.
     -   Users can reorder the score list by any column in ascending order.
 
-![scores](https://github.com/user-attachments/assets/166cbd50-028f-4a63-905c-0f34d241d0da)
+-   Score Calculation:
+
+    -   Tetris:
+
+        -   1 cleared line: 40 \* (speed + 1)
+        -   2 cleared lines: 100 \* (speed + 1)
+        -   3 cleared lines: 300 \* (speed + 1)
+        -   4 cleared lines: 1200 \* (speed + 1)
+
+    -   Snake:
+        -   1 food: 40 \* (speed + 1)
+
+    ![scores](https://github.com/user-attachments/assets/166cbd50-028f-4a63-905c-0f34d241d0da)
