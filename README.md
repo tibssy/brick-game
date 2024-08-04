@@ -173,7 +173,7 @@ As a returning visitor to Brick Game, I want to:
         - The app icon will appear on your home screen or you can find it on the app drawer.
         - Tap the icon to launch your PWA in a standalone window.
 
-    https://github.com/user-attachments/assets/e5a1b87b-6aac-4166-97e3-b5038162b4f4
+    https://github.com/user-attachments/assets/cf9ca24d-be56-46db-bb49-7b8cfa639797
 
 -   Installation on Desktop:
 
