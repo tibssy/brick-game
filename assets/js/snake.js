@@ -25,7 +25,6 @@ function initializeGame() {
 }
 
 function startGameLoop() {
-    globals.interval /= 2;
     globals.isPlaying = true;
 
     globals.gameUpdate = () => {

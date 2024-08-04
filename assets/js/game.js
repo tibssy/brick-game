@@ -15,6 +15,7 @@ import {
     invertGrid,
     displayLevel,
     applyTemporaryAnimation,
+    updateGameText,
 } from "./display.js";
 import { highScore, resetScore } from "./score.js";
 import { switchToArea } from "./main.js";
@@ -22,6 +23,7 @@ import { switchToArea } from "./main.js";
 export function startGame() {
     initializeGameMatrix();
     initializeGameGrid();
+    updateGameText();
     generateGrid(globals.gameGrid, globals.gridSize);
     displayLevel();
 

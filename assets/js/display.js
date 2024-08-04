@@ -98,9 +98,33 @@ export function applyTemporaryAnimation() {
 }
 
 export function displayScores(scores) {
+    document.querySelectorAll("#high-score > p")[1].innerHTML =
+        globals.game === "snake" ? "Collected food: <span>0</span>" : `Cleared lines: <span>0</span>`;
+
     const scoreSpans = document.querySelectorAll("#high-score span");
 
     scores.forEach((score, index) => {
         scoreSpans[index].textContent = score;
     });
+}
+
+export function updateGameText() {
+    const textReplacements = [
+        ["Lines:", "Food:"],
+        ["Cleared lines:", "Collected food:"],
+    ];
+
+    const nextBrickIndicator = document.querySelectorAll(".indicator-text")[0];
+    const inGameLinesParagraph = document.querySelectorAll(".indicator-text")[3];
+    const highScoreParagraph = document.querySelectorAll("#high-score > p")[1];
+
+    if (globals.game === "snake") {
+        nextBrickIndicator.style.display = "none";
+        inGameLinesParagraph.innerHTML = inGameLinesParagraph.innerHTML.replace(...textReplacements[0]);
+        highScoreParagraph.innerHTML = highScoreParagraph.innerHTML.replace(...textReplacements[1]);
+    } else {
+        nextBrickIndicator.style.display = "unset";
+        inGameLinesParagraph.innerHTML = inGameLinesParagraph.innerHTML.replace(...textReplacements[0].reverse());
+        highScoreParagraph.innerHTML = highScoreParagraph.innerHTML.replace(...textReplacements[1].reverse());
+    }
 }
