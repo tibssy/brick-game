@@ -63,7 +63,7 @@ As a returning visitor to Brick Game, I want to:
     -   Users can select from three different games: Tetris, Snake, and Tetris Extra with additional bricks.
     -   The game selector is designed as a carousel, allowing users to easily navigate and choose their desired gameplay.
 
-![game-selector](https://github.com/user-attachments/assets/81877e11-f69e-48d7-8e16-6ef963262b6e)
+![game-selector](https://github.com/user-attachments/assets/de64e89b-5c0e-4088-aed3-429d84f12b6e)
 
 ### Color Themes and Dark Mode
 
@@ -72,7 +72,7 @@ As a returning visitor to Brick Game, I want to:
     -   Users can select from different color themes to personalize their gaming experience.
     -   A dark mode switch is available for a more comfortable viewing experience in low light.
 
-![settings](https://github.com/user-attachments/assets/a2b9f507-68fb-4620-ac7a-fb57badf3390)
+![theme-selector](https://github.com/user-attachments/assets/9205eb9b-d9bc-4b17-b5b4-53e12262146b)
 
 ### Game Grid Size
 
@@ -81,7 +81,7 @@ As a returning visitor to Brick Game, I want to:
     -   Users can select between different grid sizes to play.
     -   The original grid size is 10x20 blocks, but in this Brick Game, users can also choose from 6x12, 7x14, 8x16, 9x18, 11x22, and 12x24.
 
-![game-grid](https://github.com/user-attachments/assets/b5f0abf4-18f5-44ce-99db-0135b85bf7ac)
+![size-selector](https://github.com/user-attachments/assets/fda1b280-5f3f-4966-b452-aee331b0b278)
 
 ### Brick Falling Speed
 
@@ -110,14 +110,27 @@ As a returning visitor to Brick Game, I want to:
     -   Users can switch to left-handed mode where the controls move to the left of the game on mobile landscape mode or on desktop mode, providing better accessibility and convenience for left-handed players.
 
     -   **_Right-handed_**
-        ![right-handed](https://github.com/user-attachments/assets/5d1c73d9-1188-475b-99fe-0b615304c454)
+        ![right-handed](https://github.com/user-attachments/assets/d6c8ff91-b530-4ebc-b35c-e6f7cd526752)
 
     -   **_Left-handed_**
-        ![left-handed](https://github.com/user-attachments/assets/30019002-8af7-465a-9aa3-a3e9beb25712)
+        ![left-handed](https://github.com/user-attachments/assets/1d8e332b-f8f6-4847-9457-52fb653bff8d)
 
--   Gameplay Controls:
+### Gameplay Controls
+
+-   User Controls:
 
     -   Users can control the game using the onscreen buttons or the keyboard arrow keys.
     -   Users can pause the game using the ESC key on the keyboard or by touching the game area on mobile devices.
     -   Users can restart the game without going back to the main window or exit the game to switch game modes.
     -   Upon exiting the game or on game over, if the user has a score, the game transitions to the score window.
+
+### Score System
+
+-   Score Tracking:
+
+    -   Upon game exit or game over, users are taken to the score window if they have achieved a score.
+    -   Users can enter their name to save their score.
+    -   The score window displays a high score list, showing player names, scores, game mode, and date of the score.
+    -   Users can reorder the score list by any column in ascending order.
+
+![scores](https://github.com/user-attachments/assets/166cbd50-028f-4a63-905c-0f34d241d0da)
