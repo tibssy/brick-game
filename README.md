@@ -208,3 +208,19 @@ The visual design of the game is inspired by a clean, modern aesthetic with a to
 Lighthouse was used to test the performance, accessibility, best practices, and SEO of the Bruck Game webapp on both mobile and desktop platforms.
 
 ![lighthouse-test-result](https://github.com/user-attachments/assets/06bd0102-a364-4b59-aa30-f42ac16183e4)
+
+### HTML Validation
+
+The HTML code was validated using the W3C Markup Validation Service to ensure it is error-free and follows best practices.
+
+-   **HTML Validation Result:**
+
+![html-validator](https://github.com/user-attachments/assets/e544f50d-1de3-47d5-994f-2a6b7de2c938)
+
+### CSS Validation
+
+The CSS code was validated using the W3C CSS Validation Service to ensure there are no errors and it adheres to best practices.
+
+-   **CSS Validation Results:**
+
+![css-validator](https://github.com/user-attachments/assets/b8fa2f7a-1d90-49c1-aa35-fe129c89031d)
