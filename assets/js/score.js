@@ -76,11 +76,6 @@ function calculateLevel(increment, levelThreshold) {
     if (globals.level !== newLevel) {
         let interval = 1000 - newLevel * 90;
         globals.level = newLevel;
-
-        if (globals.game === "snake") {
-            interval /= 2;
-        }
-
         globals.interval = interval;
         displayLevel();
         restartGameLoop();
