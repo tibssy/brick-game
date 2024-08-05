@@ -27,16 +27,14 @@ export function highScore() {
 
     const saveScore = () => {
         if (playerName.value) {
-            saveHighscore(playerName.value, scores[0], globals.game, timeStamp);
+            saveHighscore(playerName.value, parseInt(scores[0]), globals.game, timeStamp);
             playerName.value = "";
-            resetScore();
             updateTable(getHighscores());
         }
     };
 
     exitButton.addEventListener("click", closeScores);
     saveScoreButton.addEventListener("click", saveScore);
-
     displayScores(scores);
     updateTable(getHighscores());
 }
