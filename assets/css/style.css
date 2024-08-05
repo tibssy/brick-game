@@ -118,7 +118,7 @@ main > div {
 }
 
 /* Area Styles */
-#welcome-area {
+#instruction-area {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -267,14 +267,14 @@ main > div {
     gap: 30px;
 }
 
-/* ---------- Welcome Area Styles ---------- */
+/* ---------- Instruction Area Styles ---------- */
 #game-instructions {
     height: 100%;
     padding: 10px 20px;
     overflow-y: scroll;
 }
 
-#welcome-area h1 {
+#instruction-area h1 {
     color: var(--secondary-accent);
 }
 
@@ -315,27 +315,10 @@ main > div {
     margin-top: 20px;
 }
 
-#instruction-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#show-welcome {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-    padding: 0 10px;
-}
-
-#show-welcome p {
-    color: var(--secondary-accent);
-}
-
-#close-welcome {
+#close-instruction {
     font-size: 1.8rem;
-    width: 60px;
+    max-width: 500px;
+    width: 100%;
     color: var(--primary-background);
     background-color: var(--primary-accent);
 }
@@ -506,13 +489,29 @@ input:checked + .slider:before {
     transform: translateX(26px);
 }
 
+#info-start-button {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 500px;
+}
+
+#info-button {
+    font-size: 1.5rem;
+    color: var(--shadow);
+    border: 3px solid var(--primary-accent);
+    width: 80px;
+    padding: 3px;
+    background-color: var(--primary-accent);
+}
+
 /* Start Button */
 #start-button {
     width: 100%;
     font-size: 1.5rem;
     color: var(--shadow);
     border: 3px solid var(--primary-accent);
-    max-width: 500px;
+    /* max-width: 500px; */
     padding: 3px;
     background-color: var(--primary-accent);
 }

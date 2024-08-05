@@ -3,23 +3,18 @@ import { settings } from "./settings.js";
 registerServiceWorker();
 
 document.addEventListener("DOMContentLoaded", () => {
-    welcome();
     settings();
+    gameInstuctions();
 });
 
-function welcome() {
-    if (localStorage.getItem("hideOnStartup") === "true") return;
+function gameInstuctions() {
+    const closeInstructionButton = document.querySelector("#close-instruction");
 
-    switchToArea("welcome-area");
-
-    const closeWelcomeButton = document.querySelector("#close-welcome");
-    const closeWelcome = () => {
+    const closeInstruction = () => {
         switchToArea("settings-area");
-        localStorage.setItem("hideOnStartup", !document.querySelector("#show-welcome input").checked);
-        closeWelcomeButton.removeEventListener("click", closeWelcome);
     };
 
-    closeWelcomeButton.addEventListener("click", closeWelcome);
+    closeInstructionButton.addEventListener("click", closeInstruction);
 }
 
 export function switchToArea(nextAreaId) {

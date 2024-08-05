@@ -4,10 +4,15 @@ import { switchToArea } from "./main.js";
 
 export function settings() {
     const startButton = document.getElementById("start-button");
+    const infoButton = document.querySelector("#info-button");
 
     startButton.addEventListener("click", () => {
         switchToArea("game-area");
         startGame();
+    });
+
+    infoButton.addEventListener("click", () => {
+        switchToArea("instruction-area");
     });
 
     gameSelector();
