@@ -119,11 +119,11 @@ export function updateGameText() {
     const highScoreParagraph = document.querySelectorAll("#high-score > p")[1];
 
     if (globals.game === "snake") {
-        nextBrickIndicator.style.display = "none";
+        nextBrickIndicator.classList.add("remove-element");
         inGameLinesParagraph.innerHTML = inGameLinesParagraph.innerHTML.replace(...textReplacements[0]);
         highScoreParagraph.innerHTML = highScoreParagraph.innerHTML.replace(...textReplacements[1]);
     } else {
-        nextBrickIndicator.style.display = "unset";
+        nextBrickIndicator.classList.remove("remove-element");
         inGameLinesParagraph.innerHTML = inGameLinesParagraph.innerHTML.replace(...textReplacements[0].reverse());
         highScoreParagraph.innerHTML = highScoreParagraph.innerHTML.replace(...textReplacements[1].reverse());
     }

@@ -97,7 +97,7 @@ input[type="text"] {
     color: var(--font-color);
 }
 
-/* Main Styles */
+/* ---------- Main Styles ---------- */
 main {
     display: flex;
     justify-content: center;
@@ -117,40 +117,33 @@ main > div {
     transition: var(--transition-long);
 }
 
-/* Area Styles */
-#instruction-area {
+/* ---------- Area Styles ---------- */
+#settings-area,
+#instruction-area,
+#game-area,
+#score-area {
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding: 10px;
     background-color: var(--primary-background);
 }
 
-#settings-area {
-    flex-direction: column;
-    align-items: center;
+#settings-area,
+#instruction-area {
     gap: 15px;
     padding: 16px;
-    background-color: var(--primary-background);
 }
 
 #game-area {
-    flex-direction: column;
-    align-items: center;
     flex-grow: 1;
     gap: 10px;
-    background-color: var(--primary-background);
 }
 
 #score-area {
-    flex-direction: column;
     padding: 20px;
     gap: 20px;
-    background-color: var(--primary-background);
-    align-items: center;
 }
 
-/* Game Area Styles */
+/* ---------- Game Area Styles ---------- */
 #game-indicator {
     display: flex;
     justify-content: space-evenly;
@@ -310,15 +303,17 @@ main > div {
 #game-instructions p {
     text-align: center;
     font-size: 1.1em;
-    color: var(--primary-accent);
+    color: var(--secondary-accent);
     margin-top: 20px;
 }
 
 #close-instruction {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    padding: 3px;
     max-width: 500px;
     width: 100%;
     color: var(--primary-background);
+    border: 3px solid var(--secondary-accent);
     background-color: var(--primary-accent);
 }
 
@@ -488,6 +483,7 @@ input:checked + .slider:before {
     transform: translateX(26px);
 }
 
+/* Info Button */
 #info-start-button {
     display: flex;
     gap: 10px;
@@ -495,24 +491,21 @@ input:checked + .slider:before {
     max-width: 500px;
 }
 
-#info-button {
+#info-button,
+#start-button {
     font-size: 1.5rem;
     color: var(--shadow);
-    border: 3px solid var(--primary-accent);
-    width: 80px;
+    border: 3px solid var(--secondary-accent);
     padding: 3px;
     background-color: var(--primary-accent);
 }
 
-/* Start Button */
+#info-button {
+    width: 80px;
+}
+
 #start-button {
     width: 100%;
-    font-size: 1.5rem;
-    color: var(--shadow);
-    border: 3px solid var(--primary-accent);
-    /* max-width: 500px; */
-    padding: 3px;
-    background-color: var(--primary-accent);
 }
 
 #start-button:focus {
@@ -553,6 +546,7 @@ input:checked + .slider:before {
     color: var(--font-color);
 }
 
+/* Inputs */
 #player-input {
     max-width: 500px;
     width: 100%;
@@ -584,6 +578,7 @@ input:checked + .slider:before {
     border-radius: var(--border-radius-normal);
 }
 
+/* Score Table */
 #score-table {
     height: 100%;
     padding: 0;
@@ -614,6 +609,7 @@ input:checked + .slider:before {
     font-size: var(--font-size-small);
 }
 
+/* Social Network */
 .social-networks {
     display: flex;
     justify-content: space-around;
@@ -626,7 +622,11 @@ input:checked + .slider:before {
     font-size: 2.2rem;
 }
 
-/* Property Setters */
+/* ---------- Property Setters ---------- */
+.remove-element {
+    display: none !important;
+}
+
 .hide-element {
     transform: scale(0.5);
     filter: opacity(0);
