@@ -3,8 +3,24 @@ import { settings } from "./settings.js";
 registerServiceWorker();
 
 document.addEventListener("DOMContentLoaded", () => {
+    welcome();
     settings();
 });
+
+function welcome() {
+    if (localStorage.getItem("hideOnStartup") === "true") return;
+
+    switchToArea("welcome-area");
+
+    const closeWelcomeButton = document.querySelector("#close-welcome");
+    const closeWelcome = () => {
+        switchToArea("settings-area");
+        localStorage.setItem("hideOnStartup", !document.querySelector("#show-welcome input").checked);
+        closeWelcomeButton.removeEventListener("click", closeWelcome);
+    };
+
+    closeWelcomeButton.addEventListener("click", closeWelcome);
+}
 
 export function switchToArea(nextAreaId) {
     const nextArea = document.getElementById(nextAreaId);

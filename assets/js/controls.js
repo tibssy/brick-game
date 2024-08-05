@@ -1,6 +1,6 @@
 import { constants, globals } from "./globals.js";
 import { renderOnGrid } from "./display.js";
-import { handleOrientationChange, toggleGamePause, restartGame, exitGame, restartGameLoop } from "./game.js";
+import { handleOrientationChange, toggleGamePause, restartGame, exitGame } from "./game.js";
 import { updateGameState, rotateBrick } from "./tetris.js";
 
 export function setupPowerControls() {

@@ -118,6 +118,15 @@ main > div {
 }
 
 /* Area Styles */
+#welcome-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: var(--primary-background);
+}
+
 #settings-area {
     flex-direction: column;
     align-items: center;
@@ -258,7 +267,80 @@ main > div {
     gap: 30px;
 }
 
-/* Settings Area Styles */
+/* ---------- Welcome Area Styles ---------- */
+#game-instructions {
+    height: 100%;
+    padding: 10px 20px;
+    overflow-y: scroll;
+}
+
+#welcome-area h1 {
+    color: var(--secondary-accent);
+}
+
+#game-instructions h2 {
+    text-align: center;
+    color: var(--secondary-accent);
+    margin: 0;
+}
+
+#game-instructions h3 {
+    color: var(--secondary-accent);
+    border-bottom: 1px solid var(--secondary-accent);
+    padding-bottom: 5px;
+    padding-top: 20px;
+}
+
+#game-instructions h4,
+#game-instructions h5 {
+    color: var(--secondary-accent);
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+#game-instructions ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+#game-instructions li {
+    margin-bottom: 10px;
+    color: var(--font-color);
+}
+
+#game-instructions p {
+    text-align: center;
+    font-size: 1.1em;
+    color: var(--primary-accent);
+    margin-top: 20px;
+}
+
+#instruction-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#show-welcome {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 0 10px;
+}
+
+#show-welcome p {
+    color: var(--secondary-accent);
+}
+
+#close-welcome {
+    font-size: 1.8rem;
+    width: 60px;
+    color: var(--primary-background);
+    background-color: var(--primary-accent);
+}
+
+/* ---------- Settings Area Styles ---------- */
 #game-selector {
     position: relative;
     display: flex;

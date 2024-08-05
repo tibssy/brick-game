@@ -21,6 +21,112 @@
 
 <body>
     <main>
+        <!-- Welcome Area -->
+        <div id="welcome-area" class="closed-area">
+            <h1>Welcome to Brick Game</h1>
+            <div id="game-instructions" class="card">
+                <h2>Game Instructions</h2>
+
+                <h3>Game Navigation</h3>
+                <h4>Mobile Devices:</h4>
+                <ul>
+                    <li>
+                        <strong>Pause the Game:</strong> Touch the game area once to pause the game. When paused, the
+                        regular game controls will be replaced by three buttons: <strong>Resume</strong>,
+                        <strong>Reset</strong>, and <strong>Close</strong>.
+                    </li>
+                    <li>
+                        <strong>Resume the Game:</strong> Touch the <strong>Resume</strong> button to continue playing.
+                    </li>
+                    <li>
+                        <strong>Reset the Game:</strong> Touch the <strong>Reset</strong> button to start a new game.
+                    </li>
+                    <li>
+                        <strong>Close the Game:</strong> Touch the <strong>Close</strong> button to exit the game.
+                    </li>
+                </ul>
+
+                <h4>Desktop Devices:</h4>
+                <ul>
+                    <li>
+                        <strong>Pause/Resume the Game:</strong> Press the <strong>Escape</strong> key on your keyboard
+                        to pause or resume the game.
+                    </li>
+                </ul>
+
+                <h4>Mobile Landscape Mode & Desktop:</h4>
+                <ul>
+                    <li>
+                        The <strong>Resume</strong>, <strong>Reset</strong>, and <strong>Close</strong> buttons are
+                        always visible.
+                    </li>
+                </ul>
+
+                <h3>Game Controls</h3>
+                <h4>Tetris and Tetris Extra</h4>
+                <h5>Mobile Devices:</h5>
+                <ul>
+                    <li>
+                        <strong>Move Left/Right/Down:</strong> Use the on-screen arrow buttons to move the pieces left,
+                        right or down.
+                    </li>
+                    <li>
+                        <strong>Rotate Piece:</strong> Use the on-screen rotate button to rotate the pieces.
+                    </li>
+                    <li>
+                        <strong>Continuous Movement:</strong> Long press the arrow buttons for continuous movement in
+                        the desired direction.
+                    </li>
+                </ul>
+
+                <h5>Desktop Devices:</h5>
+                <ul>
+                    <li>
+                        <strong>Move Left/Right/Down:</strong> Use the left and right arrow keys on your keyboard to
+                        move the
+                        pieces left, right or down.
+                    </li>
+                    <li>
+                        <strong>Rotate Piece:</strong> Use the up arrow key to rotate the pieces.
+                    </li>
+                    <li>
+                        <strong>Continuous Movement:</strong> Long press the arrow keys for continuous movement in the
+                        desired direction.
+                    </li>
+                </ul>
+
+                <h4>Snake</h4>
+                <h5>Mobile Devices:</h5>
+                <ul>
+                    <li>
+                        <strong>Move Up/Down/Left/Right:</strong> Use the on-screen arrow buttons to move the snake in
+                        the desired direction.
+                    </li>
+                </ul>
+
+                <h5>Desktop Devices:</h5>
+                <ul>
+                    <li>
+                        <strong>Move Up/Down/Left/Right:</strong> Use the arrow keys on your keyboard to move the snake
+                        in the desired direction.
+                    </li>
+                </ul>
+
+                <p>Enjoy playing Tetris, Tetris Extra, and Snake!</p>
+
+            </div>
+            <div id="instruction-footer" class="card">
+                <div id="show-welcome">
+                    <label class="switch">
+                        <input type="checkbox" aria-label="welcome toggle switch" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    <p>Show on startup?</p>
+                </div>
+                <button id="close-welcome"><i class="fa-solid fa-check"></i></button>
+            </div>
+        </div>
+
         <!-- Settings Area -->
         <div id="settings-area" class="show-area">
             <div id="game-selector" class="card">
