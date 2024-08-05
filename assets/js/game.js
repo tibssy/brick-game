@@ -124,11 +124,14 @@ export function restartGame() {
 }
 
 export function exitGame() {
-    const nextArea = globals.score ? "score-area" : "settings-area";
-
     resetGame();
-    highScore();
-    switchToArea(nextArea);
+
+    if (globals.score) {
+        highScore();
+        switchToArea("score-area");
+    } else {
+        switchToArea("settings-area");
+    }
 }
 
 function resetGame() {

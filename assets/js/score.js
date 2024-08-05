@@ -4,6 +4,7 @@ import { restartGameLoop } from "./game.js";
 import { switchToArea } from "./main.js";
 
 export function highScore() {
+    const playerInput = document.querySelector("#player-input");
     const exitButton = document.getElementById("close-score");
     const scores = [globals.score, globals.clearedLines];
     const tableHeadElements = document.querySelectorAll("#score-table table th");
@@ -29,10 +30,12 @@ export function highScore() {
         if (playerName.value) {
             saveHighscore(playerName.value, parseInt(scores[0]), globals.game, timeStamp);
             playerName.value = "";
+            playerInput.style.display = "none";
             updateTable(getHighscores());
         }
     };
 
+    playerInput.style.display = "unset";
     exitButton.addEventListener("click", closeScores);
     saveScoreButton.addEventListener("click", saveScore);
     displayScores(scores);
