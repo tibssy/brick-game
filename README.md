@@ -64,7 +64,7 @@ As a returning visitor to Brick Game, I want to:
     -   Users can select from three different games: Tetris, Snake, and Tetris Extra with additional bricks.
     -   The game selector is designed as a carousel, allowing users to easily navigate and choose their desired gameplay.
 
-    ![game-selector](https://github.com/user-attachments/assets/de64e89b-5c0e-4088-aed3-429d84f12b6e)
+![game-selector](https://github.com/user-attachments/assets/de64e89b-5c0e-4088-aed3-429d84f12b6e)
 
 ### Color Themes and Dark Mode
 
@@ -73,7 +73,7 @@ As a returning visitor to Brick Game, I want to:
     -   Users can select from different color themes to personalize their gaming experience.
     -   A dark mode switch is available for a more comfortable viewing experience in low light.
 
-    ![theme-selector](https://github.com/user-attachments/assets/9205eb9b-d9bc-4b17-b5b4-53e12262146b)
+![theme-selector](https://github.com/user-attachments/assets/9205eb9b-d9bc-4b17-b5b4-53e12262146b)
 
 ### Game Grid Size
 
@@ -82,7 +82,7 @@ As a returning visitor to Brick Game, I want to:
     -   Users can select between different grid sizes to play.
     -   The original grid size is 10x20 blocks, but in this Brick Game, users can also choose from 6x12, 7x14, 8x16, 9x18, 11x22, and 12x24.
 
-    ![size-selector](https://github.com/user-attachments/assets/fda1b280-5f3f-4966-b452-aee331b0b278)
+![size-selector](https://github.com/user-attachments/assets/fda1b280-5f3f-4966-b452-aee331b0b278)
 
 ### Game Speed
 
@@ -110,11 +110,9 @@ As a returning visitor to Brick Game, I want to:
 
     -   Users can switch to left-handed mode where the controls move to the left of the game on mobile landscape mode or on desktop mode, providing better accessibility and convenience for left-handed players.
 
-    -   **_Right-handed_**
-        ![right-handed](https://github.com/user-attachments/assets/d6c8ff91-b530-4ebc-b35c-e6f7cd526752)
+![right-handed](https://github.com/user-attachments/assets/d6c8ff91-b530-4ebc-b35c-e6f7cd526752)
 
-    -   **_Left-handed_**
-        ![left-handed](https://github.com/user-attachments/assets/1d8e332b-f8f6-4847-9457-52fb653bff8d)
+![left-handed](https://github.com/user-attachments/assets/1d8e332b-f8f6-4847-9457-52fb653bff8d)
 
 ### Gameplay Controls
 
@@ -146,7 +144,7 @@ As a returning visitor to Brick Game, I want to:
     -   Snake:
         -   1 food: 40 \* (speed + 1)
 
-    ![scores](https://github.com/user-attachments/assets/166cbd50-028f-4a63-905c-0f34d241d0da)
+![scores](https://github.com/user-attachments/assets/166cbd50-028f-4a63-905c-0f34d241d0da)
 
 ### Progressive Web App (PWA)
 
@@ -154,7 +152,7 @@ As a returning visitor to Brick Game, I want to:
     -   The game is designed as a Progressive Web App (PWA), allowing users to install it directly from their browser to their desktop or mobile device.
     -   Once installed, the game supports offline mode, enabling users to play without an internet connection.
 
-## installation
+## Installation
 
 -   Installation on Mobile Devices:
 
@@ -173,7 +171,9 @@ As a returning visitor to Brick Game, I want to:
         - The app icon will appear on your home screen or you can find it on the app drawer.
         - Tap the icon to launch your PWA in a standalone window.
 
-    https://github.com/user-attachments/assets/cf9ca24d-be56-46db-bb49-7b8cfa639797
+    <br/>
+
+https://github.com/user-attachments/assets/cf9ca24d-be56-46db-bb49-7b8cfa639797
 
 -   Installation on Desktop:
 
@@ -191,4 +191,20 @@ As a returning visitor to Brick Game, I want to:
         - The app will open in a standalone window.
         - An icon for the app will also be added to your desktop or start menu, depending on your operating system.
 
-    https://github.com/user-attachments/assets/5b977ba3-c530-47a7-a029-1bb37a4b18bd
+    <br/>
+
+https://github.com/user-attachments/assets/5b977ba3-c530-47a7-a029-1bb37a4b18bd
+
+## Design
+
+### Visual Design
+
+The visual design of the game is inspired by a clean, modern aesthetic with a touch of retro charm. The interface is designed to be intuitive, user-friendly, and visually appealing.
+
+## Testing
+
+### Lighthouse Performance Tests
+
+Lighthouse was used to test the performance, accessibility, best practices, and SEO of the Bruck Game webapp on both mobile and desktop platforms.
+
+![lighthouse-test-result](https://github.com/user-attachments/assets/06bd0102-a364-4b59-aa30-f42ac16183e4)
