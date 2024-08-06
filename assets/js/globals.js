@@ -135,10 +135,11 @@ export const constants = {
     hslColorThemes: {
         hue: {
             yellow: 33,
-            lime: 66,
+            lime: 60,
             green: 100,
             blue: 200,
             purple: 266,
+            pink: 320,
             red: 360,
         },
         light: {
