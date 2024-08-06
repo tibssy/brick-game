@@ -2,19 +2,25 @@ import { globals, constants } from "./globals.js";
 import { startGame } from "./game.js";
 import { switchToArea } from "./main.js";
 
+/**
+ * Initializes and sets up the application settings.
+ */
 export function settings() {
     const startButton = document.getElementById("start-button");
     const infoButton = document.querySelector("#info-button");
 
+    // Start the game when the start button is clicked.
     startButton.addEventListener("click", () => {
         switchToArea("game-area");
         startGame();
     });
 
+    // Show game instructions when the info button is clicked.
     infoButton.addEventListener("click", () => {
         switchToArea("instruction-area");
     });
 
+    // Initialize various settings.
     gameSelector();
     generateColorOptions();
     setDarkMode();
@@ -25,6 +31,9 @@ export function settings() {
     setAnimation();
 }
 
+/**
+ * Handles the game selector carousel functionality.
+ */
 function gameSelector() {
     const images = document.querySelector("#game-selector-images");
     const buttons = document.querySelectorAll("#game-selector-controls button");
@@ -36,6 +45,7 @@ function gameSelector() {
     };
     let currentIndex = 0;
 
+    // Add event listeners to carousel buttons.
     for (let button of buttons) {
         button.addEventListener("click", (event) => {
             const buttonId = event.currentTarget.id;
@@ -48,6 +58,7 @@ function gameSelector() {
         });
     }
 
+    // Updates the carousel to display the current game.
     function updateCarousel() {
         const width = images.parentElement.clientWidth;
         images.style.transform = `translateX(${-currentIndex * width}px)`;
@@ -55,12 +66,17 @@ function gameSelector() {
         globals.game = caption.textContent.toLowerCase();
     }
 
+    // Initialize the carousel display.
     updateCarousel();
 }
 
+/**
+ * Sets up the dark mode toggle functionality.
+ */
 function setDarkMode() {
     const toggleSwitch = document.querySelector("#dark-mode-selector input");
 
+    // Updates the color theme based on dark/light mode.
     const updateDarkLightMode = () => {
         globals.colorMode = globals.colorMode === "dark" ? "light" : "dark";
         setColorTheme(document.querySelector('input[name="color"]:checked').value);
@@ -69,10 +85,14 @@ function setDarkMode() {
     toggleSwitch.addEventListener("change", updateDarkLightMode);
 }
 
+/**
+ * Generates color theme options for the user to select.
+ */
 function generateColorOptions() {
     const colorOptions = document.getElementById("color-options");
     let isFirst = true;
 
+    // Create and append color options.
     Object.entries(constants.hslColorThemes.hue).forEach(([key, hue]) => {
         const colorOption = document.createElement("div");
         const input = document.createElement("input");
@@ -103,6 +123,11 @@ function generateColorOptions() {
     });
 }
 
+/**
+ * Sets the color theme of the application.
+ *
+ * @param {string} theme - The selected color theme.
+ */
 function setColorTheme(theme) {
     const hueValue = constants.hslColorThemes.hue[theme];
     const slValues = constants.hslColorThemes[globals.colorMode];
@@ -128,10 +153,18 @@ function setColorTheme(theme) {
     document.documentElement.style.setProperty("--font-color", `hsl(${hueValue}, ${slValues["font-color"]})`);
 }
 
+/**
+ * Sets up increment and decrement button functionality.
+ *
+ * @param {string} buttonSelector - The selector for the increment/decrement buttons.
+ * @param {string} valueDisplaySelector - The selector for the value display element.
+ * @param {Function} updateCallback - The callback function to update the value.
+ */
 function setupIncrementDecrementButtons(buttonSelector, valueDisplaySelector, updateCallback) {
     const buttons = document.querySelectorAll(buttonSelector);
     const valueToDisplay = document.querySelector(valueDisplaySelector);
 
+    // Add event listeners to increment and decrement buttons.
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
             const increment = button.classList.contains("button-increment") ? 1 : -1;
@@ -140,9 +173,18 @@ function setupIncrementDecrementButtons(buttonSelector, valueDisplaySelector, up
     });
 }
 
+/**
+ * Sets up the grid size selection functionality.
+ */
 function setGridSize() {
     const valueRange = [6, 12];
 
+    /**
+     * Updates the grid size based on user input.
+     *
+     * @param {number} increment - The increment value to adjust the grid size.
+     * @param {HTMLElement} valueToDisplay - The element to display the current grid size.
+     */
     const updateGridSize = (increment, valueToDisplay) => {
         let newValue = globals.gridSize[0] + increment;
         newValue = Math.max(valueRange[0], Math.min(newValue, valueRange[1]));
@@ -153,10 +195,19 @@ function setGridSize() {
     setupIncrementDecrementButtons("#grid-size-selector > div button", "#grid-size-selector > div p", updateGridSize);
 }
 
+/**
+ * Sets up the game speed selection functionality.
+ */
 function setGameSpeed() {
     const valueRange = [0, 10];
     let currentValue = 0;
 
+    /**
+     * Updates the game speed based on user input.
+     *
+     * @param {number} increment - The increment value to adjust the game speed.
+     * @param {HTMLElement} valueToDisplay - The element to display the current game speed.
+     */
     const updateGameSpeed = (increment, valueToDisplay) => {
         currentValue = Math.max(valueRange[0], Math.min(currentValue + increment, valueRange[1]));
         valueToDisplay.textContent = `${currentValue}`;
@@ -168,6 +219,9 @@ function setGameSpeed() {
     setupIncrementDecrementButtons("#speed-selector > div button", "#speed-selector > div p", updateGameSpeed);
 }
 
+/**
+ * Sets up the brick rotation direction functionality.
+ */
 function setBrickRotation() {
     const button = document.querySelector("#rotation-selector button");
     const rotationIcons = {
@@ -175,6 +229,7 @@ function setBrickRotation() {
         counterclockwise: `<i class="fa-solid fa-rotate-left"></i>`,
     };
 
+    // Updates the brick rotation direction icon.
     const updateRotationIcon = () => {
         globals.rotation = globals.rotation === "clockwise" ? "counterclockwise" : "clockwise";
         button.innerHTML = rotationIcons[globals.rotation];
@@ -183,9 +238,13 @@ function setBrickRotation() {
     button.addEventListener("click", updateRotationIcon);
 }
 
+/**
+ * Sets up the left-handed mode functionality.
+ */
 function setLeftHanded() {
     const toggleSwitch = document.querySelector("#left-hand-selector input");
 
+    // Updates the application for left-handed mode.
     const updateHandedness = () => {
         globals.isLeftHanded = !globals.isLeftHanded;
         const gameArea = document.querySelector("#game-area");
@@ -198,9 +257,13 @@ function setLeftHanded() {
     toggleSwitch.addEventListener("change", updateHandedness);
 }
 
+/**
+ * Sets up the animation toggle functionality.
+ */
 function setAnimation() {
     const toggleSwitch = document.querySelector("#animation-selector input");
 
+    // Updates the animation mode.
     const updateAnimationMode = () => {
         globals.animation = !globals.animation;
     };
