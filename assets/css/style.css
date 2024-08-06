@@ -10,10 +10,10 @@
 /* Root Variables */
 :root {
     /* Colors */
-    --primary-background: #2f2922;
-    --secondary-background: #494136;
-    --primary-accent: #ffa333;
-    --secondary-accent: #ffd199;
+    --primary-background: hsl(33, 16%, 16%);
+    --secondary-background: hsl(33, 15%, 25%);
+    --primary-accent: hsl(33, 100%, 60%);
+    --secondary-accent: hsl(33, 100%, 80%);
     --font-color: #fef3e6;
     --shadow: #000000;
 
@@ -413,11 +413,10 @@ main > div {
 
 /* Color Selector */
 #color-options {
-    display: grid;
-    grid-template-columns: repeat(6, auto);
+    display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 16px 0;
+    padding: 16px 10px;
 }
 
 #color-options div {
@@ -658,7 +657,6 @@ input:checked + .slider:before {
     height: 30px;
     border-radius: var(--border-radius-large);
     cursor: pointer;
-    margin: 0 10px;
     border: 1px solid var(--shadow);
     box-shadow: var(--box-shadow-small) inset;
     transition: var(--transition-short);
