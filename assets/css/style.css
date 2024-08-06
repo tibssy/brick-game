@@ -312,7 +312,7 @@ main > div {
     padding: 3px;
     max-width: 500px;
     width: 100%;
-    color: var(--primary-background);
+    color: var(--shadow);
     border: 3px solid var(--secondary-accent);
     background-color: var(--primary-accent);
 }
@@ -341,7 +341,7 @@ main > div {
     width: 60px;
     font-size: 1.5rem;
     font-weight: 900;
-    color: var(--primary-background);
+    color: var(--shadow);
     border: 2px solid var(--secondary-accent);
     box-shadow: var(--box-shadow-small);
     background-color: var(--primary-accent);
