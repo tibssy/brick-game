@@ -45,17 +45,19 @@ function gameSelector() {
     };
     let currentIndex = 0;
 
+    // Function to handle button clicks
+    function handleButtonClick(event) {
+        const buttonId = event.currentTarget.id;
+        let newIndex = Math.max(0, Math.min(currentIndex + buttonActions[buttonId], captions.length - 1));
+        if (newIndex !== currentIndex) {
+            currentIndex = newIndex;
+            updateCarousel();
+        }
+    }
+
     // Add event listeners to carousel buttons.
     for (let button of buttons) {
-        button.addEventListener("click", (event) => {
-            const buttonId = event.currentTarget.id;
-
-            let newIndex = Math.max(0, Math.min(currentIndex + buttonActions[buttonId], captions.length - 1));
-            if (newIndex !== currentIndex) {
-                currentIndex = newIndex;
-                updateCarousel();
-            }
-        });
+        button.addEventListener("click", handleButtonClick);
     }
 
     // Updates the carousel to display the current game.
