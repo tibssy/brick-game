@@ -134,8 +134,8 @@ export const constants = {
      */
     hslColorThemes: {
         hue: {
-            yellow: 33,
-            lime: 60,
+            orange: 33,
+            yellow: 60,
             green: 100,
             blue: 200,
             purple: 266,

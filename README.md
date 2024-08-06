@@ -1,6 +1,6 @@
 # Brick Game
 
-Welcome to the Brick Game project! This isn't just a traditional Tetris game; it's a multifaceted arcade experience that combines several classic games into one. In addition to the traditional Tetris gameplay, this game includes a nostalgic snake game and a variant of Tetris with additional brick types and special features.
+Welcome to the Brick Game project! This isn't just a traditional Tetris game, it's a multifaceted arcade experience that combines several classic games into one. In addition to the traditional Tetris gameplay, this game includes a nostalgic snake game and a variant of Tetris with additional brick types and special features.
 
 The Tetris mode features the classic falling block gameplay where you aim to clear lines by arranging falling bricks. The Snake mode offers a nostalgic experience where you guide a snake to collect items and grow longer while avoiding collisions. The Tetris Extra mode introduces new brick types and special features, adding layers of strategy and challenge.
 
@@ -12,8 +12,8 @@ The Tetris mode features the classic falling block gameplay where you aim to cle
 
 -   [User Experience](#user-experience)
 -   [Features](#features)
--   [Installation](#installation)
 -   [Design](#design)
+-   [Installation](#installation)
 -   [Testing](#testing)
 -   [Bugs](#bugs)
 -   [Deployment](#deployment)
@@ -73,7 +73,7 @@ As a returning visitor to Brick Game, I want to:
     -   Users can select from different color themes to personalize their gaming experience.
     -   A dark mode switch is available for a more comfortable viewing experience in low light.
 
-![theme-selector](https://github.com/user-attachments/assets/9205eb9b-d9bc-4b17-b5b4-53e12262146b)
+![dark-light](https://github.com/user-attachments/assets/b40a69fb-95d5-47ff-b366-aae62bfab6ec)
 
 ### Game Grid Size
 
@@ -152,6 +152,35 @@ As a returning visitor to Brick Game, I want to:
     -   The game is designed as a Progressive Web App (PWA), allowing users to install it directly from their browser to their desktop or mobile device.
     -   Once installed, the game supports offline mode, enabling users to play without an internet connection.
 
+## Design
+
+### Imagery
+
+The design of the Tetris, Snake and Tetris Extra game is focused on a clean and modern aesthetic. The abstract background image is utilized specifically in the game selector carousel, enhancing the visual appeal of the selection process without distracting from the game itself.
+
+### Color Scheme
+
+The color scheme is both versatile and user-friendly, featuring seven predefined color themes along with a dark mode option. This allows users to personalize their gaming experience to suit their preferences. The colors are carefully chosen to ensure clarity and readability, which is crucial for an immersive gaming experience.
+
+### Color Palette
+
+-   Light Mode:
+
+    -   Primary Background: Saturation: 100%, Lightness: 94%
+    -   Secondary Background: Saturation: 75%, Lightness: 85%
+    -   Primary Accent: Saturation: 100%, Lightness: 60%
+    -   Secondary Accent: Saturation: 100%, Lightness: 35%
+    -   Font Color: Saturation: 15%, Lightness: 15%
+
+-   Dark Mode:
+    -   Primary Background: Saturation: 16%, Lightness: 16%
+    -   Secondary Background: Saturation: 15%, Lightness: 25%
+    -   Primary Accent: Saturation: 100%, Lightness: 60%
+    -   Secondary Accent: Saturation: 100%, Lightness: 80%
+    -   Font Color: Saturation: 95%, Lightness: 95%
+
+The predefined color themes are based on different hues including orange, yellow, green, blue, purple, pink, and red. Each theme adjusts according to the selected light or dark mode, providing a cohesive and pleasant visual experience.
+
 ## Installation
 
 -   Installation on Mobile Devices:
@@ -194,12 +223,6 @@ https://github.com/user-attachments/assets/cf9ca24d-be56-46db-bb49-7b8cfa639797
     <br/>
 
 https://github.com/user-attachments/assets/5b977ba3-c530-47a7-a029-1bb37a4b18bd
-
-## Design
-
-### Visual Design
-
-The visual design of the game is inspired by a clean, modern aesthetic with a touch of retro charm. The interface is designed to be intuitive, user-friendly, and visually appealing.
 
 ## Testing
 
