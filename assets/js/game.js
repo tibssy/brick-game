@@ -20,6 +20,9 @@ import {
 import { highScore, resetScore } from "./score.js";
 import { switchToArea } from "./main.js";
 
+/**
+ * Starts the selected game and initializes necessary components.
+ */
 export function startGame() {
     initializeGameMatrix();
     initializeGameGrid();
@@ -41,14 +44,23 @@ export function startGame() {
     }
 }
 
+/**
+ * Initializes the game matrix with default value of zeros.
+ */
 function initializeGameMatrix() {
     globals.gameMatrix = Array.from(Array(globals.gridSize[1]), () => Array(globals.gridSize[0]).fill(0));
 }
 
+/**
+ * Initializes the game grid display element.
+ */
 function initializeGameGrid() {
     globals.gameGrid = document.getElementById("game-display");
 }
 
+/**
+ * Sets up the Tetris game and starts the countdown.
+ */
 function setupTetrisGame() {
     buildTetris();
     countDown(() => {
@@ -59,6 +71,9 @@ function setupTetrisGame() {
     });
 }
 
+/**
+ * Sets up the Snake game and starts the countdown.
+ */
 function setupSnakeGame() {
     buildSnake();
     countDown(() => {
@@ -68,6 +83,11 @@ function setupSnakeGame() {
     });
 }
 
+/**
+ * Displays a countdown before starting the game.
+ *
+ * @param {Function} callback - The function to call after the countdown.
+ */
 function countDown(callback) {
     const position = [
         Math.floor((globals.gridSize[0] - constants.countdownNumbers[0][0].length) / 2),
@@ -77,20 +97,27 @@ function countDown(callback) {
     let countDownValue = 3;
 
     const countdownInterval = setInterval(() => {
+        // If the countdown reaches zero
         if (!countDownValue) {
-            clearInterval(countdownInterval);
+            clearInterval(countdownInterval); // Stop the countdown timer
+
+            // If a callback function is provided and is a function
             if (callback && typeof callback === "function") {
-                callback();
+                callback(); // Execute the callback function
             }
         } else {
+            // Insert the current countdown number into the game matrix and render the number on the game grid
             const numberArray = insertToMatrix(constants.countdownNumbers[countDownValue - 1], position);
             renderOnGrid(globals.gameGrid, numberArray);
         }
 
         countDownValue--;
-    }, 1000);
+    }, 1000); // The interval executes every 1000 milliseconds (1 second)
 }
 
+/**
+ * Handles changes in device orientation.
+ */
 export function handleOrientationChange() {
     const powerButtons = document.querySelector("#power-buttons");
     const gameControls = document.querySelector("#game-controls");
@@ -104,6 +131,9 @@ export function handleOrientationChange() {
     }
 }
 
+/**
+ * Toggles the pause state of the game.
+ */
 export function toggleGamePause() {
     const breakButton = document.getElementById("break-button");
     globals.isPlaying = !globals.isPlaying;
@@ -117,12 +147,18 @@ export function toggleGamePause() {
     handleOrientationChange();
 }
 
+/**
+ * Restarts the game from the beginning.
+ */
 export function restartGame() {
     resetScore();
     resetGame();
     startGame();
 }
 
+/**
+ * Exits the game and displays the appropriate screen.
+ */
 export function exitGame() {
     resetGame();
 
@@ -134,6 +170,9 @@ export function exitGame() {
     }
 }
 
+/**
+ * Resets the game state and clears the game display.
+ */
 function resetGame() {
     globals.isPlaying = false;
     clearInterval(globals.gameLoop);
@@ -143,6 +182,9 @@ function resetGame() {
     applyTemporaryAnimation();
 }
 
+/**
+ * Resets the game control buttons to their default state.
+ */
 function resetButtons() {
     globals.snakeDirection = "up";
     removeAllEventListeners();
@@ -151,6 +193,9 @@ function resetButtons() {
     document.querySelector("#game-controls").style.display = "";
 }
 
+/**
+ * Restarts the game loop with the current game update function and interval.
+ */
 export function restartGameLoop() {
     if (globals.gameLoop) {
         clearInterval(globals.gameLoop);
