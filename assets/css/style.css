@@ -447,6 +447,7 @@ main > div {
     bottom: 0;
     text-indent: -9999px;
     white-space: nowrap;
+    color: var(--font-color);
     background-color: var(--primary-background);
     -webkit-transition: var(--transition-normal);
     transition: var(--transition-normal);
