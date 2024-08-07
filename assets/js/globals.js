@@ -182,7 +182,7 @@ export const globals = {
     level: 0, // Current level of the game
     clearedLines: 0, // Number of lines cleared in Tetris
     score: 0, // Current score
-    animation: true, // Flag indicating if animations are enabled
+    animation: false, // Flag indicating if animations are enabled
     rotation: "counterclockwise", // Direction of brick rotation
     isLeftHanded: false, // Flag for left-handed controls
     game: "tetris", // Current game type ("tetris" or "snake")
