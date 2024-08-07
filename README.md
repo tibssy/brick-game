@@ -280,6 +280,8 @@ All JavaScript codes was validated using JSHint to ensure it follows best practi
 | 21     | Score Area    | User clicks the close ( x ) button                                                               | Game switches to the Settings Area                                                                                    | PASS             |
 | 22     | Score Area    | User types the player name into the input field and clicks the plus ( + ) button                 | Game adds the high score to the leaderboard                                                                           | PASS             |
 | 23     | Score Area    | User clicks any of the leaderboard header elements                                               | Game reorders the leaderboard based on the selected column in ascending order                                         | PASS             |
+| 24     | Score Area    | User clicks the GitHub icon                                                                      | Game opens my GitHub profile in a new tab                                                                             | PASS             |
+| 25     | Score Area    | User clicks the LinkedIn icon                                                                    | Game opens my LinkedIn profile in a new tab                                                                           | PASS             |
 
 ## Bugs
 
