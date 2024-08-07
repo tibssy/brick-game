@@ -388,3 +388,7 @@ This section describes the process of deploying the Brick Game project to a host
     -   [StackOverflow](https://stackoverflow.com) Used to find solutions for specific coding issues, like rotating a 2D array in JavaScript.
 -   **W3Schools**
     -   [W3Schools](https://www.w3schools.com/css/) Used to find some design solutions, like a toggle switch.
+
+### Acknowledgments
+
+-   Thank you to my mentor, Brian Macharia, for his continuous support and valuable feedback. His tips and resources have been instrumental in enhancing my coding and testing skills.
