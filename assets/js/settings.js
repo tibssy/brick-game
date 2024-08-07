@@ -105,6 +105,7 @@ function generateColorOptions() {
         input.value = key;
         input.id = key;
         input.classList.add("color-input");
+        input.setAttribute("aria-label", `Color option ${key}`);
 
         if (isFirst) {
             input.checked = true;
