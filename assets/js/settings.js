@@ -99,6 +99,7 @@ function generateColorOptions() {
         const colorOption = document.createElement("div");
         const input = document.createElement("input");
         const label = document.createElement("label");
+        const hiddenText = document.createElement("span");
 
         input.type = "radio";
         input.name = "color";
@@ -115,6 +116,9 @@ function generateColorOptions() {
         label.setAttribute("for", input.id);
         label.classList.add("color-label");
         label.style.backgroundColor = `hsl(${hue}, ${constants.hslColorThemes.light["primary-accent"]})`;
+        hiddenText.classList.add("remove-element");
+        hiddenText.textContent = `Color option ${key}`;
+        label.appendChild(hiddenText);
 
         colorOption.appendChild(input);
         colorOption.appendChild(label);
