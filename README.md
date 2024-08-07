@@ -54,6 +54,59 @@ As a returning visitor to Brick Game, I want to:
 -   Access my previous scores and achievements.
 -   Customize my gaming experience with different themes and settings.
 
+### User Stories
+
+-   New Users
+
+    -   As a new user, I want to easily understand what the game is about so that I can decide if I want to play.
+    -   As a new user, I want to navigate the site easily using familiar menus and icons so that I can quickly find what I'm looking for.
+    -   As a new user, I want to explore the different game modes so that I can choose my preferred game type.
+    -   As a new user, I want access to contact information for any questions or support so that I can get help if needed.
+    -   As a new user, I want to have clear instructions on how to play the game so that I can start playing without confusion.
+
+-   Returning Users
+
+    -   As a returning user, I want to check for new game modes or updates to existing ones so that I can try out the latest features.
+    -   As a returning user, I want to quickly start a new game session so that I can continue enjoying the game without delay.
+    -   As a returning user, I want to access my previous scores and achievements so that I can track my progress and aim for higher scores.
+    -   As a returning user, I want to customize my gaming experience with different themes and settings so that I can personalize the game to my liking.
+    -   As a returning user, I want to switch between game modes easily so that I can enjoy different types of gameplay without hassle.
+
+-   Casual Gamers
+
+    -   As a casual gamer, I want quick and engaging gameplay so that I can enjoy short gaming sessions during my free time.
+    -   As a casual gamer, I want a variety of game modes to choose from so that I don’t get bored with just one type of game.
+    -   As a casual gamer, I want to be able to pause and resume the game easily so that I can manage interruptions without losing progress.
+
+-   Retro Gaming Enthusiasts
+
+    -   As a retro gaming enthusiast, I want a nostalgic gaming experience so that I can relive classic games from my past.
+    -   As a retro gaming enthusiast, I want the game to include classic elements like traditional Tetris and Snake so that the gameplay feels authentic.
+    -   As a retro gaming enthusiast, I want additional features and modern twists on classic games so that the experience feels fresh and exciting.
+
+-   Families
+
+    -   As a family member, I want the game to be suitable for all ages so that everyone in the family can enjoy playing together.
+    -   As a family member, I want easy-to-understand instructions and controls so that younger players can join in without difficulty.
+    -   As a family member, I want a friendly and safe gaming environment so that I can be assured of a positive experience for all family members.
+
+-   High Score Chasers
+
+    -   As a high score chaser, I want a detailed score tracking system so that I can see how I rank against other players.
+    -   As a high score chaser, I want the ability to save and view my scores so that I can track my improvement over time.
+    -   As a high score chaser, I want challenging gameplay that progressively increases in difficulty so that I can push myself to achieve higher scores.
+
+-   Customization Seekers
+
+    -   As a customization seeker, I want various color themes and dark mode options so that I can personalize the game's appearance.
+    -   As a customization seeker, I want adjustable game grid sizes and speeds so that I can tailor the gameplay to my preferences.
+    -   As a customization seeker, I want to switch between left-handed and right-handed controls so that I can play comfortably regardless of my dominant hand.
+
+-   Accessibility Focused Users
+    -   As an accessibility-focused user, I want left-handed mode so that the game is more comfortable and convenient for left-handed players.
+    -   As an accessibility-focused user, I want clear and simple controls so that the game is easy to play regardless of my physical abilities.
+    -   As an accessibility-focused user, I want a dark mode option so that the game is easier on my eyes in low-light environments.
+
 ## Features
 
 ### Game Selector
