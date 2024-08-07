@@ -29,7 +29,7 @@ The Tetris mode features the classic falling block gameplay where you aim to cle
 -   **New Users:**
 
     -   People who enjoy classic arcade games.
-    -   TCasual gamers looking for quick and engaging gameplay.
+    -   Casual gamers looking for quick and engaging gameplay.
     -   Families wanting a nostalgic gaming experience.
     -   Retro gaming enthusiasts.
 
@@ -196,7 +196,7 @@ The predefined color themes are based on different hues including orange, yellow
     2. Navigate to the Game:
         - [Visit Brick Game](https://tibssy.github.io/brick-game)
     3. Install the App:
-        - Once the page is loaded, you should see a prompt at the bottom of the screen that says "Add Brick Game to Home screen.
+        - Once the page is loaded, you should see a prompt at the bottom of the screen that says "Add Brick Game to Home screen".
         - If you don't see the prompt, tap the three-dot menu in the top right corner of the browser.
         - Select "Add to Home screen" from the menu.
     4. Confirm Installation:
@@ -213,7 +213,7 @@ https://github.com/user-attachments/assets/cf9ca24d-be56-46db-bb49-7b8cfa639797
 -   Installation on Desktop:
 
     1. Open the Browser:
-        - Open Google Chrome on your desktop pc or on your laptop.
+        - Open Google Chrome on your desktop PC or on your laptop.
     2. Navigate to the Game:
         - [Visit Brick Game](https://tibssy.github.io/brick-game)
     3. Install the App:
@@ -234,7 +234,7 @@ https://github.com/user-attachments/assets/5b977ba3-c530-47a7-a029-1bb37a4b18bd
 
 ### Lighthouse Performance Tests
 
-Lighthouse was used to test the performance, accessibility, best practices, and SEO of the Bruck Game webapp on both mobile and desktop platforms.
+Lighthouse was used to test the performance, accessibility, best practices, and SEO of the Brick Game web app on both mobile and desktop platforms.
 
 ![lighthouse-test-result](https://github.com/user-attachments/assets/06bd0102-a364-4b59-aa30-f42ac16183e4)
 
@@ -379,9 +379,9 @@ This section describes the process of deploying the Brick Game project to a host
 -   **Integrated Development Environment (IDE)**
     -   Visual Studio Code on Gitpod: [Visual Studio Code](https://code.visualstudio.com/), [GitPod](https://www.gitpod.io/) Online IDE used for coding and development.
 -   **Icons**
-    -   [fontawesome](https://fontawesome.com) Used for Social Media Icons and menu toggle button.
+    -   [FontAwesome](https://fontawesome.com) Used for Social Media Icons and menu toggle button.
 -   **Fonts**
-    -   [Google Font](https://fonts.google.com) Used Roboto and Freeman font family for this project.
+    -   [Google Fonts](https://fonts.google.com) Used Roboto and Freeman font family for this project.
 -   **PWA**
     -   [WorkBox](https://github.com/GoogleChrome/workbox) Used for simplifying service workers, caching, and offline support in PWAs.
 -   **StackOverflow**
