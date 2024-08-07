@@ -280,3 +280,59 @@ All JavaScript codes was validated using JSHint to ensure it follows best practi
 | 21     | Score Area    | User clicks the close ( x ) button                                                               | Game switches to the Settings Area                                                                                    | PASS             |
 | 22     | Score Area    | User types the player name into the input field and clicks the plus ( + ) button                 | Game adds the high score to the leaderboard                                                                           | PASS             |
 | 23     | Score Area    | User clicks any of the leaderboard header elements                                               | Game reorders the leaderboard based on the selected column in ascending order                                         | PASS             |
+
+## Bugs
+
+### High Speed Performance in Chrome-Based Browsers
+
+-   **Issue:**
+    At higher game levels, where the speed of the game increases significantly, a performance issue was observed in Chrome-based browsers. This issue arises because the game’s update rate exceeds what the browser’s engine can handle smoothly, leading to inconsistent or laggy gameplay.
+
+-   **Solution:**
+    To address this issue, the game now utilizes the requestAnimationFrame built-in function provided by the browser. This method synchronizes the game updates with the browser’s repaint cycles, ensuring smoother performance even at higher speeds.
+
+## Deployment
+
+This section describes the process of deploying the Brick Game project to a hosting platform, specifically GitHub Pages.
+
+**The site was deployed to GitHub Pages. The steps to deploy are as follows:**
+
+1. **Navigate to the Settings Tab:**
+
+    - In your GitHub repository, go to the "Settings" tab.
+
+2. **Select the Source Branch:**
+
+    - Scroll down to the "Pages" section on the left-hand sidebar.
+    - From the source section drop-down menu, select the branch you want to deploy (e.g., `main` or `master`).
+
+3. **Save and Deploy:**
+    - Click "Save" after selecting the branch.
+    - Once the branch has been selected and saved, the page will automatically refresh with a detailed display to indicate the successful deployment.
+
+**The live link can be found here:**
+
+[Brick Game Live Site](https://tibssy.github.io/brick-game/)
+
+## Credits
+
+-   **Image Generation**
+    -   [Playground AI](https://playground.com) Used for image-to-image generation from game screenshots.
+-   **Image Upscaling**
+    -   [Upscayl Desktop](https://www.upscayl.org/) Utilized for upscaling images to higher resolutions.
+-   **Image Editing and Conversion**
+    -   [GIMP - GNU Image Manipulation Program](https://www.gimp.org/) Open-source tool for editing images and converting them to WebP and many other formats.
+-   **Version Control**
+    -   [GitHub](https://github.com) Used for version control and repository management.
+-   **Integrated Development Environment (IDE)**
+    -   Visual Studio Code on Gitpod: [Visual Studio Code](https://code.visualstudio.com/), [GitPod](https://www.gitpod.io/) Online IDE used for coding and development.
+-   **Icons**
+    -   [fontawesome](https://fontawesome.com) Used for Social Media Icons and menu toggle button.
+-   **Fonts**
+    -   [Google Font](https://fonts.google.com) Used Roboto and Freeman font family for this project.
+-   **PWA**
+    -   [WorkBox](https://github.com/GoogleChrome/workbox) Used for simplifying service workers, caching, and offline support in PWAs.
+-   **StackOverflow**
+    -   [StackOverflow](https://stackoverflow.com) Used to find solutions for specific coding issues, like rotating a 2D array in JavaScript.
+-   **W3Schools**
+    -   [W3Schools](https://www.w3schools.com/css/) Used to find some design solutions, like a toggle switch.
