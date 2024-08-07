@@ -18,7 +18,6 @@ The Tetris mode features the classic falling block gameplay where you aim to cle
 -   [Bugs](#bugs)
 -   [Deployment](#deployment)
 -   [Credits](#credits)
--   [Conclusion](#conclusion)
 
 ## User Experience
 
