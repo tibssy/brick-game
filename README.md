@@ -322,6 +322,17 @@ All JavaScript codes was validated using JSHint to ensure it follows best practi
 | 24     | Score Area    | User clicks the GitHub icon                                                                      | Game opens my GitHub profile in a new tab                                                                             | PASS             |
 | 25     | Score Area    | User clicks the LinkedIn icon                                                                    | Game opens my LinkedIn profile in a new tab                                                                           | PASS             |
 
+### Operating Systems and Browsers
+
+| **Device**  | **OS & Kernel**                   | **Browser** | **Version**                                                         | **Status** |
+| ----------- | --------------------------------- | ----------- | ------------------------------------------------------------------- | ---------- |
+| **Desktop** | ArchLinux Kernel 6.9.7-zen1-1-zen | Firefox     | 127.0.2 (64-bit)                                                    | No issues  |
+|             |                                   | Brave       | Version 1.67.123 Chromium: 126.0.6478.126 (Official Build) (64-bit) | No issues  |
+| **Phone**   | Android 10 Kernel 4.14.116        | Firefox     | 129.0                                                               | no issues  |
+|             |                                   | Chrome      | 127.0.6                                                             | No issues  |
+
+No major issues were found during testing, ensuring a consistent and smooth user experience across all supported browsers.
+
 ## Bugs
 
 ### High Speed Performance in Chrome-Based Browsers
