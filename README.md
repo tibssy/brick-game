@@ -258,6 +258,39 @@ The CSS code was validated using the W3C CSS Validation Service to ensure there 
 
 All JavaScript codes was validated using JSHint to ensure it follows best practices and is free of errors. While no errors were found, there were some warnings regarding the use of ES6 features. This indicates that the code is modern and utilizes the latest JavaScript standards.
 
+<details>
+<summary>main.js</summary>
+<img src="https://github.com/user-attachments/assets/c00533ea-b2e4-459e-b965-f5ebc63d7cd6" width="500" style="max-width: 100%;">
+</details>
+<details>
+<summary>settings.js</summary>
+<img src="https://github.com/user-attachments/assets/db95148b-e19a-4c72-aa97-1b89624a566b" width="500" style="max-width: 100%;">
+</details>
+<details>
+<summary>game.js</summary>
+<img src="https://github.com/user-attachments/assets/44dda78f-b8aa-48df-94df-6a4d73e59fdd" width="500" style="max-width: 100%;">
+</details>
+<details>
+<summary>tetris.js</summary>
+<img src="https://github.com/user-attachments/assets/2f8b2101-d7d1-4bcd-b7e2-2f154b6c9486" width="500" style="max-width: 100%;">
+</details>
+<details>
+<summary>snake.js</summary>
+<img src="https://github.com/user-attachments/assets/733b5752-9de7-4243-8220-dff51ab7a791" width="500" style="max-width: 100%;">
+</details>
+<details>
+<summary>controls.js</summary>
+<img src="https://github.com/user-attachments/assets/2508ffe9-d783-4365-977a-72da586503b8" width="500" style="max-width: 100%;">
+</details>
+<details>
+<summary>score.js</summary>
+<img src="https://github.com/user-attachments/assets/333b04ab-6242-4ffe-b94f-20abbb531b91" width="500" style="max-width: 100%;">
+</details>
+<details>
+<summary>display.js</summary>
+<img src="https://github.com/user-attachments/assets/e4ab5d68-e205-4d7c-baa7-ff3db7a59897" width="500" style="max-width: 100%;">
+</details>
+
 ### Functionality Test
 
 | **ID** | **Test Area** | **Test Action**                                                                                  | **Expected Outcome**                                                                                                  | **Test Outcome** |
