@@ -445,6 +445,7 @@ main > div {
     left: 0;
     right: 0;
     bottom: 0;
+    color: transparent;
     background-color: var(--primary-background);
     -webkit-transition: var(--transition-normal);
     transition: var(--transition-normal);
