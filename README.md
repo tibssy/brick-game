@@ -146,6 +146,12 @@ As a returning visitor to Brick Game, I want to:
 
 ![scores](https://github.com/user-attachments/assets/166cbd50-028f-4a63-905c-0f34d241d0da)
 
+### Instruction Area
+
+-   The Instruction screen displays information on how to navigate and control the game.
+
+![instruction-area](https://github.com/user-attachments/assets/a7ba5e2b-ae23-4d06-8836-4b58665598c7)
+
 ### Progressive Web App (PWA)
 
 -   Easy Installation:
