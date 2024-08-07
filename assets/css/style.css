@@ -446,6 +446,7 @@ main > div {
     right: 0;
     bottom: 0;
     color: transparent;
+    user-select: none;
     background-color: var(--primary-background);
     -webkit-transition: var(--transition-normal);
     transition: var(--transition-normal);
